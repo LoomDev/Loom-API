@@ -1,9 +1,11 @@
 package org.loomdev.api.server;
 
 import net.kyori.adventure.text.TextComponent;
+import org.loomdev.api.entity.Player;
 import org.loomdev.api.plugin.PluginManager;
 
 import java.nio.file.Path;
+import java.util.Collection;
 
 public interface Server {
 
@@ -41,6 +43,13 @@ public interface Server {
      * @return The plugin manager.
      */
     PluginManager getPluginManager();
+
+    /**
+     * Returns all currently online players on the server.
+     *
+     * @return Immutable collection of all online players.
+     */
+    Collection<? extends Player> getOnlinePlayers();
 
     /**
      * Send a message to all players on the server.

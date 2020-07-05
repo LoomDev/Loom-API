@@ -1,23 +1,23 @@
 package org.loomdev.api.event.plugin;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.loomdev.api.event.Event;
+
 /**
  * Event called when disabling a plugin.
  */
-public class PluginDisableEvent {
+@AllArgsConstructor
+public class PluginDisableEvent extends Event {
 
+    @Getter
     private final Reason reason;
-
-    public PluginDisableEvent(Reason reason) {
-        this.reason = reason;
-    }
-
-    public Reason getReason() {
-        return reason;
-    }
 
     @Override
     public String toString() {
-        return "PluginShutdownEvent";
+        return "PluginDisableEvent{" +
+                "reason=" + reason +
+                '}';
     }
 
     public enum Reason {
@@ -27,5 +27,4 @@ public class PluginDisableEvent {
         UNKNOWN, // an unknown reason
         PLUGIN // triggered by an other plugin.
     }
-
 }

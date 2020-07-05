@@ -1,27 +1,26 @@
 package org.loomdev.api.event.plugin;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.loomdev.api.event.Event;
+
 /**
  * Event called when starting the plugin.
  */
-public class PluginInitializeEvent {
+@NoArgsConstructor
+public class PluginInitializeEvent extends Event {
 
+    @Getter
     private boolean pluginDisabled;
-
-    public PluginInitializeEvent() {
-        this.pluginDisabled = false;
-    }
 
     public void disablePlugin() {
         this.pluginDisabled = true;
     }
 
-    public boolean isPluginDisabled() {
-        return pluginDisabled;
-    }
-
     @Override
     public String toString() {
-        return "ServerInitializeEvent";
+        return "PluginInitializeEvent{" +
+                "pluginDisabled=" + pluginDisabled +
+                '}';
     }
-
 }
