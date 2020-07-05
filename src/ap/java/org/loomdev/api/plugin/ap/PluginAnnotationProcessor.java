@@ -6,6 +6,7 @@ import org.loomdev.api.plugin.Plugin;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
@@ -20,6 +21,7 @@ import java.io.Writer;
 import java.util.Objects;
 import java.util.Set;
 
+@SupportedAnnotationTypes({"org.loomdev.api.plugin.Plugin"})
 public class PluginAnnotationProcessor extends AbstractProcessor {
 
     private ProcessingEnvironment environment;

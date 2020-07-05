@@ -23,14 +23,14 @@ public interface PluginMetadata {
      *
      * @return The id of the plugin.
      */
-    String id();
+    String getId();
 
     /**
      * A human readable name of the plugin.
      *
      * @return The plugin name.
      */
-    default Optional<String> name() {
+    default Optional<String> getName() {
         return Optional.empty();
     }
 
@@ -39,7 +39,7 @@ public interface PluginMetadata {
      *
      * @return The version of then plugin.
      */
-    default Optional<String> version() {
+    default Optional<String> getVersion() {
         return Optional.empty();
     }
 
@@ -48,7 +48,7 @@ public interface PluginMetadata {
      *
      * @return The description of the plugin.
      */
-    default Optional<String> description() {
+    default Optional<String> getDescription() {
         return Optional.empty();
     }
 
@@ -57,7 +57,7 @@ public interface PluginMetadata {
      *
      * @return The names of the author(s) of the plugin.
      */
-    default List<String> authors() {
+    default List<String> getAuthors() {
         return ImmutableList.of();
     }
 
