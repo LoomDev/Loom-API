@@ -2,6 +2,7 @@ package org.loomdev.api.server;
 
 import net.kyori.adventure.text.TextComponent;
 import org.loomdev.api.entity.Player;
+import org.loomdev.api.math.TickTimes;
 import org.loomdev.api.plugin.PluginManager;
 
 import java.nio.file.Path;
@@ -65,4 +66,7 @@ public interface Server {
      */
     void broadcastMessage(TextComponent message);
 
+    double[] getTps();
+
+    TickTimes[] getTickTimes();
 }
