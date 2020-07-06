@@ -32,19 +32,77 @@ public interface PluginManager {
     boolean isLoaded(String id);
 
     /**
+     * Check if a plugin is enabled.
+     *
+     * @param id The id of the plugin to check.
+     * @return {@code true} id the plugin in enabled.
+     */
+    boolean isEnabled(String id);
+
+    /**
+     * Check if a plugin is disabled.
+     *
+     * @param id The id of the plugin to check.
+     * @return {@code true} id the plugin in disabled.
+     */
+    boolean isDisabled(String id);
+
+    /**
      * Enable a plugin.
      *
      * @param id The id of the plugin to enable.
-     * @return True if plugin was enabled successfully.
+     * @return The results of the action.
      */
-    boolean enablePlugin(String id);
+    Result enablePlugin(String id);
 
     /**
      * Disable a plugin.
      *
      * @param id The id of the plugin to disable.
-     * @return True if plugin was disabled successfully.
+     * @return The results of the action.
      */
-    boolean disablePlugin(String id);
+    Result disablePlugin(String id);
 
+    /**
+     * Results of a plugin enable/disable call.
+     */
+    enum Result {
+        /**
+         * The requested plugin was not found among the loaded plugins.
+         */
+        NOT_FOUND,
+
+        /**
+         * The plugin was already enabled/disabled. No state changes occurred.
+         */
+        ALREADY_IN_STATE,
+
+        /**
+         * The plugin was successfully enabled/disabled.
+         */
+        SUCCESS,
+
+        /**
+         * Failed to enable/disable the plugin.
+         */
+        FAILED;
+
+        /**
+         * Check if the results is an error result.
+         *
+         * @return {@code true} if {@link Result#FAILED} or {@link Result#NOT_FOUND}.
+         */
+        boolean isError() {
+            return this == FAILED || this == NOT_FOUND;
+        }
+
+        /**
+         * Check if the result is an success result.
+         *
+         * @return {@code true} if {@link Result#SUCCESS} or {@link Result#ALREADY_IN_STATE}.
+         */
+        boolean isSuccess() {
+            return this == SUCCESS || this == ALREADY_IN_STATE;
+        }
+    }
 }
