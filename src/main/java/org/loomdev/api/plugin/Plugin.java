@@ -1,5 +1,7 @@
 package org.loomdev.api.plugin;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -18,7 +20,7 @@ public @interface Plugin {
      *
      * @return The id of the plugin.
      */
-    String id();
+    @NotNull String id();
 
     /**
      * A human readable name of the plugin.

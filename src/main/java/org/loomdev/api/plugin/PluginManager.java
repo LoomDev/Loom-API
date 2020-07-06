@@ -1,5 +1,7 @@
 package org.loomdev.api.plugin;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.Optional;
 
@@ -14,14 +16,14 @@ public interface PluginManager {
      * @param id The id of the plugin to get.
      * @return The plugin, if available.
      */
-    Optional<PluginContainer> getPlugin(String id);
+    @NotNull Optional<PluginContainer> getPlugin(String id);
 
     /**
      * Get all the plugins loaded by Loom.
      *
      * @return The plugins loaded by Loom.
      */
-    Collection<PluginContainer> getPlugins();
+    @NotNull Collection<PluginContainer> getPlugins();
 
     /**
      * Check if a plugin is loaded based on its id.
@@ -53,7 +55,7 @@ public interface PluginManager {
      * @param id The id of the plugin to enable.
      * @return The results of the action.
      */
-    Result enablePlugin(String id);
+    @NotNull Result enablePlugin(String id);
 
     /**
      * Disable a plugin.
@@ -61,7 +63,7 @@ public interface PluginManager {
      * @param id The id of the plugin to disable.
      * @return The results of the action.
      */
-    Result disablePlugin(String id);
+    @NotNull Result disablePlugin(String id);
 
     /**
      * Results of a plugin enable/disable call.

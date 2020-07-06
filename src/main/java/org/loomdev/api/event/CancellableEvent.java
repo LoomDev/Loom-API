@@ -3,7 +3,7 @@ package org.loomdev.api.event;
 import lombok.Getter;
 import lombok.Setter;
 
-public class CancellableEvent extends Event {
+public abstract class CancellableEvent extends Event {
 
     @Getter
     @Setter

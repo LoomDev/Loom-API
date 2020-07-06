@@ -1,6 +1,7 @@
 package org.loomdev.api.plugin;
 
 import com.google.common.collect.ImmutableList;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -23,7 +24,7 @@ public interface PluginMetadata {
      *
      * @return The id of the plugin.
      */
-    String getId();
+    @NotNull String getId();
 
     /**
      * A human readable name of the plugin.
