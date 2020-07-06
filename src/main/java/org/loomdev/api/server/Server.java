@@ -2,8 +2,9 @@ package org.loomdev.api.server;
 
 import net.kyori.adventure.text.TextComponent;
 import org.loomdev.api.entity.Player;
-import org.loomdev.api.math.TickTimes;
 import org.loomdev.api.plugin.PluginManager;
+import org.loomdev.api.monitoring.Tps;
+import org.loomdev.api.monitoring.TickTimes;
 
 import java.nio.file.Path;
 import java.util.Collection;
@@ -66,7 +67,11 @@ public interface Server {
      */
     void broadcastMessage(TextComponent message);
 
-    double[] getTps();
+    /**
+     * Get the tps of the server.
+     * @return Instance of {@link Tps} containing TPS measurements of the server.
+     */
+    Tps getTps();
 
-    TickTimes[] getTickTimes();
+    TickTimes getTickTimes();
 }
