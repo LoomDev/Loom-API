@@ -2,7 +2,7 @@ package org.loomdev.api.event.block;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.block.Block;
 
 public class BlockDroppedExperienceEvent extends BlockEvent {
@@ -11,7 +11,7 @@ public class BlockDroppedExperienceEvent extends BlockEvent {
     @Setter
     private int experience;
 
-    public BlockDroppedExperienceEvent(@NotNull Block block, int experience) {
+    public BlockDroppedExperienceEvent(@NonNull Block block, int experience) {
         super(block);
         this.experience = experience;
     }

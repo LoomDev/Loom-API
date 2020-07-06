@@ -1,8 +1,8 @@
 package org.loomdev.api.event.block;
 
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.block.BlockState;
 
@@ -11,10 +11,10 @@ import java.util.Set;
 public class BlockExplodedEvent extends BlockChangedEvent {
 
     @Getter
-    @NotNull
+    @NonNull
     private final Set<Block> brokenBlocks;
 
-    public BlockExplodedEvent(@NotNull Block block, @Nullable BlockState newState, @NotNull Set<Block> brokenBlocks) {
+    public BlockExplodedEvent(@NonNull Block block, @Nullable BlockState newState, @NonNull Set<Block> brokenBlocks) {
         super(block, block.getCurrentState(), newState);
         this.brokenBlocks = brokenBlocks;
     }

@@ -1,7 +1,7 @@
 package org.loomdev.api.plugin.ap;
 
 import com.google.gson.Gson;
-import org.loomdev.api.plugin.Plugin;
+import org.loomdev.api.plugin.LoomPlugin;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -21,7 +21,7 @@ import java.io.Writer;
 import java.util.Objects;
 import java.util.Set;
 
-@SupportedAnnotationTypes({"org.loomdev.api.plugin.Plugin"})
+@SupportedAnnotationTypes({"org.loomdev.api.plugin.LoomPlugin"})
 public class PluginAnnotationProcessor extends AbstractProcessor {
 
     private ProcessingEnvironment environment;
@@ -44,9 +44,9 @@ public class PluginAnnotationProcessor extends AbstractProcessor {
             return false;
         }
 
-        for (Element element : roundEnv.getElementsAnnotatedWith(Plugin.class)) {
+        for (Element element : roundEnv.getElementsAnnotatedWith(LoomPlugin.class)) {
             if (element.getKind() != ElementKind.CLASS) {
-                environment.getMessager().printMessage(Diagnostic.Kind.ERROR, "Only classes can be annotated with " + Plugin.class.getCanonicalName());
+                environment.getMessager().printMessage(Diagnostic.Kind.ERROR, "Only classes can be annotated with " + LoomPlugin.class.getCanonicalName());
                 return false;
             }
 
@@ -63,8 +63,8 @@ public class PluginAnnotationProcessor extends AbstractProcessor {
                 return false;
             }
 
-            Plugin plugin = element.getAnnotation(Plugin.class);
-            if (!SerializedPluginMetadata.ID_PATTERN.matcher(plugin.id()).matches()) {
+            LoomPlugin loomPlugin = element.getAnnotation(LoomPlugin.class);
+            if (!SerializedPluginMetadata.ID_PATTERN.matcher(loomPlugin.id()).matches()) {
                 environment.getMessager().printMessage(Diagnostic.Kind.ERROR, "Invalid ID for plugin "
                         + qualifiedName
                         + ". IDs must start alphabetically, have alphanumeric characters, and can "
@@ -72,7 +72,7 @@ public class PluginAnnotationProcessor extends AbstractProcessor {
                 return false;
             }
 
-            SerializedPluginMetadata metadata = SerializedPluginMetadata.from(plugin, qualifiedName.toString());
+            SerializedPluginMetadata metadata = SerializedPluginMetadata.from(loomPlugin, qualifiedName.toString());
             try {
                 FileObject object = environment.getFiler().createResource(StandardLocation.CLASS_OUTPUT, "", "loom-plugin.json");
                 try (Writer writer = new BufferedWriter((object.openWriter()))) {

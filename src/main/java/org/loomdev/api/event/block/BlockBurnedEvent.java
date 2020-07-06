@@ -1,12 +1,12 @@
 package org.loomdev.api.event.block;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.loomdev.api.block.Block;
 
 public class BlockBurnedEvent extends BlockIgnitedEvent {
 
-    public BlockBurnedEvent(@NotNull Block block, @Nullable Block ignitingBlock) {
+    public BlockBurnedEvent(@NonNull Block block, @Nullable Block ignitingBlock) {
         super(block, ignitingBlock);
     }
 

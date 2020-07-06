@@ -3,8 +3,8 @@ package org.loomdev.api.server;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.player.Player;
+import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.monitoring.Tps;
 import org.loomdev.api.monitoring.TickTimes;
@@ -33,35 +33,42 @@ public interface Server {
      *
      * @return The path of the root directory.
      */
-    @NotNull Path getRootDirectory();
+    @NonNull Path getRootDirectory();
 
     /**
      * Get the path of the folder containing the plugin files.
      *
      * @return The path of the plugin folder.
      */
-    @NotNull Path getPluginDirectory();
+    @NonNull Path getPluginDirectory();
 
     /**
      * Get the plugin manager.
      *
      * @return The plugin manager.
      */
-    @NotNull PluginManager getPluginManager();
+    @NonNull PluginManager getPluginManager();
+
+    /**
+     * Get the event manager;
+     *
+     * @return The event manager.
+     */
+    @NonNull EventManager getEventManager();
 
     /**
      * Returns all currently online players on the server.
      *
      * @return Immutable collection of all online players.
      */
-    @NotNull Collection<? extends Player> getOnlinePlayers();
+    @NonNull Collection<? extends Player> getOnlinePlayers();
 
     /**
      * Send a message to all players on the server.
      *
      * @param message The message to send.
      */
-    default void broadcastMessage(@NotNull String message) {
+    default void broadcastMessage(@NonNull String message) {
         broadcastMessage(TextComponent.of(message));
     }
 
@@ -70,18 +77,18 @@ public interface Server {
      *
      * @param component The component to send.
      */
-    void broadcastMessage(@NotNull Component component);
+    void broadcastMessage(@NonNull Component component);
 
     /**
      * Get the tps of the server.
      * @return Instance of {@link Tps} containing TPS measurements of the server.
      */
-    @NotNull Tps getTps();
+    @NonNull Tps getTps();
 
     /**
      * Get the tick times of the server.
      *
      * @return Instance of {@link TickTimes} containing tick times measurements of the server.
      */
-    @NotNull TickTimes getTickTimes();
+    @NonNull TickTimes getTickTimes();
 }

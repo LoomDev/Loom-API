@@ -22,6 +22,6 @@ public interface PluginLoader {
      * @param plugin The plugin metadata of the the plugin to load.
      * @return The instance of the plugin.
      */
-    Object createPlugin(PluginMetadata plugin);
+    Plugin createPlugin(PluginMetadata plugin);
 
 }

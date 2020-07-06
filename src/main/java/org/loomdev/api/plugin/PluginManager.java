@@ -1,6 +1,6 @@
 package org.loomdev.api.plugin;
 
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -11,19 +11,27 @@ import java.util.Optional;
 public interface PluginManager {
 
     /**
-     * Get a plugin based on its id.
+     * Get a plugin container based on its id.
      *
      * @param id The id of the plugin to get.
      * @return The plugin, if available.
      */
-    @NotNull Optional<PluginContainer> getPlugin(String id);
+    @NonNull Optional<PluginContainer> getPlugin(String id);
+
+    /**
+     * Get a plugin container from an instance.
+     *
+     * @param pluginInstance The instance to get the plugin container from.
+     * @return The plugin container or {@link Optional#empty()} if not a plugin container.
+     */
+    @NonNull Optional<PluginContainer> fromInstance(Plugin pluginInstance);
 
     /**
      * Get all the plugins loaded by Loom.
      *
      * @return The plugins loaded by Loom.
      */
-    @NotNull Collection<PluginContainer> getPlugins();
+    @NonNull Collection<PluginContainer> getPlugins();
 
     /**
      * Check if a plugin is loaded based on its id.
@@ -55,7 +63,7 @@ public interface PluginManager {
      * @param id The id of the plugin to enable.
      * @return The results of the action.
      */
-    @NotNull Result enablePlugin(String id);
+    @NonNull Result enablePlugin(String id);
 
     /**
      * Disable a plugin.
@@ -63,7 +71,7 @@ public interface PluginManager {
      * @param id The id of the plugin to disable.
      * @return The results of the action.
      */
-    @NotNull Result disablePlugin(String id);
+    @NonNull Result disablePlugin(String id);
 
     /**
      * Results of a plugin enable/disable call.

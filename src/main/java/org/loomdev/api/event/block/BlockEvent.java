@@ -2,7 +2,7 @@ package org.loomdev.api.event.block;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.event.CancellableEvent;
 
@@ -10,7 +10,7 @@ import org.loomdev.api.event.CancellableEvent;
 public class BlockEvent extends CancellableEvent {
 
     @Getter
-    @NotNull
+    @NonNull
     private final Block block;
 
     @Override

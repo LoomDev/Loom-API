@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.loomdev.api.plugin.Plugin;
+import org.loomdev.api.plugin.LoomPlugin;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,9 +35,9 @@ public class SerializedPluginMetadata {
         this.main = Preconditions.checkNotNull(main, "main");
     }
 
-    public static SerializedPluginMetadata from(Plugin plugin, String qualifiedName) {
-        List<String> authors = Arrays.stream(plugin.authors()).filter(a -> !a.isEmpty()).collect(Collectors.toList());
-        return new SerializedPluginMetadata(plugin.id(), plugin.name(), plugin.version(), plugin.description(), authors, qualifiedName);
+    public static SerializedPluginMetadata from(LoomPlugin loomPlugin, String qualifiedName) {
+        List<String> authors = Arrays.stream(loomPlugin.authors()).filter(a -> !a.isEmpty()).collect(Collectors.toList());
+        return new SerializedPluginMetadata(loomPlugin.id(), loomPlugin.name(), loomPlugin.version(), loomPlugin.description(), authors, qualifiedName);
     }
 
     public String getId() {

@@ -1,13 +1,13 @@
 package org.loomdev.api.event.block.plant;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.block.BlockState;
 
 public class PlantFertilizedEvent extends PlantGrewEvent {
 
-    public PlantFertilizedEvent(@NotNull Block block, @Nullable BlockState newState) {
+    public PlantFertilizedEvent(@NonNull Block block, @Nullable BlockState newState) {
         super(block, newState);
     }
 

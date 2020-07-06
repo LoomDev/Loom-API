@@ -19,7 +19,21 @@ public interface PluginContainer {
      *
      * @return The instance of the plugin.
      */
-    default Optional<?> getInstance() {
+    default Optional<Plugin> getInstance() {
         return Optional.empty();
     }
+
+    /**
+     * Check if the plugin is enabled.
+     *
+     * @return {@code true} id the plugin in enabled.
+     */
+    boolean isEnabled();
+
+    /**
+     * Check if the plugin is disabled.
+     *
+     * @return {@code true} id the plugin in disabled.
+     */
+    boolean isDisabled();
 }
