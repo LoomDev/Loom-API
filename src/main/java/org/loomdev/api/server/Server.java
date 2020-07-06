@@ -4,7 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
-import org.loomdev.api.entity.Player;
+import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.monitoring.Tps;
 import org.loomdev.api.monitoring.TickTimes;

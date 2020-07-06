@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.block.BlockState;
-import org.loomdev.api.entity.Player;
+import org.loomdev.api.entity.player.Player;
 
 public class BlockBrokenEvent extends BlockChangedEvent {
 

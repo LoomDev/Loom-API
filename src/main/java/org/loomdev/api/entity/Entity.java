@@ -1,4 +1,11 @@
 package org.loomdev.api.entity;
 
-public class Entity {
+import java.util.UUID;
+
+public interface Entity {
+
+    int getEntityId();
+
+    UUID getUniqueId();
+
 }
