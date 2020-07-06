@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
-import org.loomdev.api.event.Event;
+import org.loomdev.api.event.CancellableEvent;
 
 @AllArgsConstructor
-public class BlockEvent extends Event {
+public class BlockEvent extends CancellableEvent {
 
     @Getter
     @NotNull
