@@ -7,5 +7,5 @@ public abstract class CancellableEvent extends Event {
 
     @Getter
     @Setter
-    private boolean cancelled;
+    private boolean cancelled = false;
 }
