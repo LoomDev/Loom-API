@@ -2,6 +2,7 @@ package org.loomdev.api.world;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.loomdev.api.math.Vector3d;
 
 public class Location {
 
@@ -38,9 +39,24 @@ public class Location {
 
     // TODO getDirection(), setDirection()
 
-    // TODO toVector()
+    public Vector3d toVector() {
+        return new Vector3d(this.x, this.y, this.z);
+    }
 
     // TODO add(), subtract(), multiply(), zero()
 
     // TODO equals(), hash, clone(), and toString()
+
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "world=" + world +
+                ", x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                ", pitch=" + pitch +
+                ", yaw=" + yaw +
+                '}';
+    }
 }
