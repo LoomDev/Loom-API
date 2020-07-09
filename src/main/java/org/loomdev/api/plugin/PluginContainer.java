@@ -10,7 +10,7 @@ public interface PluginContainer {
     /**
      * Returns the plugins metadata
      *
-     * @return
+     * @return The metadata of the plugin.
      */
     PluginMetadata getMetadata();
 

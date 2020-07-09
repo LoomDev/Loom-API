@@ -102,15 +102,7 @@ public interface Entity {
 
     void setFallDistance(float distance);
 
-    double getEyeY();
-
-    boolean isSneaking();
-
-    void setSneaking(boolean flag);
-
-    boolean isSprinting();
-
-    void setSprinting(boolean flag);
+    double getEyeY(); // TODO move to Living entity?
 
     boolean isSwimming();
 
@@ -120,13 +112,9 @@ public interface Entity {
 
     void  setInvisible(boolean flag);
 
-    boolean isInvulnerable();
+    boolean isInvulnerable(); // TODO move to Living entity?
 
-    void setInvulnerable(boolean flag);
-
-    int getAir();
-
-    void setAir(int ticks);
+    void setInvulnerable(boolean flag); // TODO move to Living entity?
 
     void setRotation(float yaw, float pitch);
 
