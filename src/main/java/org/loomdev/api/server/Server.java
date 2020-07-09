@@ -3,6 +3,7 @@ package org.loomdev.api.server;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.loomdev.api.command.CommandManager;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
@@ -27,6 +28,13 @@ public interface Server {
      * @return The version of the server implementation.
      */
     @NonNull String getVersion();
+
+    /**
+     * Get the version of Minecraft that is currently being ran.
+     *
+     * @return The version of the Minecraft server software.
+     */
+    @NonNull String getMinecraftVersion();
 
     /**
      * Get the path of the root directory container the server files.
@@ -55,6 +63,13 @@ public interface Server {
      * @return The event manager.
      */
     @NonNull EventManager getEventManager();
+
+    /**
+     * Get the command manager.
+     *
+     * @return The command manager.
+     */
+    @NonNull CommandManager getCommandManager();
 
     /**
      * Returns all currently online players on the server.

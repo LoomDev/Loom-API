@@ -1,15 +1,13 @@
 package org.loomdev.api.event.block.fluid;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.loomdev.api.block.Block;
-import org.loomdev.api.block.BlockState;
-import org.loomdev.api.event.block.BlockChangedEvent;
+import org.loomdev.api.event.block.BlockEvent;
 
-public class FluidLevelChangedEvent extends BlockChangedEvent {
+public class FluidLevelChangedEvent extends BlockEvent {
 
-    public FluidLevelChangedEvent(@NonNull Block block, @Nullable BlockState newState) {
-        super(block, block.getCurrentState(), newState);
+    public FluidLevelChangedEvent(@NonNull Block block) {
+        super(block);
     }
 
     @Override

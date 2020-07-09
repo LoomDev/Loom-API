@@ -5,14 +5,14 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.player.Player;
 
-public class BlockBrokenEvent extends BlockChangedEvent {
+public class BlockBrokenEvent extends BlockEvent {
 
     @Getter
     @NonNull
     private final Player player;
 
     public BlockBrokenEvent(@NonNull Block block, @NonNull Player player) {
-        super(block, block.getCurrentState(), null);
+        super(block);
         this.player = player;
     }
 

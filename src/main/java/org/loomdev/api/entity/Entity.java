@@ -2,7 +2,7 @@ package org.loomdev.api.entity;
 
 import net.kyori.adventure.text.Component;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.math.BoundingBox;
 import org.loomdev.api.math.Vector3d;
 import org.loomdev.api.world.Location;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface Entity {
+public interface Entity extends CommandSource {
 
     @NonNull EntityType getType();
 

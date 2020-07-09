@@ -2,13 +2,12 @@ package org.loomdev.api.event.block.plant;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.block.Block;
-import org.loomdev.api.block.BlockState;
-import org.loomdev.api.event.block.BlockChangedEvent;
+import org.loomdev.api.event.block.BlockEvent;
 
-public class CoralDiedEvent extends BlockChangedEvent {
+public class CoralDiedEvent extends BlockEvent {
 
-    public CoralDiedEvent(@NonNull Block block, @NonNull BlockState newState) {
-        super(block, block.getCurrentState(), newState);
+    public CoralDiedEvent(@NonNull Block block) {
+        super(block);
     }
 
     @Override

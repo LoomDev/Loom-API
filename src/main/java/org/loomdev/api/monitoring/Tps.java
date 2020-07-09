@@ -7,8 +7,8 @@ public interface Tps {
     double getTps(TpsInterval interval);
 
     enum TpsInterval {
-        SECONDS_1,
-        SECONDS_5,
-        SECONDS_15
+        MINUTES_1,
+        MINUTES_5,
+        MINUTES_15
     }
 }
