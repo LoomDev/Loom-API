@@ -20,4 +20,5 @@ public interface Player extends LivingEntity {
 
     void setFlySpeed(float speed);
 
+    void updateInventory();
 }
