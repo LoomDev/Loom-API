@@ -40,7 +40,7 @@ public enum StatusEffectType {
     HERO_OF_THE_VILLAGE(32);
 
     static Map<Integer, StatusEffectType> lookupByRawId = new HashMap<>();
-    int rawId;
+    private int rawId;
 
     StatusEffectType(int rawId) {
         this.rawId = rawId;
