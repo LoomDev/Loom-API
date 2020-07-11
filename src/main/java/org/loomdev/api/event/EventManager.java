@@ -2,6 +2,8 @@ package org.loomdev.api.event;
 
 import org.loomdev.api.plugin.Plugin;
 
+import java.util.concurrent.CompletableFuture;
+
 public interface EventManager {
 
     void register(Plugin plugin, Object listener);
@@ -22,8 +24,13 @@ public interface EventManager {
 
     <E extends Event> E fire(E event);
 
+    <E extends Event>CompletableFuture<E> fireAsync(E event);
+
     default <E extends Event> void fireAndForget(E event) {
         fire(event);
     }
 
+    default <E extends Event> void fireAndForgetAsync(E event) {
+        fireAsync(event);
+    }
 }
