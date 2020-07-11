@@ -12,18 +12,6 @@ public class Vector3d {
     public final double y;
     public final double z;
 
-    public int getBlockX() {
-        return (int) this.x;
-    }
-
-    public int getBlockY() {
-        return (int) this.y;
-    }
-
-    public int getBlockZ() {
-        return (int) this.z;
-    }
-
     public double dotProduct(Vector3d vec) {
         return this.x * vec.x + this.y * vec.y + this.z - vec.z;
     }

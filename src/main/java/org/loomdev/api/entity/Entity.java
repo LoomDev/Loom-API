@@ -1,10 +1,14 @@
 package org.loomdev.api.entity;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.event.HoverEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.command.CommandSource;
+import org.loomdev.api.entity.damage.DamageSource;
+import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.math.BoundingBox;
 import org.loomdev.api.math.Vector3d;
+import org.loomdev.api.sound.Sound;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.World;
 
@@ -46,6 +50,8 @@ public interface Entity extends CommandSource {
 
     void remove();
 
+    void destroy();
+
     boolean isDead();
 
     @NonNull Optional<Entity> getVehicle();
@@ -71,6 +77,8 @@ public interface Entity extends CommandSource {
     @NonNull Vector3d getVelocity();
 
     void setVelocity(@NonNull Vector3d velocity);
+
+    void addVelocity(@NonNull Vector3d velocity);
 
     boolean isOnGround();
 
@@ -98,11 +106,13 @@ public interface Entity extends CommandSource {
 
     void setOnFireFor(int ticks);
 
+    boolean isOnFire();
+
     double getFallDistance();
 
     void setFallDistance(float distance);
 
-    double getEyeY(); // TODO move to Living entity?
+    double getEyeY();
 
     boolean isSwimming();
 
@@ -112,11 +122,67 @@ public interface Entity extends CommandSource {
 
     void  setInvisible(boolean flag);
 
-    boolean isInvulnerable(); // TODO move to Living entity?
+    boolean isInvulnerable();
 
-    void setInvulnerable(boolean flag); // TODO move to Living entity?
+    void setInvulnerable(boolean flag);
+
+    boolean isInvulnerableTo(DamageSource damageSource);
 
     void setRotation(float yaw, float pitch);
+
+    boolean hasWings();
+
+    void playSound(Sound sound, float volume, float pitch);
+
+    boolean isFireResistant();
+
+    void  setFireResistant(boolean flag);
+
+    void resetFireResistance();
+
+    boolean isTouchingWater();
+
+    boolean isBeingRainedOn();
+
+    boolean isInsideBubbleColumn();
+
+    default boolean isTouchingRainOrWater() {
+        return isTouchingWater() || isBeingRainedOn();
+    }
+
+    default boolean isWet() {
+        return isTouchingWater() || isBeingRainedOn() || isInsideBubbleColumn();
+    }
+
+    default boolean isInsideWaterOrBubbleColumn() {
+        return isTouchingWater() || isInsideBubbleColumn();
+    }
+
+    boolean isSubmergedInWater();
+
+    boolean isInLava();
+
+    void setInLava(boolean flag);
+
+    boolean isSubmergedInLava();
+
+    float getBrightnessAtEyes();
+
+    float distanceTo(@NonNull Entity entity);
+
+    double squaredDistanceTo(@NonNull Entity entity);
+
+    void pushAwayFrom(@NonNull Entity entity);
+
+    void dropStack(@NonNull ItemStack itemStack);
+
+    void dropStack(@NonNull ItemStack itemStack, float yOffset);
+
+    boolean isInsideWall();
+
+    boolean canFly();
+
+    HoverEvent<HoverEvent.ShowEntity> getHoverEvent();
 
     // TODO persistent api?
 

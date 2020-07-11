@@ -1,13 +1,19 @@
 package org.loomdev.api.entity;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.loomdev.api.block.Material;
+import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
 import org.loomdev.api.entity.effect.StatusEffectType;
+import org.loomdev.api.item.ItemStack;
+import org.loomdev.api.sound.Sound;
 import org.loomdev.api.util.Hand;
+import org.loomdev.api.world.Location;
+import org.loomdev.api.world.World;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 public interface LivingEntity extends Damageable {
 
@@ -48,6 +54,98 @@ public interface LivingEntity extends Damageable {
     boolean canPickupItems();
 
     void setCanPickItems(boolean flag);
+
+    Sound getHurtSound(); 
+
+    Sound getHurtSound(@NonNull DamageSource source); 
+    
+    void setHurtSound(@NonNull Sound sound); 
+
+    void setHurtSound(@NonNull DamageSource source, @NonNull Sound sound); 
+    
+    void playHurtSound(); 
+
+    void playHurtSound(@NonNull DamageSource source); 
+
+    Sound getDeathSound();
+
+    void setDeathSound(@NonNull Sound sound);
+
+    Sound getFallSound();
+
+    void setFallSound(@NonNull Sound sound);
+
+    Sound getDrinkSound();
+
+    void setDrinkSound(@NonNull Sound sound);
+
+    Sound getEatSound();
+
+    void setEatSound(@NonNull Sound sound);
+
+    float getSoundVolume();
+
+    void setSoundVolume(float volume);
+
+    float getSoundPitch();
+
+    void setSoundPitch(float pitch);
+
+    boolean isAlive();
+
+    int getStuckArrowCount();
+
+    void setStuckArrowCount(int count);
+
+    int getStingerCount();
+
+    void setStringerCount(int count);
+
+    boolean isHolding(@NonNull Material material); // TODO use material?
+
+    boolean isHolding(@NonNull Predicate<Material> predicate); // TODO use material?
+
+    @NonNull Optional<ItemStack> getStackInHand(@NonNull Hand hand);
+
+    void setStackInHand(@NonNull Hand hand, @NonNull ItemStack itemStack);
+
+    float getMovementSpeed();
+
+    void setMovementSpeed(float speed);
+
+    boolean isHurtByWater();
+
+    void setHurtByWater(boolean flag);
+
+    void resetHurtByWater();
+
+    boolean canSee(@NonNull Entity entity);
+
+    float getHeadYaw();
+
+    void setHeadYaw(float yaw);
+
+    float getBodyYaw();
+
+    void setBodyYaw(float yaw);
+
+    boolean isUsingItem();
+
+    @NonNull Hand getActiveHand();
+
+    void setCurrentHand(Hand hand);
+
+    boolean isGliding();
+
+    Optional<Location> getSleepingPosition();
+
+    void setSleepingPosition(Location location);
+
+    void clearSleepingPosition();
+
+    ItemStack eatFood(World world, ItemStack itemStack);
+
+    // attributes
 
     // colidable enable/disable
 
