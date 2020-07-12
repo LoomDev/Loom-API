@@ -7,5 +7,7 @@ public interface CommandManager {
 
     void register(@NonNull Plugin plugin, @NonNull Command command);
 
+    void unregister(@NonNull Plugin plugin);
+
     int handle(@NonNull CommandSource source, @NonNull String input);
 }

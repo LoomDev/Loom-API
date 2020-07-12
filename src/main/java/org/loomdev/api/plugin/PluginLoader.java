@@ -14,7 +14,7 @@ public interface PluginLoader {
      * @return The metadata of the plugin.
      * @throws Exception an error was occurred when loading the plugin.
      */
-    PluginMetadata loadPlugin(Path source) throws Exception;
+    PluginContainer loadPlugin(Path source) throws Exception;
 
     /**
      * Create a plugin instance.

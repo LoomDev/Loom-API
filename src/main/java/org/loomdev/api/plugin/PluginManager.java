@@ -74,6 +74,14 @@ public interface PluginManager {
     @NonNull Result disablePlugin(String id);
 
     /**
+     * Completely unloads a plugin.
+     *
+     * @param id The id of the plugin to unload.
+     * @return The results of the action.
+     */
+    @NonNull Result unloadPlugin(String id);
+
+    /**
      * Results of a plugin enable/disable call.
      */
     enum Result {

@@ -36,4 +36,11 @@ public interface PluginContainer {
      * @return {@code true} id the plugin in disabled.
      */
     boolean isDisabled();
+
+    /**
+     * Returns this plugin's classloader.
+     *
+     * @return The classloader instance for this plugin.
+     */
+    ClassLoader getClassLoader();
 }
