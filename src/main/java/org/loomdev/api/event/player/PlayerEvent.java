@@ -10,5 +10,4 @@ public class PlayerEvent extends Event {
 
     @Getter
     private final Player player;
-
 }

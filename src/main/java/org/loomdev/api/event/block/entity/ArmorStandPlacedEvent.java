@@ -3,13 +3,10 @@ package org.loomdev.api.event.block.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
-import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.decoration.ArmorStand;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.CancellableEvent;
 import org.loomdev.api.world.Location;
-
-import java.util.Optional;
 
 @AllArgsConstructor
 public class ArmorStandPlacedEvent extends CancellableEvent {

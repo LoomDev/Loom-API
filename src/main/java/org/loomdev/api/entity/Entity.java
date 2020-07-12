@@ -24,7 +24,7 @@ public interface Entity extends CommandSource {
 
     @NonNull UUID getUniqueId();
 
-    @NonNull Component getName();
+    @NonNull String getName();
 
     @NonNull Component getDisplayName();
 

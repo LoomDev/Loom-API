@@ -6,19 +6,19 @@ import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.block.BlockEvent;
 
-public class PlantFertilizedEvent extends BlockEvent {
+public class PlantHarvestedEvent extends BlockEvent {
 
     @Getter
     private final Player player;
 
-    public PlantFertilizedEvent(@NonNull Block block, @NonNull Player player) {
+    public PlantHarvestedEvent(@NonNull Block block, @NonNull Player player) {
         super(block);
         this.player = player;
     }
 
     @Override
     public String toString() {
-        return "PlantFertilizedEvent{" +
+        return "PlantHarvestedEvent{" +
                 "player=" + player +
                 "} " + super.toString();
     }
