@@ -4,6 +4,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.command.CommandManager;
+import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
@@ -95,7 +96,15 @@ public interface Server {
     void broadcastMessage(@NonNull Component component);
 
     /**
+     * Returns an instance of the console command source.
+     *
+     * @return The console command source for this server.
+     */
+    @NonNull CommandSource getConsoleSource();
+
+    /**
      * Get the tps of the server.
+     *
      * @return Instance of {@link Tps} containing TPS measurements of the server.
      */
     @NonNull Tps getTps();
