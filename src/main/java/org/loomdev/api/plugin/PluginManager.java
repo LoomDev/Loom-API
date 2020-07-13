@@ -2,6 +2,7 @@ package org.loomdev.api.plugin;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -72,6 +73,22 @@ public interface PluginManager {
      * @return The results of the action.
      */
     @NonNull Result disablePlugin(String id);
+
+    /**
+     * Loads a plugin into the server.
+     *
+     * @param id Theid of the plugin to load.
+     * @return The results of the action.
+     */
+    @NonNull Result loadPlugin(String id);
+
+    /**
+     * Loads a plugin into the server.
+     *
+     * @param path The file path of the plugin to load.
+     * @return The results of the action.
+     */
+    @NonNull Result loadPlugin(Path path);
 
     /**
      * Completely unloads a plugin.

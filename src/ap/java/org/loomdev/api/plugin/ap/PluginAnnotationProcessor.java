@@ -74,7 +74,7 @@ public class PluginAnnotationProcessor extends AbstractProcessor {
 
             SerializedPluginMetadata metadata = SerializedPluginMetadata.from(loomPlugin, qualifiedName.toString());
             try {
-                FileObject object = environment.getFiler().createResource(StandardLocation.CLASS_OUTPUT, "", "loom-plugin.json");
+                FileObject object = environment.getFiler().createResource(StandardLocation.CLASS_OUTPUT, "", "loom.json");
                 try (Writer writer = new BufferedWriter((object.openWriter()))) {
                     new Gson().toJson(metadata, writer);
                 }

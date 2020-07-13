@@ -70,4 +70,11 @@ public interface PluginMetadata {
     default Optional<Path> getSource() {
         return Optional.empty();
     }
+
+    /**
+     * Gets the main class of the plugin.
+     *
+     * @return The main class of the plugin.
+     */
+    @NonNull Class<?> getMainClass();
 }
