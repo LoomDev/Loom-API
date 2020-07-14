@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.mob;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import lombok.NonNull;
 import org.loomdev.api.entity.LivingEntity;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.sound.Sound;
@@ -21,6 +21,6 @@ public interface MobEntity extends LivingEntity {
 
     void setPersistent(boolean remove);
 
-    boolean canBeLeashedBy(Player player);
+    boolean canBeLeashedBy(@NonNull Player player);
 
 }

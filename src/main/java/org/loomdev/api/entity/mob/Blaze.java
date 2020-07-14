@@ -4,6 +4,6 @@ public interface Blaze extends HostileEntity {
 
     boolean isFireActive();
 
-    void setFireActive(boolean flag);
+    void setFireActive(boolean active);
 
 }

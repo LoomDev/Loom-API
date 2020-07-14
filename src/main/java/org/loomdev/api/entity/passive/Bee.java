@@ -22,11 +22,11 @@ public interface Bee extends AnimalEntity, Angerable {
 
     boolean hasNectar();
 
-    void setHasNectar(boolean flag);
+    void setHasNectar(boolean stung);
 
     boolean hasStung();
 
-    void setHasString(boolean flag);
+    void setHasStung(boolean stung);
 
     int getTicksUntilCanPollinate();
 
@@ -35,5 +35,4 @@ public interface Bee extends AnimalEntity, Angerable {
     int getCannotEnterHiveTicks();
 
     void setCannotEnterHiveTicks(int ticks);
-
 }
