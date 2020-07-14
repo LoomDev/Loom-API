@@ -1,6 +1,7 @@
 package org.loomdev.api.world;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import org.loomdev.api.math.Vector3d;
 
@@ -39,7 +40,19 @@ public class Location {
 
     // TODO getDirection(), setDirection()
 
-    public Vector3d toVector() {
+    public int getBlockX() {
+        return (int) Math.floor(this.x);
+    }
+
+    public int getBlockY() {
+        return (int) Math.floor(this.x);
+    }
+
+    public int getBlockZ() {
+        return (int) Math.floor(this.x);
+    }
+
+    public @NonNull Vector3d toVector() {
         return new Vector3d(this.x, this.y, this.z);
     }
 

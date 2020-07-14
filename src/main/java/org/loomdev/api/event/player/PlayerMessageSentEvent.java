@@ -27,7 +27,12 @@ public class PlayerMessageSentEvent extends CancellablePlayerEvent {
 
     public PlayerMessageSentEvent(@NonNull Player player, @NonNull String message, @NonNull Set<Player> recipients) {
         super(player);
-        this.prefix = Optional.of(TextComponent.of(String.format("<%s> ", player.getName())));
+        this.prefix = Optional.of(TextComponent.builder()
+                .append("<")
+                .append(player.getDisplayName())
+                .append("> ")
+                .build()
+        );
         this.message = TextComponent.of(message);
         this.recipients = recipients;
     }

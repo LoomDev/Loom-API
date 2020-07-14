@@ -10,9 +10,12 @@ import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.monitoring.Tps;
 import org.loomdev.api.monitoring.TickTimes;
+import org.loomdev.api.world.World;
 
 import java.nio.file.Path;
 import java.util.Collection;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface Server {
 
@@ -115,4 +118,12 @@ public interface Server {
      * @return Instance of {@link TickTimes} containing tick times measurements of the server.
      */
     @NonNull TickTimes getTickTimes();
+
+    @NonNull Optional<World> getWorld(@NonNull String name);
+
+    @NonNull Optional<World> getWorld(@NonNull UUID uuid);
+
+    int getProtocolVersion();
+
+    int getViewDistance();
 }

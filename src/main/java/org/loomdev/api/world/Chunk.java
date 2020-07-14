@@ -1,4 +1,4 @@
 package org.loomdev.api.world;
 
-public class Chunk {
+public interface Chunk {
 }

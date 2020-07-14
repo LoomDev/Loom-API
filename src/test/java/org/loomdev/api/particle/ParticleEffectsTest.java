@@ -4,7 +4,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.loomdev.api.block.BlockTypes;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,7 +12,7 @@ class ParticleEffectsTest {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, String> current = Arrays.stream(ParticleEffects.values()).collect(Collectors.toMap(Enum::name, ParticleEffects::getId));
+        Map<String, String> current = Arrays.stream(ParticleEffect.values()).collect(Collectors.toMap(Enum::name, ParticleEffect::getId));
         Map<String, String> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 
