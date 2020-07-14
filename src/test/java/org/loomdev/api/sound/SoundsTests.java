@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SoundTests {
+public class SoundsTests {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, Integer> current = Arrays.stream(Sound.values()).collect(Collectors.toMap(Enum::name, Sound::rawId));
+        Map<String, Integer> current = Arrays.stream(Sounds.values()).collect(Collectors.toMap(Enum::name, Sounds::rawId));
         Map<String, Integer> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 
@@ -30,14 +30,5 @@ public class SoundTests {
         missingSorted.sort(Map.Entry.comparingByValue());
         Assertions.assertTrue(missing.isEmpty(), "Missing sounds: \n" + String.join(",\n", missingSorted.stream().map(kv -> kv.getKey() + "(" + kv.getValue() + ")").collect(Collectors.toList())));
         Assertions.assertTrue(versionMismatch.isEmpty(), String.join("\n", versionMismatch));
-
-//        List<String> current = Arrays.stream(Sound.values()).map(Enum::toString).collect(Collectors.toList());
-//        List<String> missing =  Registry.SOUND_EVENT.getIds().stream()
-//                .map(Identifier::getPath)
-//                .map(String::toUpperCase)
-//                .map(s -> s.replaceAll("\\.", "_") + "(" + +")")
-//                .filter(value -> !current.contains(value))
-//                .collect(Collectors.toList());
-//        Assertions.assertTrue(missing.isEmpty(), "Missing sound events: \n" + String.join(",\n", missing));
     }
 }

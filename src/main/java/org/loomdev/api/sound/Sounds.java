@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public enum Sound {
+public enum Sounds {
 
     AMBIENT_CAVE(0),
     AMBIENT_BASALT_DELTAS_ADDITIONS(1),
@@ -994,11 +994,11 @@ public enum Sound {
     ENTITY_ZOMBIE_VILLAGER_HURT(983),
     ENTITY_ZOMBIE_VILLAGER_STEP(984);
 
-    static Map<Integer, Sound> lookupByRawId = new HashMap<>();
+    static Map<Integer, Sounds> lookupByRawId = new HashMap<>();
 
     private final int rawId;
 
-    Sound(int id) {
+    Sounds(int id) {
         this.rawId = id;
     }
 
@@ -1006,12 +1006,12 @@ public enum Sound {
         return rawId;
     }
 
-    public static @NonNull Optional<Sound> getByRawId(int id) {
+    public static @NonNull Optional<Sounds> getByRawId(int id) {
         return Optional.ofNullable(lookupByRawId.get(id));
     }
 
     static {
-        for (Sound sound : values()) {
+        for (Sounds sound : values()) {
             lookupByRawId.put(sound.rawId, sound);
         }
     }

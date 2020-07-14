@@ -2,7 +2,7 @@ package org.loomdev.api.entity.projectile;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.item.ItemStack;
-import org.loomdev.api.sound.Sound;
+import org.loomdev.api.sound.Sounds;
 
 public interface PersistentProjectile extends Projectile {
 
@@ -42,9 +42,9 @@ public interface PersistentProjectile extends Projectile {
 
     ItemStack asItemStack();
 
-    Sound getSound();
+    Sounds getSound();
 
-    void setSound(Sound sound);
+    void setSound(Sounds sound);
 
     enum PickupPermission {
         DISALLOWED, ALLOWED, CREATIVE_ONLY;

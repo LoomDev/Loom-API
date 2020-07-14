@@ -8,7 +8,7 @@ import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.math.BoundingBox;
 import org.loomdev.api.math.Vector3d;
-import org.loomdev.api.sound.Sound;
+import org.loomdev.api.sound.Sounds;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.World;
 
@@ -132,7 +132,7 @@ public interface Entity extends CommandSource {
 
     boolean hasWings();
 
-    void playSound(Sound sound, float volume, float pitch);
+    void playSound(Sounds sound, float volume, float pitch);
 
     boolean isFireResistant();
 
