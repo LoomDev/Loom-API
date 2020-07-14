@@ -8,10 +8,18 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Marks a Path variable or parameter for injection of the plugin directory path.
+ * This annotation injects an {@link Configuration} instance.
  */
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @BindingAnnotation
-public @interface PluginDirectory {
+public @interface Configuration {
+
+    /**
+     * The path of the configuration relative to the plugin directory.
+     *
+     * @return The path.
+     */
+    String path();
+
 }
