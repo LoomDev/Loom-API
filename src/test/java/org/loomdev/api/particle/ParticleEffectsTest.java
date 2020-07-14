@@ -12,7 +12,7 @@ class ParticleEffectsTest {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, String> current = Arrays.stream(ParticleEffect.values()).collect(Collectors.toMap(Enum::name, ParticleEffect::getId));
+        Map<String, String> current = Arrays.stream(ParticleEffects.values()).collect(Collectors.toMap(Enum::name, ParticleEffects::getId));
         Map<String, String> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 

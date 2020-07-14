@@ -5,7 +5,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ParticleEffect {
+public enum ParticleEffects {
 
     AMBIENT_ENTITY_EFFECT("minecraft:ambient_entity_effect"),
     ANGRY_VILLAGER("minecraft:angry_villager"),
@@ -80,10 +80,10 @@ public enum ParticleEffect {
     WHITE_ASH("minecraft:white_ash"),
     WITCH("minecraft:witch");
 
-    private static Map<String, ParticleEffect> mapById = new HashMap<>();
+    private static Map<String, ParticleEffects> mapById = new HashMap<>();
     private final String id;
 
-    ParticleEffect(String id) {
+    ParticleEffects(String id) {
         this.id = id;
     }
 
@@ -91,12 +91,12 @@ public enum ParticleEffect {
         return this.id;
     }
 
-    public static @Nullable ParticleEffect getById(String id) {
+    public static @Nullable ParticleEffects getById(String id) {
         return mapById.get(id);
     }
 
     static {
-        for (ParticleEffect type : values()) {
+        for (ParticleEffects type : values()) {
             mapById.put(type.id, type);
         }
     }
