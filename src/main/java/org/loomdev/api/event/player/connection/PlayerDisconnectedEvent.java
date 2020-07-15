@@ -1,5 +1,6 @@
 package org.loomdev.api.event.player.connection;
 
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -14,18 +15,18 @@ import java.util.Optional;
  */
 public class PlayerDisconnectedEvent extends PlayerEvent {
 
-    private TextComponent message;
+    private Component message;
 
-    public PlayerDisconnectedEvent(@NotNull Player player, @Nullable TextComponent message) {
+    public PlayerDisconnectedEvent(@NotNull Player player, @Nullable Component message) {
         super(player);
         this.message = message;
     }
 
-    public Optional<TextComponent> getMessage() {
+    public Optional<Component> getMessage() {
         return Optional.ofNullable(this.message);
     }
 
-    public void setMessage(@NotNull TextComponent message) {
+    public void setMessage(@NotNull Component message) {
         this.message = message;
     }
 }

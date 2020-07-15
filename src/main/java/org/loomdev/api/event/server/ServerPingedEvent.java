@@ -2,10 +2,12 @@ package org.loomdev.api.event.server;
 
 import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.event.Cancellable;
 import org.loomdev.api.event.Event;
 
 import java.net.InetAddress;
+import java.util.Optional;
 
 public class ServerPingedEvent implements Event, Cancellable {
 
@@ -15,7 +17,7 @@ public class ServerPingedEvent implements Event, Cancellable {
     private String version, favicon;
     private boolean cancelled;
 
-    public ServerPingedEvent(@NotNull InetAddress address, @NotNull TextComponent motd, int onlinePlayers, int slots, int protocolVersion, @NotNull String version, @NotNull String favicon) {
+    public ServerPingedEvent(@NotNull InetAddress address, @NotNull TextComponent motd, int onlinePlayers, int slots, int protocolVersion, @NotNull String version, @Nullable String favicon) {
         this.address = address;
         this.motd = motd;
         this.onlinePlayers = onlinePlayers;
@@ -69,8 +71,8 @@ public class ServerPingedEvent implements Event, Cancellable {
         this.version = version;
     }
 
-    public String getFavicon() {
-        return this.favicon;
+    public Optional<String> getFavicon() {
+        return Optional.ofNullable(this.favicon);
     }
 
     public void setFavicon(@NotNull String favicon) {

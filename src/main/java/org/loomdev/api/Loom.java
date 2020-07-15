@@ -10,7 +10,7 @@ public abstract class Loom {
         return server;
     }
 
-    public void setServer(Server instance) {
+    public static void setServer(Server instance) {
         server = instance;
     }
 }
