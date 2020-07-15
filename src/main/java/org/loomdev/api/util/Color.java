@@ -1,7 +1,6 @@
 package org.loomdev.api.util;
 
 import com.google.common.base.Preconditions;
-import lombok.Getter;
 
 public class Color {
     private static final int BIT_MASK = 0xff;

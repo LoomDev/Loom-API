@@ -1,6 +1,6 @@
 package org.loomdev.api.world;
 
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.particle.ParticleEffects;
@@ -10,25 +10,25 @@ import java.util.UUID;
 
 public interface World {
 
-    @NonNull UUID getUUID();
+    @NotNull UUID getUUID();
 
-    @NonNull Block getBlock(int x, int y, int z);
+    @NotNull Block getBlock(int x, int y, int z);
 
-    @NonNull Block getBlock(@NonNull Location location);
+    @NotNull Block getBlock(@NotNull Location location);
 
-    @NonNull Chunk getChunk(int x, int z);
+    @NotNull Chunk getChunk(int x, int z);
 
-    @NonNull boolean isChunkGenerated(int x, int z);
+    boolean isChunkGenerated(int x, int z);
 
-    @NonNull boolean isChunkGenerated(@NonNull Chunk chunk);
+    boolean isChunkGenerated(@NotNull Chunk chunk);
 
-    @NonNull boolean isChunkLoaded(int x, int z);
+    boolean isChunkLoaded(int x, int z);
 
-    @NonNull boolean isChunkLoaded(@NonNull Chunk chunk);
+    boolean isChunkLoaded(@NotNull Chunk chunk);
 
-    @NonNull Entity spawnEntity(@NonNull Entity entity, @NonNull Location location);
+    @NotNull Entity spawnEntity(@NotNull Entity entity, @NotNull Location location);
 
-    void spawnParticle(@NonNull Location location, @NonNull ParticleEffects particleEffect, int amount);
+    void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect, int amount);
 
-    void playSound(@NonNull Location location, @NonNull Sounds sound, float volume, float pitch);
+    void playSound(@NotNull Location location, @NotNull Sounds sound, float volume, float pitch);
 }

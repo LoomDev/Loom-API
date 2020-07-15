@@ -1,16 +1,14 @@
 package org.loomdev.api.entity.effect;
 
-import lombok.Getter;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.loomdev.api.entity.LivingEntity;
 
 import java.util.Objects;
 
-@Getter
 public class StatusEffect {
 
-    private StatusEffectType type;
+    private final StatusEffectType type;
     private int duration;
     private int amplifier;
     private boolean ambient;
@@ -48,6 +46,30 @@ public class StatusEffect {
     public StatusEffect(StatusEffect effect) {
         this.type = effect.type;
         copyFrom(effect);
+    }
+
+    public StatusEffectType getType() {
+        return this.type;
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public int getAmplifier() {
+        return this.amplifier;
+    }
+
+    public boolean isAmbient() {
+        return this.ambient;
+    }
+
+    public boolean isShowParticles() {
+        return this.showParticles;
+    }
+
+    public boolean isShowIcon() {
+        return this.showIcon;
     }
 
     void copyFrom(StatusEffect statuseffectinstance) {

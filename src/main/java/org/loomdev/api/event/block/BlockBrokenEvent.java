@@ -1,25 +1,44 @@
 package org.loomdev.api.event.block;
 
-import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.player.Player;
+import org.loomdev.api.event.Cancellable;
 
-public class BlockBrokenEvent extends BlockEvent {
+/**
+ * Fired when a player destroys a block in the world.
+ * The block will not break if this event is cancelled.
+ */
+public class BlockBrokenEvent extends BlockEvent implements Cancellable {
 
-    @Getter
-    @NonNull
     private final Player player;
+    private boolean dropsItems;
+    private boolean cancelled;
 
-    public BlockBrokenEvent(@NonNull Block block, @NonNull Player player) {
+    public BlockBrokenEvent(@NotNull Block block, @NotNull Player player) {
         super(block);
         this.player = player;
     }
 
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public boolean dropsItems() {
+        return this.dropsItems;
+    }
+
+    public void setDropsItems(boolean dropsItems) {
+        this.dropsItems = dropsItems;
+    }
+
     @Override
-    public String toString() {
-        return "BlockBrokenEvent{" +
-                "player=" + player +
-                "} " + super.toString();
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

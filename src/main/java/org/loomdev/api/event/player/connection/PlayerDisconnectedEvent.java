@@ -1,27 +1,31 @@
 package org.loomdev.api.event.player.connection;
 
-import lombok.Getter;
-import lombok.NonNull;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import org.loomdev.api.entity.player.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.loomdev.api.entity.player.Player;;
 import org.loomdev.api.event.player.PlayerEvent;
 
+import java.util.Optional;
+
+/**
+ * Fired when a player disconnects from the server.
+ * This event cannot be cancelled.
+ */
 public class PlayerDisconnectedEvent extends PlayerEvent {
 
-    @Getter
-    private Component disconnectMessage;
+    private TextComponent message;
 
-    public PlayerDisconnectedEvent(@NonNull Player player, @NonNull Component disconnectMessage) {
+    public PlayerDisconnectedEvent(@NotNull Player player, @Nullable TextComponent message) {
         super(player);
-        this.disconnectMessage = disconnectMessage;
+        this.message = message;
     }
 
-    public void setDisconnectMessage(String message) {
-        this.setDisconnectMessage(TextComponent.of(message));
+    public Optional<TextComponent> getMessage() {
+        return Optional.ofNullable(this.message);
     }
 
-    public void setDisconnectMessage(Component message) {
-        this.disconnectMessage = message;
+    public void setMessage(@NotNull TextComponent message) {
+        this.message = message;
     }
 }

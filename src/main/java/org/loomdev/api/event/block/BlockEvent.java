@@ -1,22 +1,21 @@
 package org.loomdev.api.event.block;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
-import org.loomdev.api.event.CancellableEvent;
+import org.loomdev.api.event.Event;
 
-@AllArgsConstructor
-public class BlockEvent extends CancellableEvent {
+/**
+ * Represents an event that is related to a block in the world.
+ */
+public class BlockEvent implements Event {
 
-    @Getter
-    @NonNull
     private final Block block;
 
-    @Override
-    public String toString() {
-        return "BlockEvent{" +
-                "block=" + block +
-                "} " + super.toString();
+    public BlockEvent(@NotNull Block block) {
+        this.block = block;
+    }
+
+    public Block getBlock() {
+        return this.block;
     }
 }

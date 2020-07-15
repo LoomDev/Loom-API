@@ -1,8 +1,5 @@
 package org.loomdev.api.math;
 
-import lombok.Getter;
-
-@Getter
 public class EulerAngle {
 
     protected final float pitch;
@@ -25,6 +22,18 @@ public class EulerAngle {
                 yaw,
                 roll
         );
+    }
+
+    public float getPitch() {
+        return this.pitch;
+    }
+
+    public float getYaw() {
+        return this.yaw;
+    }
+
+    public float getRoll() {
+        return this.roll;
     }
 
     @Override

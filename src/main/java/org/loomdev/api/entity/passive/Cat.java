@@ -1,6 +1,5 @@
 package org.loomdev.api.entity.passive;
 
-import lombok.Getter;
 import org.loomdev.api.util.DyeColor;
 
 import java.util.HashMap;
@@ -18,7 +17,6 @@ public interface Cat extends TameableEntity, Sittable {
 
     void hiss();
 
-    @Getter
     enum Type {
         TABBY(0),
         BLACK(1),
@@ -42,6 +40,10 @@ public interface Cat extends TameableEntity, Sittable {
 
         public static Type getById(int id) {
             return mapById.get(id);
+        }
+
+        public int getId() {
+            return this.id;
         }
 
         static {

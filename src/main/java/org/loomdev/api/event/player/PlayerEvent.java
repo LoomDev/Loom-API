@@ -1,13 +1,18 @@
 package org.loomdev.api.event.player;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.Event;
 
-@AllArgsConstructor
-public class PlayerEvent extends Event {
+public class PlayerEvent implements Event {
 
-    @Getter
     private final Player player;
+
+    public PlayerEvent(@NotNull Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
 }

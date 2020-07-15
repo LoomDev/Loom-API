@@ -1,30 +1,54 @@
 package org.loomdev.api.event.entity.creeper;
 
-import lombok.Getter;
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.misc.Lightning;
 import org.loomdev.api.entity.mob.Creeper;
-import org.loomdev.api.event.entity.CancellableEntityEvent;
+import org.loomdev.api.event.Cancellable;
+import org.loomdev.api.event.entity.EntityEvent;
 
 import java.util.Optional;
 
-public class CreeperChargedEvent extends CancellableEntityEvent {
+/**
+ * Fired when a creeper is struck by lightning and is about to become charged.
+ * The creeper will not become charged will if this event is cancelled.
+ */
+public class CreeperChargedEvent extends EntityEvent implements Cancellable {
 
-    @Getter
-    private Optional<Lightning> lightning = Optional.empty();
+    private Lightning lightning;
+    private final Cause cause;
+    private boolean cancelled;
 
-    @Getter
-    private final Cause chargeCause;
-
-    public CreeperChargedEvent(@NonNull Creeper creeper, @NonNull Cause chargeCause) {
+    public CreeperChargedEvent(@NotNull Creeper creeper) {
         super(creeper);
-        this.chargeCause = chargeCause;
+        this.cause = Cause.TRIGGERED;
     }
 
-    public CreeperChargedEvent(@NonNull Creeper creeper, @NonNull Lightning lightning, @NonNull Cause chargeCause) {
+    public CreeperChargedEvent(@NotNull Creeper creeper, @NotNull Lightning lightning) {
         super(creeper);
-        this.lightning = Optional.of(lightning);
-        this.chargeCause = chargeCause;
+        this.lightning = lightning;
+        this.cause = Cause.LIGHTNING;
+    }
+
+    public Creeper getCreeper() {
+        return (Creeper) this.getEntity();
+    }
+
+    public Optional<Lightning> getLightning() {
+        return Optional.ofNullable(this.lightning);
+    }
+
+    public Cause getCause() {
+        return this.cause;
+    }
+
+    @Override
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 
     public enum Cause {

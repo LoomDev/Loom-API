@@ -1,34 +1,77 @@
 package org.loomdev.api.world;
 
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.math.Vector3d;
+
+import java.util.Optional;
 
 public class Location {
 
-    @Getter
-    @Setter
     private World world;
 
-    @Getter
-    @Setter
     private double x, y, z;
 
-    @Getter
-    @Setter
     private float pitch, yaw;
 
-    public Location(World world, double x, double y, double z) {
+    public Location(@Nullable World world, double x, double y, double z) {
         this(world, x, y, z, 0, 0);
     }
 
-    public Location(World world, double x, double y, double z, float pitch, float yaw) {
+    public Location(@Nullable World world, double x, double y, double z, float pitch, float yaw) {
         this.world = world;
         this.x = x;
         this.y = y;
         this.z = z;
         this.pitch = pitch;
+        this.yaw = yaw;
+    }
+
+    public Optional<World> getWorld() {
+        return Optional.ofNullable(this.world);
+    }
+
+    public void setWorld(World world) {
+        this.world = world;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public double getZ() {
+        return this.z;
+    }
+
+    public void setZ(int z) {
+        this.z = z;
+    }
+
+    public float getPitch() {
+        return this.pitch;
+    }
+
+    public void setPitch(int pitch) {
+        this.pitch = pitch;
+    }
+
+    public float getYaw() {
+        return this.pitch;
+    }
+
+    public void setYaw(int yaw) {
         this.yaw = yaw;
     }
 
@@ -52,7 +95,7 @@ public class Location {
         return (int) Math.floor(this.x);
     }
 
-    public @NonNull Vector3d toVector() {
+    public @NotNull Vector3d toVector() {
         return new Vector3d(this.x, this.y, this.z);
     }
 

@@ -1,12 +1,9 @@
-package org.loomdev.api.util;
-
-import lombok.Getter;
+package org.loomdev.api.util;;
 
 import java.util.HashMap;
 import java.util.Map;
 
 // TODO create test to check these values agains the minecraft DyeColor enum
-@Getter
 public enum DyeColor {
 
     // TODO add ChatColor
@@ -59,6 +56,26 @@ public enum DyeColor {
 
     public static DyeColor getByName(String name) {
         return mapByName.get(name.toLowerCase());
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getColor() {
+        return this.color;
+    }
+
+    public int getFireworkColor() {
+        return this.fireworkColor;
+    }
+
+    public int getSignColor() {
+        return this.signColor;
     }
 
     static {

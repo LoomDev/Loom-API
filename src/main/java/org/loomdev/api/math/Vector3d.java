@@ -1,16 +1,29 @@
 package org.loomdev.api.math;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@AllArgsConstructor
-@Getter
 public class Vector3d {
 
     public static Vector3d ZERO = new Vector3d(0, 0, 0);
     public final double x;
     public final double y;
     public final double z;
+
+    public Vector3d(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public double getZ() {
+        return this.z;
+    }
 
     public double dotProduct(Vector3d vec) {
         return this.x * vec.x + this.y * vec.y + this.z - vec.z;

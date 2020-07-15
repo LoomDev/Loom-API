@@ -1,25 +1,70 @@
 package org.loomdev.api.event.block.plant;
 
-import lombok.Getter;
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.player.Player;
+import org.loomdev.api.event.Cancellable;
 import org.loomdev.api.event.block.BlockEvent;
 
-public class PlantFertilizedEvent extends BlockEvent {
+import java.util.Optional;
 
-    @Getter
-    private final Player player;
+/**
+ * Fired when bonemeal is used on a plant block and causes the plant
+ * block to advance growth stages. The plant will not advance growth if this event is cancelled.
+ *
+ * This event is fired when:
+ * <ul>
+ * <li>A player right-clicks with bonemeal on a plant block</li>
+ * <li>A dispenser fertilizes an adjacent plant block</li>
+ * </ul>
+ */
+public class PlantFertilizedEvent extends BlockEvent implements Cancellable {
 
-    public PlantFertilizedEvent(@NonNull Block block, @NonNull Player player) {
+    private Player player;
+    private Block dispenser;
+    private final Cause cause;
+    private boolean cancelled;
+
+    public PlantFertilizedEvent(@NotNull Block block, @NotNull Player player) {
         super(block);
         this.player = player;
+        this.cause = Cause.PLAYER;
+    }
+
+    public PlantFertilizedEvent(@NotNull Block block, @NotNull Block dispenser) {
+        super(block);
+        this.dispenser = dispenser;
+        this.cause = Cause.DISPENSER;
+    }
+
+    public Cause getCause() {
+        return this.cause;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public Optional<Block> getDispenser() {
+        return Optional.ofNullable(this.dispenser);
     }
 
     @Override
-    public String toString() {
-        return "PlantFertilizedEvent{" +
-                "player=" + player +
-                "} " + super.toString();
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    /**
+     * Represents the entity or block that
+     * fertilized the plant block.
+     */
+    public enum Cause {
+        PLAYER,
+        DISPENSER
     }
 }

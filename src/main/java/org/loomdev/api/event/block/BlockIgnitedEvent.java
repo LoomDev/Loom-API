@@ -1,46 +1,63 @@
 package org.loomdev.api.event.block;
 
-import lombok.Getter;
-import lombok.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
+import org.loomdev.api.event.Cancellable;
 
 import java.util.Optional;
 
-public class BlockIgnitedEvent extends BlockEvent {
+public class BlockIgnitedEvent extends BlockEvent implements Cancellable {
 
-    @Getter
-    private Optional<Block> ignitingBlock;
-
-    @Getter
-    private Optional<Entity> ignitingEntity;
-
-    @Getter
+    private Block sourceBlock;
+    private Entity sourceEntity;
     private final Cause cause;
+    private boolean cancelled;
 
-    public BlockIgnitedEvent(@NonNull Block block, @NonNull Cause cause, @Nullable Block ignitingBlock, @Nullable Entity ignitingEntity) {
+    public BlockIgnitedEvent(@NotNull Block block, @NotNull Block source, @NotNull Cause cause) {
         super(block);
+        this.sourceBlock = source;
         this.cause = cause;
-        this.ignitingBlock = Optional.ofNullable(ignitingBlock);
-        this.ignitingEntity = Optional.ofNullable(ignitingEntity);
+    }
+
+    public BlockIgnitedEvent(@NotNull Block block, @NotNull Entity source, @NotNull Cause cause) {
+        super(block);
+        this.sourceEntity = source;
+        this.cause = cause;
+    }
+
+    public Optional<Block> getSourceBlock() {
+        return Optional.ofNullable(this.sourceBlock);
+    }
+
+    public Optional<Entity> getSourceEntity() {
+        return Optional.ofNullable(this.sourceEntity);
+    }
+
+    public Cause getCause() {
+        return this.cause;
     }
 
     @Override
-    public String toString() {
-        return "BlockIgnitedEvent{" +
-                "ignitingBlock=" + ignitingBlock +
-                ", ignitingEntity=" + ignitingEntity +
-                ", cause=" + cause +
-                '}';
+    public boolean isCancelled() {
+        return this.cancelled;
     }
 
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    /**
+     * Represents the source of the fire
+     * which ignited this block.
+     */
     public enum Cause {
         LAVA,
         FLINT_AND_STEEL,
-        SPREAD,
-        LIGHTNING,
         FIREBALL,
-        EXPLOSION
+        EXPLOSION,
+        LIGHTNING,
+        FIRE_SPREAD
     }
 }

@@ -1,8 +1,5 @@
 package org.loomdev.api.math;
 
-import lombok.Getter;
-
-@Getter
 public class BoundingBox {
 
     public final double minX;
@@ -29,4 +26,27 @@ public class BoundingBox {
         this.maxZ = Math.max(minZ, maxZ);
     }
 
+    public double getMinX() {
+        return this.minX;
+    }
+
+    public double getMinY() {
+        return this.minY;
+    }
+
+    public double getMinZ() {
+        return this.minZ;
+    }
+
+    public double getMaxX() {
+        return this.maxX;
+    }
+
+    public double getMaxY() {
+        return this.maxY;
+    }
+
+    public double getMaxZ() {
+        return this.maxZ;
+    }
 }

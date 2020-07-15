@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.mob;
 
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.LivingEntity;
 import org.loomdev.api.entity.player.Player;
 
@@ -18,6 +18,5 @@ public interface MobEntity extends LivingEntity {
 
     void setPersistent(boolean remove);
 
-    boolean canBeLeashedBy(@NonNull Player player);
-
+    boolean canBeLeashedBy(@NotNull Player player);
 }

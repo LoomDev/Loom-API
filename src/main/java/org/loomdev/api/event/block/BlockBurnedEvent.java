@@ -1,26 +1,37 @@
 package org.loomdev.api.event.block;
 
-import lombok.Getter;
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.block.Block;
+import org.loomdev.api.event.Cancellable;
 
 import java.util.Optional;
 
-public class BlockBurnedEvent extends BlockEvent {
+/**
+ * Fired when a flammable block in the world is destroyed by a fire block.
+ * The block will not disappear if this event is cancelled.
+ */
+public class BlockBurnedEvent extends BlockEvent implements Cancellable {
 
-    @Getter
-    private Optional<Block> ignitingBlock;
+    private final Block source;
+    private boolean cancelled;
 
-    public BlockBurnedEvent(@NonNull Block block, @Nullable Block ignitingBlock) {
+    public BlockBurnedEvent(@NotNull Block block, @Nullable Block source) {
         super(block);
-        this.ignitingBlock = Optional.ofNullable(ignitingBlock);
+        this.source = source;
+    }
+
+    public Optional<Block> getSource() {
+        return Optional.ofNullable(this.source);
     }
 
     @Override
-    public String toString() {
-        return "BlockBurnedEvent{" +
-                "ignitingBlock=" + ignitingBlock +
-                '}';
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }

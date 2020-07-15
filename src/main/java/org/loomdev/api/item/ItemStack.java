@@ -1,26 +1,26 @@
 package org.loomdev.api.item;
 
-import lombok.NonNull;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.jetbrains.annotations.NotNull;
 
 public interface ItemStack<T extends ItemStack<T>> {
 
-    T type(@NonNull ItemTypes type);
+    T type(@NotNull ItemTypes type);
 
     T amount(int amount);
 
-    T name(@NonNull String name);
+    T name(@NotNull String name);
 
-    T name(@NonNull Component name);
+    T name(@NotNull Component name);
 
-    T lore(@NonNull String... lore);
+    T lore(@NotNull String... lore);
 
-    T lore(@NonNull TextComponent... lore);
+    T lore(@NotNull TextComponent... lore);
 
-    T addLore(@NonNull String... lore);
+    T addLore(@NotNull String... lore);
 
-    T appendLore(@NonNull TextComponent... lore);
+    T appendLore(@NotNull TextComponent... lore);
 
     T removeLoreLine(int line);
 

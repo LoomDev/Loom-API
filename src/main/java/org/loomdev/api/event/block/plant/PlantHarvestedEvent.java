@@ -1,25 +1,72 @@
 package org.loomdev.api.event.block.plant;
 
-import lombok.Getter;
-import lombok.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
+import org.loomdev.api.entity.passive.AnimalEntity;
 import org.loomdev.api.entity.player.Player;
+import org.loomdev.api.event.Cancellable;
 import org.loomdev.api.event.block.BlockEvent;
 
-public class PlantHarvestedEvent extends BlockEvent {
+import java.util.Optional;
 
-    @Getter
-    private final Player player;
+/**
+ * Fired when a plant block is harvested and reverted back to its
+ * initial growth stage. The plant will not drop items and revert to
+ * its initial growth stage if this event is cancelled.
+ *
+ * This event is fired when:
+ * <ul>
+ * <li>A player harvests a sweet berry bush</li>
+ * <li>A fox harvests a sweet berry bush</li>
+ * </ul>
+ */
+public class PlantHarvestedEvent extends BlockEvent implements Cancellable {
 
-    public PlantHarvestedEvent(@NonNull Block block, @NonNull Player player) {
+    private Player player;
+    private AnimalEntity animal;
+    private final Cause cause;
+    private boolean cancelled;
+
+    public PlantHarvestedEvent(@NotNull Block block, @NotNull Player player) {
         super(block);
         this.player = player;
+        this.cause = Cause.PLAYER;
+    }
+
+    public PlantHarvestedEvent(@NotNull Block block, @NotNull AnimalEntity animal) {
+        super(block);
+        this.animal = animal;
+        this.cause = Cause.ANIMAL;
+    }
+
+    public Optional<Player> getPlayer() {
+        return Optional.ofNullable(this.player);
+    }
+
+    public Optional<AnimalEntity> getAnimal() {
+        return Optional.ofNullable(this.animal);
+    }
+
+    public Cause getCause() {
+        return this.cause;
     }
 
     @Override
-    public String toString() {
-        return "PlantHarvestedEvent{" +
-                "player=" + player +
-                "} " + super.toString();
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
+    }
+
+    /**
+     * Represents the entity that harvested
+     * the plant block.
+     */
+    public enum Cause {
+        PLAYER,
+        ANIMAL
     }
 }

@@ -1,17 +1,45 @@
 package org.loomdev.api.event.block.plant;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
+import org.loomdev.api.block.BlockState;
+import org.loomdev.api.event.Cancellable;
 import org.loomdev.api.event.block.BlockEvent;
 
-public class PlantGrewEvent extends BlockEvent {
+/**
+ * Fired when a block that is categorized as a plant grows or changes state.
+ * The plant will not advance growth if this event is cancelled.
+ *
+ * This event is fired when:
+ * <ul>
+ * <li>Crop blocks grow</li>
+ * <li>Blocks with stems grow (i.e. pumpkins, melons..)</li>
+ * <li>Chorus plants grow taller</li>
+ * <li>Sweet berry bushes grow more berries</li>
+ * <li>Turtle eggs advance growth stages</li>
+ * </ul>
+ */
+public class PlantGrewEvent extends BlockEvent implements Cancellable {
 
-    public PlantGrewEvent(@NonNull Block block) {
+    private final BlockState updatedState;
+    private boolean cancelled;
+
+    public PlantGrewEvent(@NotNull Block block, @NotNull BlockState updatedState) {
         super(block);
+        this.updatedState = updatedState;
+    }
+
+    public BlockState getUpdatedState() {
+        return this.updatedState;
     }
 
     @Override
-    public String toString() {
-        return super.toString();
+    public boolean isCancelled() {
+        return this.cancelled;
+    }
+
+    @Override
+    public void cancel(boolean cancelled) {
+        this.cancelled = cancelled;
     }
 }
