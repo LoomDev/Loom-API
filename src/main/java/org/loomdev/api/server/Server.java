@@ -10,6 +10,7 @@ import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.monitoring.Tps;
 import org.loomdev.api.monitoring.TickTimes;
+import org.loomdev.api.scheduler.Scheduler;
 import org.loomdev.api.world.World;
 
 import java.nio.file.Path;
@@ -74,6 +75,13 @@ public interface Server {
      * @return The command manager.
      */
     @NonNull CommandManager getCommandManager();
+
+    /**
+     * Get the scheduler.
+     *
+     * @return The scheduler.
+     */
+    @NonNull Scheduler getScheduler();
 
     /**
      * Returns all currently online players on the server.

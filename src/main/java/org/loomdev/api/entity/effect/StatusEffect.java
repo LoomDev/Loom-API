@@ -72,6 +72,10 @@ public class StatusEffect {
         return this.showIcon;
     }
 
+    public @Nullable StatusEffect getHiddenEffect() {
+        return hiddenEffect;
+    }
+
     void copyFrom(StatusEffect statuseffectinstance) {
         this.duration = statuseffectinstance.duration;
         this.amplifier = statuseffectinstance.amplifier;
@@ -81,7 +85,7 @@ public class StatusEffect {
     }
 
     public void apply(@NonNull LivingEntity entity) {
-        // TODO
+        // TODO v1
     }
 
     @Override

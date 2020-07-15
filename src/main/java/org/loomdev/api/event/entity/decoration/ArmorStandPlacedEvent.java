@@ -2,6 +2,7 @@ package org.loomdev.api.event.entity.decoration;
 
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
+import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.decoration.ArmorStand;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.Cancellable;
@@ -30,6 +31,11 @@ public class ArmorStandPlacedEvent extends EntityEvent implements Cancellable {
         super(armorStand);
         this.dispenser = dispenser;
         this.cause = Cause.DISPENSER;
+    }
+
+    @Override
+    public ArmorStand getEntity() {
+        return (ArmorStand) super.getEntity();
     }
 
     public Optional<Player> getPlayer() {
