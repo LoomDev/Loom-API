@@ -10,12 +10,16 @@ import static org.loomdev.api.scheduler.Task.*;
 
 public interface Scheduler {
 
-    @NonNull Builder createTaskBuilder();
+    @NonNull Builder createTask();
 
     @NonNull Optional<Task> getTaskById(int id);
 
     @NonNull Set<Task> getScheduledTasks();
 
     @NonNull Set<Task> getScheduledTasks(Plugin plugin);
+
+    void unregisterSchedulers(Plugin plugin);
+
+    void disableTask(int id, boolean interruptIfRunning);
 
 }

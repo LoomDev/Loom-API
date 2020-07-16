@@ -1,6 +1,7 @@
 package org.loomdev.api.util;
 
 import com.google.common.base.Preconditions;
+import net.kyori.adventure.text.format.TextColor;
 
 public class Color {
     private static final int BIT_MASK = 0xff;
@@ -60,6 +61,10 @@ public class Color {
 
     public String asHex() {
         return String.format("#%06X", asRgb());
+    }
+
+    public TextColor asTextColor() {
+        return TextColor.of(getRed(), getGreen(), getBlue());
     }
 
     @Override

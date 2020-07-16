@@ -12,8 +12,10 @@ public interface Task {
 
     void cancel();
 
+    void cancelInterrupt();
+
     static Builder builder() {
-        return Loom.getServer().getScheduler().createTaskBuilder();
+        return Loom.getServer().getScheduler().createTask();
     }
 
     interface Builder {
