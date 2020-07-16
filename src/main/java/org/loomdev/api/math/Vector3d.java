@@ -3,9 +3,9 @@ package org.loomdev.api.math;
 public class Vector3d {
 
     public static Vector3d ZERO = new Vector3d(0, 0, 0);
-    public final double x;
-    public final double y;
-    public final double z;
+    private final double x;
+    private final double y;
+    private final double z;
 
     public Vector3d(double x, double y, double z) {
         this.x = x;

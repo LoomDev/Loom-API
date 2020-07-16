@@ -37,15 +37,15 @@ public class PlantFertilizedEvent extends BlockEvent implements Cancellable {
         this.cause = Cause.DISPENSER;
     }
 
-    public Cause getCause() {
+    public @NotNull Cause getCause() {
         return this.cause;
     }
 
-    public Player getPlayer() {
+    public @NotNull Player getPlayer() {
         return this.player;
     }
 
-    public Optional<Block> getDispenser() {
+    public @NotNull Optional<Block> getDispenser() {
         return Optional.ofNullable(this.dispenser);
     }
 

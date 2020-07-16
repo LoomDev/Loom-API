@@ -1,7 +1,6 @@
 package org.loomdev.api.event.player.connection;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.player.Player;
@@ -26,7 +25,7 @@ public class PlayerJoinedEvent extends PlayerEvent {
         return Optional.ofNullable(this.message);
     }
 
-    public void setMessage(@NotNull TextComponent message) {
+    public void setMessage(@NotNull Component message) {
         this.message = message;
     }
 }

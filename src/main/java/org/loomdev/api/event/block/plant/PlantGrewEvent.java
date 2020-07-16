@@ -29,7 +29,7 @@ public class PlantGrewEvent extends BlockEvent implements Cancellable {
         this.updatedState = updatedState;
     }
 
-    public BlockState getUpdatedState() {
+    public @NotNull BlockState getUpdatedState() {
         return this.updatedState;
     }
 

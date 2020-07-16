@@ -21,13 +21,13 @@ public class ArmorStandPlacedEvent extends EntityEvent implements Cancellable {
     private final Cause cause;
     private boolean cancelled;
 
-    public ArmorStandPlacedEvent(@NotNull ArmorStand armorStand, @NotNull Player player, @NotNull Cause cause) {
+    public ArmorStandPlacedEvent(@NotNull ArmorStand armorStand, @NotNull Player player) {
         super(armorStand);
         this.player = player;
         this.cause = Cause.PLAYER;
     }
 
-    public ArmorStandPlacedEvent(@NotNull ArmorStand armorStand, @NotNull Block dispenser, @NotNull Cause cause) { // TODO change to dispenser block
+    public ArmorStandPlacedEvent(@NotNull ArmorStand armorStand, @NotNull Block dispenser) { // TODO change to dispenser block
         super(armorStand);
         this.dispenser = dispenser;
         this.cause = Cause.DISPENSER;

@@ -21,7 +21,7 @@ public class BlockBurnedEvent extends BlockEvent implements Cancellable {
         this.source = source;
     }
 
-    public Optional<Block> getSource() {
+    public @NotNull Optional<Block> getSource() {
         return Optional.ofNullable(this.source);
     }
 

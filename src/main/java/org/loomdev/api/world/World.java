@@ -3,12 +3,16 @@ package org.loomdev.api.world;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
+import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.particle.ParticleEffects;
 import org.loomdev.api.sound.Sounds;
 
+import java.util.Collection;
 import java.util.UUID;
 
 public interface World {
+
+    @NotNull String getName();
 
     @NotNull UUID getUUID();
 
@@ -31,4 +35,10 @@ public interface World {
     void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect, int amount);
 
     void playSound(@NotNull Location location, @NotNull Sounds sound, float volume, float pitch);
+
+    @NotNull Collection<? extends Player> getPlayers();
+
+    long getTime();
+
+    void setTime(long ticks);
 }

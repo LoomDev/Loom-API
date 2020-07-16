@@ -1,12 +1,30 @@
 package org.loomdev.api.event.block;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.event.Cancellable;
 
 import java.util.Optional;
 
+/**
+ * Fired when a block catches fire or starts burning.
+ * The block will not ignite if this event is cancelled.
+ *
+ * This event is fired when:
+ * <ul>
+ * <li>Fire spreads onto another block</li>
+ * <li>Lava causes a block to catch fire</li>
+ * <li>A flint and steel or fire charge is used on a block</li>
+ * <li>A fireball causes a block to catch fire</li>
+ * <li>Lightning causes a block to catch fire</li>
+ * <li>A dispenser with a flint and steel or fire charge catches a block on fire</li>
+ * <li>An explosion causes a block to catch fire (i.e. respawn anchors)</li>
+ * <li>A flame arrow is used to ignite an unlit campfire</li>
+ * <li>A flint and steel or fire charge is used to ignite an unlit campfire</li>
+ * </ul>
+ */
 public class BlockIgnitedEvent extends BlockEvent implements Cancellable {
 
     private Block sourceBlock;
@@ -20,21 +38,21 @@ public class BlockIgnitedEvent extends BlockEvent implements Cancellable {
         this.cause = cause;
     }
 
-    public BlockIgnitedEvent(@NotNull Block block, @NotNull Entity source, @NotNull Cause cause) {
+    public BlockIgnitedEvent(@NotNull Block block, @Nullable Entity source, @NotNull Cause cause) {
         super(block);
         this.sourceEntity = source;
         this.cause = cause;
     }
 
-    public Optional<Block> getSourceBlock() {
+    public @NotNull Optional<Block> getSourceBlock() {
         return Optional.ofNullable(this.sourceBlock);
     }
 
-    public Optional<Entity> getSourceEntity() {
+    public @NotNull Optional<Entity> getSourceEntity() {
         return Optional.ofNullable(this.sourceEntity);
     }
 
-    public Cause getCause() {
+    public @NotNull Cause getCause() {
         return this.cause;
     }
 
@@ -55,9 +73,13 @@ public class BlockIgnitedEvent extends BlockEvent implements Cancellable {
     public enum Cause {
         LAVA,
         FLINT_AND_STEEL,
+        FIRE_CHARGE,
         FIREBALL,
         EXPLOSION,
         LIGHTNING,
+        DISPENSER,
+        END_CRYSTAL,
+        FLAME_ARROW,
         FIRE_SPREAD
     }
 }

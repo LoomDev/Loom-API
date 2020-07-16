@@ -15,7 +15,7 @@ public class BlockEvent implements Event {
         this.block = block;
     }
 
-    public Block getBlock() {
+    public @NotNull Block getBlock() {
         return this.block;
     }
 }

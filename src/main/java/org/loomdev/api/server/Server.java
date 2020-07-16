@@ -2,7 +2,7 @@ package org.loomdev.api.server;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.command.CommandManager;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.player.Player;
@@ -25,77 +25,77 @@ public interface Server {
      *
      * @return The name of the server implementation.
      */
-    @NonNull String getName();
+    @NotNull String getName();
 
     /**
      * Get the version of the server implementation that is currently being ran.
      *
      * @return The version of the server implementation.
      */
-    @NonNull String getVersion();
+    @NotNull String getVersion();
 
     /**
      * Get the version of Minecraft that is currently being ran.
      *
      * @return The version of the Minecraft server software.
      */
-    @NonNull String getMinecraftVersion();
+    @NotNull String getMinecraftVersion();
 
     /**
      * Get the path of the root directory container the server files.
      *
      * @return The path of the root directory.
      */
-    @NonNull Path getRootDirectory();
+    @NotNull Path getRootDirectory();
 
     /**
      * Get the path of the folder containing the plugin files.
      *
      * @return The path of the plugin folder.
      */
-    @NonNull Path getPluginDirectory();
+    @NotNull Path getPluginDirectory();
 
     /**
      * Get the plugin manager.
      *
      * @return The plugin manager.
      */
-    @NonNull PluginManager getPluginManager();
+    @NotNull PluginManager getPluginManager();
 
     /**
      * Get the event manager;
      *
      * @return The event manager.
      */
-    @NonNull EventManager getEventManager();
+    @NotNull EventManager getEventManager();
 
     /**
      * Get the command manager.
      *
      * @return The command manager.
      */
-    @NonNull CommandManager getCommandManager();
+    @NotNull CommandManager getCommandManager();
 
     /**
      * Get the scheduler.
      *
      * @return The scheduler.
      */
-    @NonNull Scheduler getScheduler();
+    @NotNull Scheduler getScheduler();
 
     /**
      * Returns all currently online players on the server.
      *
      * @return Immutable collection of all online players.
      */
-    @NonNull Collection<? extends Player> getOnlinePlayers();
+    @NotNull Collection<? extends Player> getOnlinePlayers();
 
     /**
      * Send a message to all players on the server.
      *
      * @param message The message to send.
      */
-    default void broadcastMessage(@NonNull String message) {
+    default void broadcastMessage(@NotNull String message) {
         broadcastMessage(TextComponent.of(message));
     }
 
@@ -104,32 +104,34 @@ public interface Server {
      *
      * @param component The component to send.
      */
-    void broadcastMessage(@NonNull Component component);
+    void broadcastMessage(@NotNull Component component);
 
     /**
      * Returns an instance of the console command source.
      *
      * @return The console command source for this server.
      */
-    @NonNull CommandSource getConsoleSource();
+    @NotNull CommandSource getConsoleSource();
 
     /**
      * Get the tps of the server.
      *
      * @return Instance of {@link Tps} containing TPS measurements of the server.
      */
-    @NonNull Tps getTps();
+    @NotNull Tps getTps();
 
     /**
      * Get the tick times of the server.
      *
      * @return Instance of {@link TickTimes} containing tick times measurements of the server.
      */
-    @NonNull TickTimes getTickTimes();
+    @NotNull TickTimes getTickTimes();
 
-    @NonNull Optional<World> getWorld(@NonNull String name);
+    @NotNull Collection<World> getWorlds();
 
-    @NonNull Optional<World> getWorld(@NonNull UUID uuid);
+    @NotNull Optional<World> getWorld(@NotNull String name);
+
+    @NotNull Optional<World> getWorld(@NotNull UUID uuid);
 
     int getProtocolVersion();
 

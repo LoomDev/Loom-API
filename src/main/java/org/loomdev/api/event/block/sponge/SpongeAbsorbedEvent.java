@@ -21,7 +21,7 @@ public class SpongeAbsorbedEvent extends BlockEvent implements Cancellable {
         this.absorbedBlocks = absorbedBlocks;
     }
 
-    public Set<Block> getAbsorbedBlocks() {
+    public @NotNull Set<Block> getAbsorbedBlocks() {
         return this.absorbedBlocks;
     }
 

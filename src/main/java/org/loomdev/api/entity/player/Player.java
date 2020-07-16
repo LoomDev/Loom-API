@@ -93,4 +93,6 @@ public interface Player extends LivingEntity {
     void kick(@NonNull String message);
 
     void kick(@NonNull TextComponent message);
+
+    boolean isOp();
 }

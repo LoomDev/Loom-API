@@ -20,7 +20,7 @@ public class BlockBrokenEvent extends BlockEvent implements Cancellable {
         this.player = player;
     }
 
-    public Player getPlayer() {
+    public @NotNull Player getPlayer() {
         return this.player;
     }
 

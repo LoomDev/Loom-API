@@ -14,7 +14,7 @@ public class BoundingBox {
     }
 
     public BoundingBox(Vector3d vec1, Vector3d vec2) {
-        this(vec1.x, vec1.y, vec1.z, vec2.x, vec2.y, vec2.z);
+        this(vec1.getX(), vec1.getY(), vec1.getZ(), vec2.getX(), vec2.getY(), vec2.getZ());
     }
 
     public BoundingBox(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {

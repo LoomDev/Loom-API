@@ -39,15 +39,15 @@ public class PlantHarvestedEvent extends BlockEvent implements Cancellable {
         this.cause = Cause.ANIMAL;
     }
 
-    public Optional<Player> getPlayer() {
+    public @NotNull Optional<Player> getPlayer() {
         return Optional.ofNullable(this.player);
     }
 
-    public Optional<AnimalEntity> getAnimal() {
+    public @NotNull Optional<AnimalEntity> getAnimal() {
         return Optional.ofNullable(this.animal);
     }
 
-    public Cause getCause() {
+    public @NotNull Cause getCause() {
         return this.cause;
     }
 

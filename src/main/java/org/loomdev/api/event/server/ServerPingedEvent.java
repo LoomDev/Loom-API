@@ -1,6 +1,6 @@
 package org.loomdev.api.event.server;
 
-import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.event.Cancellable;
@@ -12,12 +12,12 @@ import java.util.Optional;
 public class ServerPingedEvent implements Event, Cancellable {
 
     private final InetAddress address;
-    private TextComponent motd;
+    private Component motd;
     private int onlinePlayers, slots, protocolVersion;
     private String version, favicon;
     private boolean cancelled;
 
-    public ServerPingedEvent(@NotNull InetAddress address, @NotNull TextComponent motd, int onlinePlayers, int slots, int protocolVersion, @NotNull String version, @Nullable String favicon) {
+    public ServerPingedEvent(@NotNull InetAddress address, @NotNull Component motd, int onlinePlayers, int slots, int protocolVersion, @NotNull String version, @Nullable String favicon) {
         this.address = address;
         this.motd = motd;
         this.onlinePlayers = onlinePlayers;
@@ -31,11 +31,11 @@ public class ServerPingedEvent implements Event, Cancellable {
         return this.address;
     }
 
-    public TextComponent getMotd() {
+    public Component getMotd() {
         return this.motd;
     }
 
-    public void setMotd(@NotNull TextComponent motd) {
+    public void setMotd(@NotNull Component motd) {
         this.motd = motd;
     }
 
