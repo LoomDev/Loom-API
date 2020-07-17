@@ -1,6 +1,8 @@
 package org.loomdev.api.entity.mob;
 
-public interface Zombie extends HostileEntity {
+import org.loomdev.api.entity.ConvertingEntity;
+
+public interface Zombie extends HostileEntity, ConvertingEntity {
 
     boolean canBreakDoors();
 
