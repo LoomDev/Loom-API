@@ -5,8 +5,11 @@ import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.player.Player;
 
 import java.util.Collection;
+import java.util.UUID;
 
 public interface BossBar {
+
+    @NotNull UUID getUUID();
 
     @NotNull Component getText();
 
