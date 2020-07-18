@@ -13,6 +13,10 @@ public class Vector3d {
         this.z = z;
     }
 
+    public static Vector3d of(double x, double y, double z) {
+        return new Vector3d(x, y, z);
+    }
+
     public double getX() {
         return this.x;
     }

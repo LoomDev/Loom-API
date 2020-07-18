@@ -1,47 +1,46 @@
 package org.loomdev.api.config.file;
 
-import com.moandjiezana.toml.Toml;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.config.Configuration;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Map;
 
-public class TomlConfiguration extends FileConfiguration {
+public class YamlConfiguration extends FileConfiguration {
 
-    public static TomlConfiguration fromFile(File file) throws IOException {
-        TomlConfiguration configuration = new TomlConfiguration();
+    public static YamlConfiguration fromFile(File file) throws IOException {
+        YamlConfiguration configuration = new YamlConfiguration();
         configuration.load(file);
         return configuration;
     }
 
-    public static TomlConfiguration fromReader(Reader reader) throws IOException {
-        TomlConfiguration configuration = new TomlConfiguration();
+    public static YamlConfiguration fromReader(Reader reader) throws IOException {
+        YamlConfiguration configuration = new YamlConfiguration();
         configuration.load(reader);
         return configuration;
     }
 
-    public static TomlConfiguration fromString(String config) {
-        TomlConfiguration configuration = new TomlConfiguration();
+    public static YamlConfiguration fromString(String config) {
+        YamlConfiguration configuration = new YamlConfiguration();
         configuration.load(config);
         return configuration;
     }
 
-    private TomlConfiguration() {
+    private YamlConfiguration() {
         super();
     }
 
     @Override
     public String saveToString() {
-        // TODO
-        throw new UnsupportedOperationException("Saving has not yet been implemented fot toml files.");
+        return null;
     }
 
     @Override
     public void load(@NonNull String string) {
-        Map<String, Object> input = new Toml().read(string).toMap();
+        Map<String, Object> input = new Yaml().load(string);
 
         if (input != null && !input.isEmpty()) {
             convertMapToConfiguration(input, this);

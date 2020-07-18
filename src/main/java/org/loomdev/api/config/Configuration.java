@@ -19,9 +19,9 @@ public interface Configuration extends ImmutableConfiguration {
 
     String createPath(@NonNull Configuration configuration, @Nullable String key, @NonNull Configuration relativeTo);
 
-    @Nullable Configuration subset(@NonNull String path);
+    @Nullable Configuration section(@NonNull String path);
 
-    @NonNull Configuration createSubset(@NonNull String path);
+    @NonNull Configuration createSection(@NonNull String path);
 
     void add(@NonNull String key, @Nullable Object value);
 

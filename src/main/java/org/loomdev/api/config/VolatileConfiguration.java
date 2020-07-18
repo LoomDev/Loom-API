@@ -1,28 +1,28 @@
 package org.loomdev.api.config;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class MemoryConfiguration implements Configuration {
+public class VolatileConfiguration implements Configuration {
 
     protected static String pathSeparator = ".";
-    protected final Map<String, Object> data = new LinkedHashMap<String, Object>();
+    protected final Map<String, Object> data = new LinkedHashMap<>();
     private final Configuration root;
     private final Configuration parent;
     private final String path;
     private final String fullPath;
 
-    protected MemoryConfiguration() {
+    protected VolatileConfiguration() {
         this.path = "";
         this.fullPath = "";
         this.root = this;
         this.parent = null;
     }
 
-    protected MemoryConfiguration(@NonNull Configuration parent, @NonNull String path) {
+    protected VolatileConfiguration(@NotNull Configuration parent, @NotNull String path) {
         this.path = path;
         this.fullPath = parent.getFullPath() + pathSeparator + path;
         this.root = parent.getRoot();
@@ -30,7 +30,7 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public @NonNull Configuration getRoot() {
+    public @NotNull Configuration getRoot() {
         return root;
     }
 
@@ -40,17 +40,17 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public @NonNull String getPath() {
+    public @NotNull String getPath() {
         return path;
     }
 
     @Override
-    public @NonNull String getFullPath() {
+    public @NotNull String getFullPath() {
         return fullPath;
     }
 
     @Override
-    public String createPath(@NonNull Configuration configuration, @Nullable String key, @NonNull Configuration relativeTo) {
+    public String createPath(@NotNull Configuration configuration, @Nullable String key, @NotNull Configuration relativeTo) {
         Configuration root = configuration.getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot create path without a root");
@@ -75,13 +75,13 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public Configuration subset(@NonNull String path) {
+    public Configuration section(@NotNull String path) {
         Object val = get(path, null);
-        return (val != null && val instanceof Configuration) ? (Configuration) val : null;
+        return (val instanceof Configuration) ? (Configuration) val : null;
     }
 
     @Override
-    public @NonNull Configuration createSubset(@NonNull String path) {
+    public @NotNull Configuration createSection(@NotNull String path) {
         Configuration root = getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot create subset without a root");
@@ -91,28 +91,28 @@ public class MemoryConfiguration implements Configuration {
         if (keys.length == 0)
             keys = new String[] { path };
 
-        Configuration subset = this.subset(keys[0]);
+        Configuration subset = this.section(keys[0]);
         if (keys.length == 1) {
             if (subset != null) {
                 return subset;
             }
-            Configuration sub = new MemoryConfiguration(this, keys[0]);
+            Configuration sub = new VolatileConfiguration(this, keys[0]);
             this.set(keys[0], sub);
             return sub;
         } else {
             String nextPath = path.substring(path.indexOf(pathSeparator));
 
             if (subset != null) {
-                return subset.createSubset(nextPath);
+                return subset.createSection(nextPath);
             }
-            Configuration sub = new MemoryConfiguration(this, keys[0]);
+            Configuration sub = new VolatileConfiguration(this, keys[0]);
             this.set(keys[0], sub);
-            return sub.createSubset(nextPath);
+            return sub.createSection(nextPath);
         }
     }
 
     @Override
-    public void add(@NonNull String key, Object value) {
+    public void add(@NotNull String key, Object value) {
         if (!key.contains(pathSeparator)) {
             // TODO should we throw an exception if someone tries to add a key that already exists. (use set instead?)
             this.data.put(key, value);
@@ -120,9 +120,9 @@ public class MemoryConfiguration implements Configuration {
         }
 
         String subsetKey = safeKeySplit(key, pathSeparator)[0];
-        Configuration subset = subset(subsetKey);
+        Configuration subset = section(subsetKey);
         if (subset == null) {
-            subset = this.createSubset(subsetKey);
+            subset = this.createSection(subsetKey);
         }
 
         String keyRemainder = key.substring(key.indexOf(pathSeparator) + 1);
@@ -130,16 +130,16 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public void set(@NonNull String key, Object value) {
+    public void set(@NotNull String key, Object value) {
         if (!key.contains(pathSeparator)) {
             this.data.put(key, value);
             return;
         }
 
         String subsetKey = safeKeySplit(key, pathSeparator)[0];
-        Configuration subset = subset(subsetKey);
+        Configuration subset = section(subsetKey);
         if (subset == null) {
-            subset = this.createSubset(subsetKey);
+            subset = this.createSection(subsetKey);
         }
 
         String keyRemainder = key.substring(key.indexOf(pathSeparator) + 1);
@@ -147,14 +147,14 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public void remove(@NonNull String key) {
+    public void remove(@NotNull String key) {
         if (!key.contains(pathSeparator)) {
             this.data.remove(key);
             return;
         }
 
         String subsetKey = safeKeySplit(key, pathSeparator)[0];
-        Configuration subset = subset(subsetKey);
+        Configuration subset = section(subsetKey);
         if (subset == null) {
             return;
         }
@@ -164,16 +164,16 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public @NonNull Set<String> getKeys() {
+    public @NotNull Set<String> getKeys() {
         return getKeys(false);
     }
 
     @Override
-    public @NonNull Set<String> getKeys(boolean deep) {
+    public @NotNull Set<String> getKeys(boolean recursive) {
         Set<String> result = new LinkedHashSet<>(data.keySet());
-        if (deep) {
+        if (recursive) {
             for (String key : data.keySet()) {
-                Configuration configuration = subset(key);
+                Configuration configuration = section(key);
                 if (configuration != null) {
                     result.addAll(configuration.getKeys(true).stream()
                             .map(k -> key + pathSeparator + k)
@@ -185,13 +185,13 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public boolean hasKey(@NonNull String key) {
+    public boolean hasKey(@NotNull String key) {
         if (!key.contains(pathSeparator)) {
             return this.data.containsKey(key);
         }
 
         String subsetKey = safeKeySplit(key, pathSeparator)[0];
-        Configuration subset = subset(subsetKey);
+        Configuration subset = section(subsetKey);
         if (subset == null) {
             return false;
         }
@@ -201,18 +201,18 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public Object get(@NonNull String key) {
+    public Object get(@NotNull String key) {
         return this.get(key, null);
     }
 
     @Override
-    public Object get(@NonNull String key, Object defaultValue) {
+    public Object get(@NotNull String key, Object defaultValue) {
         if (!key.contains(pathSeparator)) {
             return this.data.getOrDefault(key, defaultValue);
         }
 
         String subsetKey = safeKeySplit(key, pathSeparator)[0];
-        Configuration subset = subset(subsetKey);
+        Configuration subset = section(subsetKey);
         if (subset == null) {
             return null;
         }
@@ -222,68 +222,68 @@ public class MemoryConfiguration implements Configuration {
     }
 
     @Override
-    public <T> T get(@NonNull Class<T> cls, @NonNull String key) {
+    public <T> T get(@NotNull Class<T> cls, @NotNull String key) {
         return (T) this.get(key);
     }
 
     @Override
-    public <T> T get(@NonNull Class<T> cls, @NonNull String key, T defaultValue) {
+    public <T> T get(@NotNull Class<T> cls, @NotNull String key, T defaultValue) {
         return (T) this.get(key, defaultValue);
     }
 
     @Override
-    public String getString(@NonNull String key, String defaultValue) {
+    public @NotNull String getString(@NotNull String key, @NotNull String defaultValue) {
         return get(String.class, key, defaultValue);
     }
 
     @Override
-    public int getInt(@NonNull String key, int defaultValue) {
+    public int getInt(@NotNull String key, int defaultValue) {
         return get(int.class, key, defaultValue);
     }
 
     @Override
-    public double getDouble(@NonNull String key, double defaultValue) {
+    public double getDouble(@NotNull String key, double defaultValue) {
         return get(double.class, key, defaultValue);
     }
 
     @Override
-    public float getFloat(@NonNull String key, float defaultValue) {
+    public float getFloat(@NotNull String key, float defaultValue) {
         return get(float.class, key, defaultValue);
     }
 
     @Override
-    public byte getByte(@NonNull String key, byte defaultValue) {
+    public byte getByte(@NotNull String key, byte defaultValue) {
         return get(byte.class, key, defaultValue);
     }
 
     @Override
-    public long getLong(@NonNull String key, long defaultValue) {
+    public long getLong(@NotNull String key, long defaultValue) {
         return get(long.class, key, defaultValue);
     }
 
     @Override
-    public short getShort(@NonNull String key, short defaultValue) {
+    public short getShort(@NotNull String key, short defaultValue) {
         return get(short.class, key, defaultValue);
     }
 
     @Override
-    public boolean getBoolean(@NonNull String key, boolean defaultValue) {
+    public boolean getBoolean(@NotNull String key, boolean defaultValue) {
         return get(boolean.class, key, defaultValue);
     }
 
     @Override
-    public <T> Collection<T> getCollection(@NonNull Class<T> cls, @NonNull String key, @NonNull Collection<T> target) {
+    public <T> Collection<T> getCollection(@NotNull Class<T> cls, @NotNull String key, @NotNull Collection<T> target) {
         target.addAll((Collection<T>) get(cls, key));
         return target;
     }
 
     @Override
-    public <T> List<T> getList(@NonNull Class<T> cls, @NonNull String key, List<T> defaultValue) {
+    public <T> List<T> getList(@NotNull Class<T> cls, @NotNull String key, List<T> defaultValue) {
         return (List<T>) get(List.class, key, defaultValue);
     }
 
     @Override
-    public <T> @NonNull T[] getArray(@NonNull Class<T> cls, @NonNull String key, @Nullable T[] defaultValue) {
+    public <T> @NotNull T[] getArray(@NotNull Class<T> cls, @NotNull String key, @Nullable T[] defaultValue) {
         Object value = get(key, defaultValue);
         if (value instanceof List) {
             return (T[]) ((List) value).toArray();
@@ -294,6 +294,6 @@ public class MemoryConfiguration implements Configuration {
     }
 
     private String[] safeKeySplit(String input, String delimiter) {
-        return input.split(delimiter == "." ? "\\." : delimiter);
+        return input.split(delimiter.equals(".") ? "\\." : delimiter);
     }
 }

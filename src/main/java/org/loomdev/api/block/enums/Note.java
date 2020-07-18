@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public enum Note {
+
     F_SHARP0(Octave.OCTAVE_1, "F#0", 0),
     G1(Octave.OCTAVE_1, "G1", 1),
     G_SHARP1(Octave.OCTAVE_1, "G#1", 2),
@@ -33,15 +34,15 @@ public enum Note {
     F_SHARP2(Octave.OCTAVE_2, "F#2", 24);
 
     private static final Map<String, Note> NAME_NOTE_MAP = Arrays.stream(values()).collect(Collectors.toMap(Note::getName, note -> note));
-    private static final Map<Integer, Note> USES_NOTE_MAP = Arrays.stream(values()).collect(Collectors.toMap(Note::getUses, note -> note));
+    private static final Map<Integer, Note> USES_NOTE_MAP = Arrays.stream(values()).collect(Collectors.toMap(Note::getIndex, note -> note));
     private final Octave octave;
     private final String name;
-    private final int uses;
+    private final int index;
 
-    Note(Octave octave, String name, int uses) {
+    Note(Octave octave, String name, int index) {
         this.octave = octave;
         this.name = name;
-        this.uses = uses;
+        this.index = index;
     }
 
     public Octave getOctave() {
@@ -52,8 +53,8 @@ public enum Note {
         return name;
     }
 
-    public int getUses() {
-        return uses;
+    public int getIndex() {
+        return index;
     }
 
     public static Note getByName(String name) {

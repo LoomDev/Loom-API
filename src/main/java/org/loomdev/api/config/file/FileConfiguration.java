@@ -1,11 +1,11 @@
 package org.loomdev.api.config.file;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.loomdev.api.config.MemoryConfiguration;
+import org.loomdev.api.config.VolatileConfiguration;
 
 import java.io.*;
 
-public abstract class FileConfiguration extends MemoryConfiguration {
+public abstract class FileConfiguration extends VolatileConfiguration {
 
     public FileConfiguration() {
         super();

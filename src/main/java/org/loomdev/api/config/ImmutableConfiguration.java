@@ -2,6 +2,7 @@ package org.loomdev.api.config;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public interface ImmutableConfiguration {
 
     @NonNull Set<String> getKeys();
 
-    @NonNull Set<String> getKeys(boolean deep);
+    @NonNull Set<String> getKeys(boolean recursive);
 
     boolean hasKey(@NonNull String key);
 
@@ -25,11 +26,11 @@ public interface ImmutableConfiguration {
 
     @Nullable <T> T get(@NonNull Class<T> cls, @NonNull String key, @Nullable T defaultValue);
 
-    default @Nullable String getString(@NonNull String key) {
-        return getString(key, null);
+    default @NotNull String getString(@NonNull String key) {
+        return getString(key, "");
     }
 
-    @Nullable String getString(@NonNull String key, @Nullable String defaultValue);
+    @NotNull String getString(@NonNull String key, @NotNull String defaultValue);
 
     default int getInt(@NonNull String key) {
         return getInt(key, 0);

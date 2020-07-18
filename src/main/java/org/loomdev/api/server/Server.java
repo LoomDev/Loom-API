@@ -3,6 +3,7 @@ package org.loomdev.api.server;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.command.CommandManager;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.player.Player;
@@ -136,4 +137,12 @@ public interface Server {
     int getProtocolVersion();
 
     int getViewDistance();
+
+    @NotNull BossBar createBossBar(@NotNull String text);
+
+    @NotNull BossBar createBossBar(@NotNull Component text);
+
+    @NotNull BossBar createBossBar(@NotNull String text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
+
+    @NotNull BossBar createBossBar(@NotNull Component text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
 }

@@ -6,6 +6,7 @@ import org.loomdev.api.plugin.Plugin;
 import java.util.concurrent.TimeUnit;
 
 public interface Task {
+
     int getTaskId();
 
     Plugin getPlugin();
