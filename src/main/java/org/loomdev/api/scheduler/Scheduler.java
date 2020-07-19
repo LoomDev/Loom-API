@@ -21,5 +21,4 @@ public interface Scheduler {
     void unregisterSchedulers(Plugin plugin);
 
     void disableTask(int id, boolean interruptIfRunning);
-
 }
