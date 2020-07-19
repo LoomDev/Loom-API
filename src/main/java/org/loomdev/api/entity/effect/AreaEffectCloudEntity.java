@@ -1,7 +1,6 @@
 package org.loomdev.api.entity.effect;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
 
@@ -11,17 +10,17 @@ import java.util.Optional;
 
 public interface AreaEffectCloudEntity extends Entity {
 
-    @NonNull List<StatusEffect> getStatusEffects();
+    @NotNull List<StatusEffect> getStatusEffects();
 
-    @NonNull Optional<StatusEffect> getStatusEffect(@NonNull StatusEffectType type);
+    @NotNull Optional<StatusEffect> getStatusEffect(@NotNull StatusEffect.Type type);
 
-    void addStatusEffect(@NonNull StatusEffect effect);
+    void addStatusEffect(@NotNull StatusEffect effect);
 
-    void removeStatusEffect(@NonNull StatusEffectType type);
+    void removeStatusEffect(@NotNull StatusEffect.Type type);
 
     void clearStatusEffects();
 
-    boolean hasStatusEffect(@NonNull StatusEffectType type);
+    boolean hasStatusEffect(@NotNull StatusEffect.Type type);
 
     int getDuration();
 
@@ -51,11 +50,11 @@ public interface AreaEffectCloudEntity extends Entity {
 
     void setRadiusPerTick(float radius);
 
-    @NonNull Optional<LivingEntity> getOwner();
+    @NotNull Optional<LivingEntity> getOwner();
 
-    void setOwner(@NonNull LivingEntity livingEntity);
+    void setOwner(@NotNull LivingEntity livingEntity);
 
-    @NonNull Map<Entity, Integer> getAffectedEntities(); // TODO is this useful?
+    @NotNull Map<Entity, Integer> getAffectedEntities(); // TODO is this useful?
 
     // get/set particle effect
 

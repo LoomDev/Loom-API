@@ -12,7 +12,7 @@ public class StatusEffectTypeTests {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, Integer> current = Arrays.stream(StatusEffectType.values()).collect(Collectors.toMap(Enum::name, StatusEffectType::rawId));
+        Map<String, Integer> current = Arrays.stream(StatusEffect.Type.values()).collect(Collectors.toMap(Enum::name, StatusEffect.Type::rawId));
         Map<String, Integer> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 

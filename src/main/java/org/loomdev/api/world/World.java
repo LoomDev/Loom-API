@@ -3,11 +3,13 @@ package org.loomdev.api.world;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
+import org.loomdev.api.entity.EntityType;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.particle.ParticleEffects;
 import org.loomdev.api.sound.Sounds;
 
 import java.util.Collection;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface World {
@@ -30,9 +32,13 @@ public interface World {
 
     boolean isChunkLoaded(@NotNull Chunk chunk);
 
-    @NotNull Entity spawnEntity(@NotNull Entity entity, @NotNull Location location);
+    @NotNull Optional<Entity> spawnEntity(@NotNull EntityType type, @NotNull Location location);
+
+    void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect);
 
     void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect, int amount);
+
+    // TODO offsets + data vars void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect);
 
     void playSound(@NotNull Location location, @NotNull Sounds sound, float volume, float pitch);
 

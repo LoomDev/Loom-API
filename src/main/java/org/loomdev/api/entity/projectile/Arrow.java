@@ -1,8 +1,7 @@
 package org.loomdev.api.entity.projectile;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.effect.StatusEffect;
-import org.loomdev.api.entity.effect.StatusEffectType;
 import org.loomdev.api.util.Color;
 
 import java.util.List;
@@ -10,17 +9,17 @@ import java.util.Optional;
 
 public interface Arrow extends PersistentProjectile {
 
-    @NonNull List<StatusEffect> getStatusEffects();
+    @NotNull List<StatusEffect> getStatusEffects();
 
-    @NonNull Optional<StatusEffect> getStatusEffect(@NonNull StatusEffectType type);
+    @NotNull Optional<StatusEffect> getStatusEffect(@NotNull StatusEffect.Type type);
 
-    void addStatusEffect(@NonNull StatusEffect effect);
+    void addStatusEffect(@NotNull StatusEffect effect);
 
-    void removeStatusEffect(@NonNull StatusEffectType type);
+    void removeStatusEffect(@NotNull StatusEffect.Type type);
 
     void clearStatusEffects();
 
-    boolean hasStatusEffect(@NonNull StatusEffectType type);
+    boolean hasStatusEffect(@NotNull StatusEffect.Type type);
 
     Color getColor();
 

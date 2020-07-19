@@ -1,10 +1,9 @@
 package org.loomdev.api.entity;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Material;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
-import org.loomdev.api.entity.effect.StatusEffectType;
 import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.sound.Sounds;
 import org.loomdev.api.util.Hand;
@@ -17,17 +16,17 @@ import java.util.function.Predicate;
 
 public interface LivingEntity extends Damageable {
 
-    @NonNull List<StatusEffect> getStatusEffects();
+    @NotNull List<StatusEffect> getStatusEffects();
 
-    @NonNull Optional<StatusEffect> getStatusEffect(@NonNull StatusEffectType type);
+    @NotNull Optional<StatusEffect> getStatusEffect(@NotNull StatusEffect.Type type);
 
-    void addStatusEffect(@NonNull StatusEffect effect);
+    void addStatusEffect(@NotNull StatusEffect effect);
 
-    void removeStatusEffect(@NonNull StatusEffectType type);
+    void removeStatusEffect(@NotNull StatusEffect.Type type);
 
     void clearStatusEffects();
 
-    boolean hasStatusEffect(@NonNull StatusEffectType type);
+    boolean hasStatusEffect(@NotNull StatusEffect.Type type);
 
     int getAir();
 
@@ -43,13 +42,13 @@ public interface LivingEntity extends Damageable {
 
     void setNoDamageTicks(int ticks);
 
-    void swingHand(@NonNull Hand hand);
+    void swingHand(@NotNull Hand hand);
 
     boolean isUsingRiptide();
 
     boolean isSleeping();
 
-    boolean hasLineOfSight(@NonNull Entity other);
+    boolean hasLineOfSight(@NotNull Entity other);
 
     boolean canPickupItems();
 
@@ -57,31 +56,31 @@ public interface LivingEntity extends Damageable {
 
     Sounds getHurtSound();
 
-    Sounds getHurtSound(@NonNull DamageSource source);
-    
-    void setHurtSound(@NonNull Sounds sound);
+    Sounds getHurtSound(@NotNull DamageSource source);
 
-    void setHurtSound(@NonNull DamageSource source, @NonNull Sounds sound);
-    
-    void playHurtSound(); 
+    void setHurtSound(@NotNull Sounds sound);
 
-    void playHurtSound(@NonNull DamageSource source); 
+    void setHurtSound(@NotNull DamageSource source, @NotNull Sounds sound);
+
+    void playHurtSound();
+
+    void playHurtSound(@NotNull DamageSource source);
 
     Sounds getDeathSound();
 
-    void setDeathSound(@NonNull Sounds sound);
+    void setDeathSound(@NotNull Sounds sound);
 
     Sounds getFallSound();
 
-    void setFallSound(@NonNull Sounds sound);
+    void setFallSound(@NotNull Sounds sound);
 
     Sounds getDrinkSound();
 
-    void setDrinkSound(@NonNull Sounds sound);
+    void setDrinkSound(@NotNull Sounds sound);
 
     Sounds getEatSound();
 
-    void setEatSound(@NonNull Sounds sound);
+    void setEatSound(@NotNull Sounds sound);
 
     float getSoundVolume();
 
@@ -101,13 +100,13 @@ public interface LivingEntity extends Damageable {
 
     void setStringerCount(int count);
 
-    boolean isHolding(@NonNull Material material); // TODO use material?
+    boolean isHolding(@NotNull Material material); // TODO use material?
 
-    boolean isHolding(@NonNull Predicate<Material> predicate); // TODO use material?
+    boolean isHolding(@NotNull Predicate<Material> predicate); // TODO use material?
 
-    @NonNull Optional<ItemStack> getStackInHand(@NonNull Hand hand);
+    @NotNull Optional<ItemStack> getStackInHand(@NotNull Hand hand);
 
-    void setStackInHand(@NonNull Hand hand, @NonNull ItemStack itemStack);
+    void setStackInHand(@NotNull Hand hand, @NotNull ItemStack itemStack);
 
     float getMovementSpeed();
 
@@ -119,7 +118,7 @@ public interface LivingEntity extends Damageable {
 
     void resetHurtByWater();
 
-    boolean canSee(@NonNull Entity entity);
+    boolean canSee(@NotNull Entity entity);
 
     float getHeadYaw();
 
@@ -131,7 +130,7 @@ public interface LivingEntity extends Damageable {
 
     boolean isUsingItem();
 
-    @NonNull Hand getActiveHand();
+    @NotNull Hand getActiveHand();
 
     void setCurrentHand(Hand hand);
 
