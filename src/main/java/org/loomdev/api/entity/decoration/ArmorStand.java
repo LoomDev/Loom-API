@@ -10,12 +10,12 @@ import java.util.Optional;
 
 public interface ArmorStand extends LivingEntity {
 
-    EulerAngle DEFAULT_HEAD_ROTATION = new EulerAngle(0.0F, 0.0F, 0.0F);
-    EulerAngle DEFAULT_BODY_ROTATION = new EulerAngle(0.0F, 0.0F, 0.0F);
-    EulerAngle DEFAULT_LEFT_ARM_ROTATION = new EulerAngle(-10.0F, 0.0F, -10.0F);
-    EulerAngle DEFAULT_RIGHT_ARM_ROTATION = new EulerAngle(-15.0F, 0.0F, 10.0F);
-    EulerAngle DEFAULT_LEFT_LEG_ROTATION = new EulerAngle(-1.0F, 0.0F, -1.0F);
-    EulerAngle DEFAULT_RIGHT_LEG_ROTATION = new EulerAngle(1.0F, 0.0F, 1.0F);
+    EulerAngle DEFAULT_HEAD_ROTATION = EulerAngle.of(0.0F, 0.0F, 0.0F);
+    EulerAngle DEFAULT_BODY_ROTATION = EulerAngle.of(0.0F, 0.0F, 0.0F);
+    EulerAngle DEFAULT_LEFT_ARM_ROTATION = EulerAngle.of(-10.0F, 0.0F, -10.0F);
+    EulerAngle DEFAULT_RIGHT_ARM_ROTATION = EulerAngle.of(-15.0F, 0.0F, 10.0F);
+    EulerAngle DEFAULT_LEFT_LEG_ROTATION = EulerAngle.of(-1.0F, 0.0F, -1.0F);
+    EulerAngle DEFAULT_RIGHT_LEG_ROTATION = EulerAngle.of(1.0F, 0.0F, 1.0F);
 
     @NonNull Optional<ItemStack> getItemInHand(@NonNull Hand hand);
 

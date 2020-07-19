@@ -3,12 +3,13 @@ package org.loomdev.api.entity;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.HoverEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.math.BoundingBox;
 import org.loomdev.api.math.Vector3d;
-import org.loomdev.api.sound.Sounds;
+import org.loomdev.api.sound.Sound;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.World;
 
@@ -132,7 +133,7 @@ public interface Entity extends CommandSource {
 
     boolean hasWings();
 
-    void playSound(Sounds sound, float volume, float pitch);
+    void emitSound(@NotNull Sound.Type type, float volume, float pitch);
 
     boolean isFireResistant();
 

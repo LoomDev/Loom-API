@@ -2,8 +2,10 @@ package org.loomdev.api.entity.player;
 
 import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
+import org.loomdev.api.sound.Sound;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.Weather;
 
@@ -95,4 +97,6 @@ public interface Player extends LivingEntity {
     void kick(@NonNull TextComponent message);
 
     boolean isOp();
+
+    void playSound(@NotNull Sound sound, @NotNull Location location);
 }

@@ -12,7 +12,7 @@ public class SoundsTests {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, Integer> current = Arrays.stream(Sounds.values()).collect(Collectors.toMap(Enum::name, Sounds::rawId));
+        Map<String, Integer> current = Arrays.stream(Sound.Type.values()).collect(Collectors.toMap(Enum::name, Sound.Type::rawId));
         Map<String, Integer> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 

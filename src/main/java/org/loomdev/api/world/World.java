@@ -5,8 +5,8 @@ import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.EntityType;
 import org.loomdev.api.entity.player.Player;
-import org.loomdev.api.particle.ParticleEffects;
-import org.loomdev.api.sound.Sounds;
+import org.loomdev.api.particle.Particle;
+import org.loomdev.api.sound.Sound;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -34,13 +34,9 @@ public interface World {
 
     @NotNull Optional<Entity> spawnEntity(@NotNull EntityType type, @NotNull Location location);
 
-    void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect);
+    void spawnParticle(@NotNull Particle particle, @NotNull Location location);
 
-    void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect, int amount);
-
-    // TODO offsets + data vars void spawnParticle(@NotNull Location location, @NotNull ParticleEffects particleEffect);
-
-    void playSound(@NotNull Location location, @NotNull Sounds sound, float volume, float pitch);
+    void playSound(@NotNull Sound sound, @NotNull Location location);
 
     @NotNull Collection<? extends Player> getPlayers();
 

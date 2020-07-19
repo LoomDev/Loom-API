@@ -5,7 +5,7 @@ import org.loomdev.api.block.Material;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
 import org.loomdev.api.item.ItemStack;
-import org.loomdev.api.sound.Sounds;
+import org.loomdev.api.sound.Sound;
 import org.loomdev.api.util.Hand;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.World;
@@ -54,33 +54,33 @@ public interface LivingEntity extends Damageable {
 
     void setCanPickItems(boolean flag);
 
-    Sounds getHurtSound();
+    Sound.Type getHurtSound();
 
-    Sounds getHurtSound(@NotNull DamageSource source);
+    Sound.Type getHurtSound(@NotNull DamageSource source);
 
-    void setHurtSound(@NotNull Sounds sound);
+    void setHurtSound(@NotNull Sound.Type sound);
 
-    void setHurtSound(@NotNull DamageSource source, @NotNull Sounds sound);
+    void setHurtSound(@NotNull DamageSource source, @NotNull Sound.Type sound);
 
     void playHurtSound();
 
     void playHurtSound(@NotNull DamageSource source);
 
-    Sounds getDeathSound();
+    Sound.Type getDeathSound();
 
-    void setDeathSound(@NotNull Sounds sound);
+    void setDeathSound(@NotNull Sound.Type sound);
 
-    Sounds getFallSound();
+    Sound.Type getFallSound();
 
-    void setFallSound(@NotNull Sounds sound);
+    void setFallSound(@NotNull Sound.Type sound);
 
-    Sounds getDrinkSound();
+    Sound.Type getDrinkSound();
 
-    void setDrinkSound(@NotNull Sounds sound);
+    void setDrinkSound(@NotNull Sound.Type sound);
 
-    Sounds getEatSound();
+    Sound.Type getEatSound();
 
-    void setEatSound(@NotNull Sounds sound);
+    void setEatSound(@NotNull Sound.Type sound);
 
     float getSoundVolume();
 

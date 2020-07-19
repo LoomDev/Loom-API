@@ -1,15 +1,12 @@
 package org.loomdev.api.entity.effect;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
-import org.loomdev.api.entity.Entity;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.LivingEntity;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 
 public class StatusEffect {
 
@@ -64,16 +61,17 @@ public class StatusEffect {
         return showIcon;
     }
 
-    public void apply(@NonNull LivingEntity entity) {
+    public void apply(@NotNull LivingEntity entity) {
         entity.addStatusEffect(this);
     }
 
-    public static Builder builder(Type type) {
+    public static Builder builder(@NotNull Type type) {
         return new Builder(type);
     }
 
     public static final class Builder {
-        private final Type type;
+
+        private final @NotNull Type type;
         private int duration = 30;
         private int amplifier = 1;
         private boolean ambient = false;
@@ -120,13 +118,16 @@ public class StatusEffect {
             );
         }
 
-        public StatusEffect apply(@NonNull LivingEntity entity) {
+        public StatusEffect apply(@NotNull LivingEntity entity) {
             StatusEffect statusEffect = build();
             entity.addStatusEffect(statusEffect);
             return statusEffect;
         }
     }
 
+    /**
+     * Status effect types that can be used in a status effect.
+     */
     public enum Type {
         SPEED(1),
         SLOWNESS(2),
