@@ -3,6 +3,7 @@ package org.loomdev.api.entity.effect;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
 
 import java.util.HashMap;
@@ -18,16 +19,14 @@ public class StatusEffect {
     private final boolean ambient;
     private final boolean showParticles;
     private final boolean showIcon;
-    private final @Nullable StatusEffect nextEffect;
 
-    private StatusEffect(@NotNull Type type, int duration, int amplifier, boolean ambient, boolean showParticles, boolean showIcon, @Nullable StatusEffect nextEffect) {
+    private StatusEffect(@NotNull Type type, int duration, int amplifier, boolean ambient, boolean showParticles, boolean showIcon) {
         this.type = type;
         this.duration = duration;
         this.amplifier = amplifier;
         this.ambient = ambient;
         this.showParticles = showParticles;
         this.showIcon = showIcon;
-        this.nextEffect = nextEffect;
     }
 
     public StatusEffect of(@NotNull StatusEffect effect) {
@@ -37,8 +36,7 @@ public class StatusEffect {
                 effect.amplifier,
                 effect.ambient,
                 effect.showParticles,
-                effect.showIcon,
-                effect.nextEffect
+                effect.showIcon
         );
     }
 
@@ -66,12 +64,12 @@ public class StatusEffect {
         return showIcon;
     }
 
-    public @NotNull Optional<StatusEffect> getNextEffect() {
-        return Optional.ofNullable(nextEffect);
+    public void apply(@NonNull LivingEntity entity) {
+        entity.addStatusEffect(this);
     }
 
-    public void apply(@NonNull LivingEntity entity) {
-        // TODO v1
+    public static Builder builder(Type type) {
+        return new Builder(type);
     }
 
     public static final class Builder {
@@ -81,7 +79,6 @@ public class StatusEffect {
         private boolean ambient = false;
         private boolean showParticles = true;
         private boolean showIcon = true;
-        private @Nullable StatusEffect nextEffect;
 
         public Builder(@NotNull Type type) {
             this.type = type;
@@ -112,11 +109,6 @@ public class StatusEffect {
             return this;
         }
 
-        public Builder nextEffect(@NotNull StatusEffect nextEffect) {
-            this.nextEffect = nextEffect;
-            return this;
-        }
-
         public StatusEffect build() {
             return new StatusEffect(
                     this.type,
@@ -124,9 +116,14 @@ public class StatusEffect {
                     this.amplifier,
                     this.ambient,
                     this.showParticles,
-                    this.showIcon,
-                    this.nextEffect
+                    this.showIcon
             );
+        }
+
+        public StatusEffect apply(@NonNull LivingEntity entity) {
+            StatusEffect statusEffect = build();
+            entity.addStatusEffect(statusEffect);
+            return statusEffect;
         }
     }
 
@@ -196,13 +193,12 @@ public class StatusEffect {
                 ambient == that.ambient &&
                 showParticles == that.showParticles &&
                 showIcon == that.showIcon &&
-                type == that.type &&
-                Objects.equals(nextEffect, that.nextEffect);
+                type == that.type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, duration, amplifier, ambient, showParticles, showIcon, nextEffect);
+        return Objects.hash(type, duration, amplifier, ambient, showParticles, showIcon);
     }
 
     @Override
@@ -214,7 +210,6 @@ public class StatusEffect {
                 ", ambient=" + ambient +
                 ", showParticles=" + showParticles +
                 ", showIcon=" + showIcon +
-                ", nextEffect=" + nextEffect +
                 '}';
     }
 }
