@@ -2,7 +2,9 @@ package org.loomdev.api.server;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.ApiVersion;
 import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.command.CommandManager;
 import org.loomdev.api.command.CommandSource;
@@ -41,6 +43,13 @@ public interface Server {
      * @return The version of the Minecraft server software.
      */
     @NotNull String getMinecraftVersion();
+
+    /**
+     * Get the version of the api that the server implements.
+     *
+     * @return The version of the api.
+     */
+    @NonNull ApiVersion getApiVersion();
 
     /**
      * Get the path of the root directory container the server files.

@@ -16,9 +16,9 @@ public interface Scheduler {
 
     @NonNull Set<Task> getScheduledTasks();
 
-    @NonNull Set<Task> getScheduledTasks(Plugin plugin);
+    @NonNull Set<Task> getScheduledTasks(@NonNull Plugin plugin);
 
-    void unregisterSchedulers(Plugin plugin);
+    void unregisterSchedulers(@NonNull Plugin plugin);
 
     void disableTask(int id, boolean interruptIfRunning);
 }

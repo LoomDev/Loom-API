@@ -1,5 +1,7 @@
 package org.loomdev.api.plugin;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Optional;
 
 /**
@@ -12,35 +14,19 @@ public interface PluginContainer {
      *
      * @return The metadata of the plugin.
      */
-    PluginMetadata getMetadata();
+    @NotNull PluginMetadata getMetadata();
 
     /**
      * Returns the instance of the plugin class if available.
      *
      * @return The instance of the plugin.
      */
-    default Optional<Plugin> getInstance() {
-        return Optional.empty();
-    }
-
-    /**
-     * Check if the plugin is enabled.
-     *
-     * @return {@code true} id the plugin in enabled.
-     */
-    boolean isEnabled();
-
-    /**
-     * Check if the plugin is disabled.
-     *
-     * @return {@code true} id the plugin in disabled.
-     */
-    boolean isDisabled();
+    @NotNull Plugin getInstance();
 
     /**
      * Returns this plugin's classloader.
      *
      * @return The classloader instance for this plugin.
      */
-    ClassLoader getClassLoader();
+    @NotNull ClassLoader getClassLoader();
 }

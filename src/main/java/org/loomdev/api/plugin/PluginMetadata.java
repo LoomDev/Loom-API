@@ -1,10 +1,13 @@
 package org.loomdev.api.plugin;
 
 import com.google.common.collect.ImmutableList;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.ApiVersion;
+import org.loomdev.api.plugin.annotation.Dependency;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -16,7 +19,7 @@ public interface PluginMetadata {
     /**
      * Pattern for validating the plugins id.
      */
-    Pattern ID_PATTERN = Pattern.compile("[a-z][a-z0-9-_]{0,63}");
+    Pattern ID_PATTERN = Pattern.compile("[a-z][a-z0-9-]{0,63}");
 
     /**
      * Id of the plugin. This id should be unique so it does not conflict with any other plugins and
@@ -24,7 +27,7 @@ public interface PluginMetadata {
      *
      * @return The id of the plugin.
      */
-    @NonNull String getId();
+    @NotNull String getId();
 
     /**
      * A human readable name of the plugin.
@@ -63,18 +66,101 @@ public interface PluginMetadata {
     }
 
     /**
+     * The ids of the plugins that this plugin depends on.
+     *
+     * @return List of dependency ids.
+     */
+    default List<PluginDependency> getDependencies() {
+        return ImmutableList.of();
+    }
+
+    /**
+     * The minimum api version required to run the plugin.
+     *
+     * @return The minimum api version
+     */
+    @NotNull ApiVersion getMinimumApiVersion();
+
+    /**
      * Gets the path to the source location of the plugin.
      *
      * @return The source the plugin was loaded from or {@link Optional#empty()} if unknown.
      */
-    default Optional<Path> getSource() {
-        return Optional.empty();
-    }
+    @NotNull Path getSource();
 
     /**
      * Gets the main class of the plugin.
      *
      * @return The main class of the plugin.
      */
-    @NonNull Class<?> getMainClass();
+    @NotNull String getMain();
+
+    /**
+     * Gets the name of the plugin if present, else the id will be returened.
+     *
+     * @return The name if present or
+     */
+    default @NotNull String getNameOrId() {
+        return getName().orElse(getId());
+    }
+
+    State getState();
+
+    enum State {
+        /**
+         * The plugin is enabled
+         */
+        ENABLED,
+
+        /**
+         * The plugin is disabled
+         */
+        DISABLED,
+
+        /**
+         * The plugin is unable to be enabled because of an error.
+         * See console for more details.
+         */
+        ERROR
+    }
+
+    final class PluginDependency {
+        private final String id;
+        private final boolean optional;
+
+        public PluginDependency(String id, boolean optional) {
+            this.id = id;
+            this.optional = optional;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public boolean isOptional() {
+            return optional;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            PluginDependency that = (PluginDependency) o;
+            return optional == that.optional &&
+                    Objects.equals(id, that.id);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, optional);
+        }
+
+        @Override
+        public String toString() {
+            return "PluginDependency{" +
+                    "id='" + id + '\'' +
+                    ", optional=" + optional +
+                    '}';
+        }
+    }
 }

@@ -1,11 +1,13 @@
 package org.loomdev.api.math;
 
+import org.loomdev.api.util.Direction;
+
 public class Vector3d {
 
-    public static Vector3d ZERO = new Vector3d(0, 0, 0);
-    private final double x;
-    private final double y;
-    private final double z;
+    public static final Vector3d ZERO = new Vector3d(0, 0, 0);
+    private double x;
+    private double y;
+    private double z;
 
     public Vector3d(double x, double y, double z) {
         this.x = x;
@@ -27,6 +29,25 @@ public class Vector3d {
 
     public double getZ() {
         return this.z;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
+    }
+
+    public Vector3d offset(Direction direction, double offset) {
+        if (offset == 0) {
+            return this;
+        }
+        return add(direction.getOffset().multiply(offset));
     }
 
     public double dotProduct(Vector3d vec) {

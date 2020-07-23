@@ -1,9 +1,9 @@
 package org.loomdev.api.plugin;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
-import java.nio.file.Path;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,7 +17,7 @@ public interface PluginManager {
      * @param id The id of the plugin to get.
      * @return The plugin, if available.
      */
-    @NonNull Optional<PluginContainer> getPlugin(String id);
+    @NotNull Optional<PluginContainer> getPlugin(@NotNull String id);
 
     /**
      * Get a plugin container from an instance.
@@ -25,78 +25,41 @@ public interface PluginManager {
      * @param pluginInstance The instance to get the plugin container from.
      * @return The plugin container or {@link Optional#empty()} if not a plugin container.
      */
-    @NonNull Optional<PluginContainer> fromInstance(Plugin pluginInstance);
+    @NotNull Optional<PluginContainer> fromInstance(@NotNull Plugin pluginInstance);
 
     /**
      * Get all the plugins loaded by Loom.
      *
      * @return The plugins loaded by Loom.
      */
-    @NonNull Collection<PluginContainer> getPlugins();
+    @NotNull Collection<PluginContainer> getEnabledPlugins();
 
-    /**
-     * Check if a plugin is loaded based on its id.
-     *
-     * @param id The id of the plugin to check.
-     * @return {@code true} if the plugin is loaded.
-     */
-    boolean isLoaded(String id);
+    @NotNull Optional<PluginMetadata> getPluginMetadata(String id);
 
-    /**
-     * Check if a plugin is enabled.
-     *
-     * @param id The id of the plugin to check.
-     * @return {@code true} id the plugin in enabled.
-     */
-    boolean isEnabled(String id);
+    @NotNull Collection<PluginMetadata> getAllPlugins();
 
-    /**
-     * Check if a plugin is disabled.
-     *
-     * @param id The id of the plugin to check.
-     * @return {@code true} id the plugin in disabled.
-     */
-    boolean isDisabled(String id);
+    boolean wasFound(String id);
 
-    /**
-     * Enable a plugin.
-     *
-     * @param id The id of the plugin to enable.
-     * @return The results of the action.
-     */
-    @NonNull Result enablePlugin(String id);
+    @NotNull Optional<Boolean> isEnabled(String id);
 
-    /**
-     * Disable a plugin.
-     *
-     * @param id The id of the plugin to disable.
-     * @return The results of the action.
-     */
-    @NonNull Result disablePlugin(String id);
+    @NotNull Optional<Boolean> isDisabled(String id);
 
-    /**
-     * Loads a plugin into the server.
-     *
-     * @param id Theid of the plugin to load.
-     * @return The results of the action.
-     */
-    @NonNull Result loadPlugin(String id);
+    @NotNull List<PluginMetadata> scanPluginDirectory();
 
-    /**
-     * Loads a plugin into the server.
-     *
-     * @param path The file path of the plugin to load.
-     * @return The results of the action.
-     */
-    @NonNull Result loadPlugin(Path path);
+    // TODO get dependency graph
 
-    /**
-     * Completely unloads a plugin.
-     *
-     * @param id The id of the plugin to unload.
-     * @return The results of the action.
-     */
-    @NonNull Result unloadPlugin(String id);
+    // boolean loadPlugin(String id); // TODO isn't loading just part of enable?
+
+    // boolean unloadPlugin(String id); // TODO isn't unloading just part of disable ?
+
+    boolean enablePlugin(@NotNull String id);
+
+    boolean disablePlugin(@NotNull String id);
+
+    boolean reloadPlugin(@NotNull String id);
+
+    boolean reloadAll();
+
 
     /**
      * Results of a plugin enable/disable call.

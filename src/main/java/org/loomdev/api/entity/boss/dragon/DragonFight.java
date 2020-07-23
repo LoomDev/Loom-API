@@ -1,13 +1,14 @@
 package org.loomdev.api.entity.boss.dragon;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.world.Location;
 
 public interface DragonFight {
 
-    // TODO v1 BossBar getBossBar();
+    @NonNull BossBar getBossBar();
 
-    EnderDragon getDragon();
+    @NonNull EnderDragon getDragon();
 
     Location getEndPortalLocation();
 

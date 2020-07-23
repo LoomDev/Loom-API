@@ -1,6 +1,7 @@
-package org.loomdev.api.plugin;
+package org.loomdev.api.plugin.annotation;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.ApiVersion;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,7 +21,7 @@ public @interface LoomPlugin {
      *
      * @return The id of the plugin.
      */
-    @NonNull String id();
+    @NotNull String id();
 
     /**
      * A human readable name of the plugin.
@@ -49,4 +50,19 @@ public @interface LoomPlugin {
      * @return The names of the author(s) of the plugin.
      */
     String[] authors() default "";
+
+    /**
+     * The dependencies required to load before this plugin.
+     *
+     * @return List of dependencies.
+     */
+    Dependency[] dependencies() default {};
+
+    /**
+     * The minimum api version required to run the plugin.
+     *
+     * @return The minimum api version
+     */
+    @NotNull ApiVersion minimumApiVersion() default ApiVersion.UNKNOWN; // should always be latest but ApiVersion.LATEST can't be used. UNKNOWN is overridden by the annotation processor to the latest version.
+
 }

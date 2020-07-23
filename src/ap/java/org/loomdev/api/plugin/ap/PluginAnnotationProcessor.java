@@ -1,7 +1,7 @@
 package org.loomdev.api.plugin.ap;
 
 import com.google.gson.Gson;
-import org.loomdev.api.plugin.LoomPlugin;
+import org.loomdev.api.plugin.annotation.LoomPlugin;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
@@ -21,7 +21,7 @@ import java.io.Writer;
 import java.util.Objects;
 import java.util.Set;
 
-@SupportedAnnotationTypes({"org.loomdev.api.plugin.LoomPlugin"})
+@SupportedAnnotationTypes({"org.loomdev.api.plugin.annotation.LoomPlugin"})
 public class PluginAnnotationProcessor extends AbstractProcessor {
 
     private ProcessingEnvironment environment;

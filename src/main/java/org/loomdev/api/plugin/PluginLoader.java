@@ -1,27 +1,14 @@
 package org.loomdev.api.plugin;
 
-import java.nio.file.Path;
+import org.jetbrains.annotations.NotNull;
 
-/**
- * Represents a plugin loader.
- */
+import java.nio.file.Path;
+import java.util.Optional;
+
 public interface PluginLoader {
 
-    /**
-     * Loads a plugin from source.
-     *
-     * @param source The source to load the plugin from.
-     * @return The metadata of the plugin.
-     * @throws Exception an error was occurred when loading the plugin.
-     */
-    PluginContainer loadPlugin(Path source) throws Exception;
+    @NotNull Optional<PluginMetadata> loadMetadata(@NotNull Path source);
 
-    /**
-     * Create a plugin instance.
-     *
-     * @param plugin The plugin metadata of the the plugin to load.
-     * @return The instance of the plugin.
-     */
-    Plugin createPlugin(PluginMetadata plugin);
+    @NotNull Optional<PluginContainer> loadPlugin(@NotNull PluginMetadata plugin);
 
 }
