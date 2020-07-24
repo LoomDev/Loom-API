@@ -4,6 +4,9 @@ import net.kyori.adventure.text.format.TextColor;
 
 public class ChatColor {
 
+    public static final char COLOR_CHAR = '\u00A7';
+    public static final String ALL_CODES = "0123456789AaBbCcDdEeFfKkLlMmNnOoRrXx";
+
     public static TextColor DARK_RED = TextColor.fromHexString("#AA0000");
     public static TextColor RED = TextColor.fromHexString("#FF5555");
     public static TextColor GOLD = TextColor.fromHexString("#FFAA00");
@@ -21,4 +24,15 @@ public class ChatColor {
     public static TextColor DARK_GRAY = TextColor.fromHexString("#555555");
     public static TextColor BLACK = TextColor.fromHexString("#000000");
 
+    public static String translate(char colorChar, String text) {
+        char[] b = text.toCharArray();
+
+        for (int i = 0; i < b.length - 1; i++) {
+            if (b[i] == colorChar && ALL_CODES.indexOf(b[i + 1]) > -1) {
+                b[i] = ChatColor.COLOR_CHAR;
+                b[i + 1] = Character.toLowerCase(b[i + 1]);
+            }
+        }
+        return new String(b);
+    }
 }
