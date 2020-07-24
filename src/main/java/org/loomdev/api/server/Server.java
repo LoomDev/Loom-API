@@ -14,6 +14,7 @@ import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.monitoring.Tps;
 import org.loomdev.api.monitoring.TickTimes;
 import org.loomdev.api.scheduler.Scheduler;
+import org.loomdev.api.util.registry.Registry;
 import org.loomdev.api.world.World;
 
 import java.nio.file.Path;
@@ -154,4 +155,7 @@ public interface Server {
     @NotNull BossBar createBossBar(@NotNull String text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
 
     @NotNull BossBar createBossBar(@NotNull Component text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
+
+    @NotNull Registry getRegistry();
+
 }

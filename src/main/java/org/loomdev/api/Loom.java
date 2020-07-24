@@ -5,6 +5,7 @@ import org.loomdev.api.event.EventManager;
 import org.loomdev.api.plugin.PluginManager;
 import org.loomdev.api.scheduler.Scheduler;
 import org.loomdev.api.server.Server;
+import org.loomdev.api.util.registry.Registry;
 
 public abstract class Loom {
 
@@ -36,5 +37,9 @@ public abstract class Loom {
 
     public static Scheduler getScheduler() {
         return getServer().getScheduler();
+    }
+
+    public static Registry getRegistry() {
+        return getServer().getRegistry();
     }
 }
