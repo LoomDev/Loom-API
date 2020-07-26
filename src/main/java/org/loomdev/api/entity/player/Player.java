@@ -1,7 +1,6 @@
 package org.loomdev.api.entity.player;
 
 import net.kyori.adventure.text.TextComponent;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
@@ -36,65 +35,77 @@ public interface Player extends LivingEntity {
 
     void updateInventory();
 
-    void sendActionbar(@NonNull String message);
+    void sendActionbar(@NotNull String message);
 
-    void sendActionbar(@NonNull TextComponent message);
+    void sendActionbar(@NotNull TextComponent message);
 
-    void sendTitle(@NonNull String top, @NonNull String bottom);
+    void sendTitle(@NotNull String top, @NotNull String bottom);
 
-    void sendTitle(@NonNull TextComponent top, @NonNull TextComponent bottom);
+    void sendTitle(@NotNull TextComponent top, @NotNull TextComponent bottom);
 
-    void sendTitle(@NonNull String top, @NonNull String bottom, int fadeIn, int stay, int fadeOut);
+    void sendTitle(@NotNull String top, @NotNull String bottom, int fadeIn, int stay, int fadeOut);
 
-    void sendTitle(@NonNull TextComponent top, @NonNull TextComponent bottom, int fadeIn, int stay, int fadeOut);
+    void sendTitle(@NotNull TextComponent top, @NotNull TextComponent bottom, int fadeIn, int stay, int fadeOut);
 
-    void showPlayer(@NonNull Player player);
+    void showPlayer(@NotNull Player player);
 
-    void hidePlayer(@NonNull Player player);
+    void hidePlayer(@NotNull Player player);
 
-    boolean canSee(@NonNull Player player);
+    boolean canSee(@NotNull Player player);
 
-    @NonNull Optional<InetSocketAddress> getAddress();
+    @NotNull Optional<InetSocketAddress> getAddress();
 
     int getProtocolVersion();
 
-    @NonNull Optional<TextComponent> getTabListName();
+    @NotNull TextComponent getTabListName();
 
-    void setTabListName(@NonNull TextComponent text);
+    void setTabListName(@NotNull TextComponent text);
 
-    @NonNull Optional<TextComponent> getTabListHeader();
+    @NotNull Optional<TextComponent> getTabListHeader();
 
-    void setTabListHeader(@NonNull TextComponent text);
+    void setTabListHeader(@NotNull TextComponent text);
 
-    @NonNull Optional<TextComponent> getTabListFooter();
+    @NotNull Optional<TextComponent> getTabListFooter();
 
-    void setTabListFooter(@NonNull TextComponent text);
+    void setTabListFooter(@NotNull TextComponent text);
 
-    @NonNull Optional<Location> getBedLocation();
+    @NotNull Optional<Location> getBedLocation();
 
-    void setBedLocation(@NonNull Location bed);
+    void setBedLocation(@NotNull Location bed);
 
     // TODO sleeping ignored toggles
 
-    @NonNull Optional<Location> getCompassTarget();
+    @NotNull Optional<Location> getCompassTarget();
 
-    void setCompassTarget(@NonNull Location target);
+    void setCompassTarget(@NotNull Location target);
 
-    @NonNull Optional<Entity> getSpectatorTarget();
+    @NotNull Optional<Entity> getSpectatorTarget();
 
-    void setSpectatorTarget(@NonNull Entity target);
+    void setSpectatorTarget(@NotNull Entity target);
 
     // TODO food, hunger, saturation shit
 
-    @NonNull Optional<Weather> getWeather();
+    long getTime();
 
-    void setWeather(@NonNull Weather weather);
+    void setTime(long time, boolean relative);
+
+    long getTimeOffset();
+
+    boolean isTimeRelative();
+
+    void syncTime();
+
+    @NotNull Optional<Weather> getWeather();
+
+    void setWeather(@NotNull Weather weather);
+
+    // TODO update, tick, and sync weather
 
     void resetWeather();
 
-    void kick(@NonNull String message);
+    void kick(@NotNull String message);
 
-    void kick(@NonNull TextComponent message);
+    void kick(@NotNull TextComponent message);
 
     boolean isOp();
 

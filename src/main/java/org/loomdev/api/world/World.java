@@ -43,4 +43,12 @@ public interface World {
     long getTime();
 
     void setTime(long ticks);
+
+    boolean isDay();
+
+    boolean isNight();
+
+    long getAbsoluteTime();
+
+    void setAbsoluteTime(long ticks);
 }
