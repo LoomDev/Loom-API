@@ -3,7 +3,7 @@ package org.loomdev.api.item.property.data;
 /**
  * Damage data of {@link org.loomdev.api.item.ItemStack}s
  */
-public interface DamageData extends ItemPropertyData {
+public interface DamageData extends ItemPropertyData<DamageData> {
 
     /**
      * Get the amount of damage that has been dealt to the {@link org.loomdev.api.item.ItemStack}.

@@ -13,7 +13,7 @@ import java.util.Map;
  *     the enchantments will be added as a stored enchantment.
  * </p>
  */
-public interface EnchantmentData extends ItemPropertyData {
+public interface EnchantmentData extends ItemPropertyData<EnchantmentData> {
 
     /**
      * Get the enchantments of the {@link org.loomdev.api.item.ItemStack}.

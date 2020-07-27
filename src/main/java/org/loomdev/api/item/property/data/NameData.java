@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 /**
  * Naming data of {@link org.loomdev.api.item.ItemStack}s.
  */
-public interface NameData extends ItemPropertyData {
+public interface NameData extends ItemPropertyData<NameData> {
 
     /**
      * Get the current name of the {@link org.loomdev.api.item.ItemStack}.

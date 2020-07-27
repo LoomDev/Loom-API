@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Lore data of {@link org.loomdev.api.item.ItemStack}s.
  */
-public interface LoreData extends ItemPropertyData {
+public interface LoreData extends ItemPropertyData<LoreData> {
 
     /**
      * Get the lore of the {@link org.loomdev.api.item.ItemStack}.
