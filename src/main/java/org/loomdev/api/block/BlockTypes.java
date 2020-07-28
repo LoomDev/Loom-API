@@ -1,7 +1,6 @@
 package org.loomdev.api.block;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.loomdev.api.item.ItemTypes;
 
 import java.util.HashMap;
 import java.util.Map;

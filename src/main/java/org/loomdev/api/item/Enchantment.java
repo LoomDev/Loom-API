@@ -2,7 +2,6 @@ package org.loomdev.api.item;
 
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
-import org.loomdev.api.util.EquipmentSlot;
 
 public interface Enchantment {
 

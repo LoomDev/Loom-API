@@ -3,7 +3,6 @@ package org.loomdev.api.entity.passive;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.loomdev.api.entity.JumpingMount;
 import org.loomdev.api.entity.Saddleable;
-import org.loomdev.api.entity.passive.AnimalEntity;
 
 import java.util.Optional;
 import java.util.UUID;

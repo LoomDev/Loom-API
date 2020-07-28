@@ -2,7 +2,6 @@ package org.loomdev.api.event.entity.decoration;
 
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
-import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.decoration.ArmorStand;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.Cancellable;

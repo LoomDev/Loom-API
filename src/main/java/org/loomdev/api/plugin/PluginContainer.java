@@ -2,8 +2,6 @@ package org.loomdev.api.plugin;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Optional;
-
 /**
  * Wrapper around a loaded plugin
  */

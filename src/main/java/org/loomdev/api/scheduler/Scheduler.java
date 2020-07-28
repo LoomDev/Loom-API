@@ -6,7 +6,7 @@ import org.loomdev.api.plugin.Plugin;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.loomdev.api.scheduler.Task.*;
+import static org.loomdev.api.scheduler.Task.Builder;
 
 public interface Scheduler {
 

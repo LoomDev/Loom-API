@@ -5,10 +5,7 @@ import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.Loom;
 import org.loomdev.api.item.property.ItemProperty;
-import org.loomdev.api.item.property.data.EnchantmentData;
 import org.loomdev.api.item.property.data.ItemPropertyData;
-import org.loomdev.api.item.property.data.LoreData;
-import org.loomdev.api.item.property.data.NameData;
 import org.loomdev.api.util.builder.BuilderBase;
 
 import java.util.Arrays;

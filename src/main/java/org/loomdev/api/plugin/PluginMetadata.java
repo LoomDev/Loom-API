@@ -3,7 +3,6 @@ package org.loomdev.api.plugin;
 import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.ApiVersion;
-import org.loomdev.api.plugin.annotation.Dependency;
 
 import java.nio.file.Path;
 import java.util.List;

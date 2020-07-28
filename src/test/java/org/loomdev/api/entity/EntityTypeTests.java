@@ -4,7 +4,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.loomdev.api.block.BlockTypes;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,7 +1,9 @@
-package org.loomdev.api.util;;
+package org.loomdev.api.util;
 
 import java.util.HashMap;
 import java.util.Map;
+
+;
 
 // TODO create test to check these values agains the minecraft DyeColor enum
 public enum DyeColor {
