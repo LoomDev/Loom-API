@@ -1,6 +1,6 @@
 package org.loomdev.api.entity;
 
-import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
@@ -27,11 +27,11 @@ public interface Entity extends CommandSource {
 
     @NonNull String getName();
 
-    @NonNull TextComponent getDisplayName();
+    @NonNull Component getDisplayName();
 
-    @NonNull Optional<TextComponent> getCustomName();
+    @NonNull Optional<Component> getCustomName();
 
-    void setCustomName(@NonNull TextComponent component);
+    void setCustomName(@NonNull Component component);
 
     boolean hasCustomName();
 

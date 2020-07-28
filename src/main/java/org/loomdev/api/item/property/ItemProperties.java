@@ -35,6 +35,24 @@ public class ItemProperties {
      */
     public static final ItemProperty<EnchantmentData> Enchantments = Loom.getRegistry().getItemProperty(EnchantmentData.class);
 
+    // banner
+    // block data
+    // block state
+    // book
+    // Compass
+    // Crossbow
+    // FireworkStar
+    // Firework
+    // KnowledgeBook
+    // LeatherArmor
+    // Map
+    // Potion
+    // Repairable
+    // Skull
+    // SpawnEgg
+    // SuspiciousStew
+    // TropicalFishBucket
+
     // book | BookData = done |
 
     // map data ??
