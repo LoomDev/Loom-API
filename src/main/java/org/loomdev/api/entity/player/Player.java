@@ -1,5 +1,6 @@
 package org.loomdev.api.entity.player;
 
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.Entity;
@@ -57,17 +58,17 @@ public interface Player extends LivingEntity {
 
     int getProtocolVersion();
 
-    @NotNull TextComponent getTabListName();
+    @NotNull Component getTabListName();
 
-    void setTabListName(@NotNull TextComponent text);
+    void setTabListName(@NotNull Component text);
 
-    @NotNull Optional<TextComponent> getTabListHeader();
+    @NotNull Optional<Component> getTabListHeader();
 
-    void setTabListHeader(@NotNull TextComponent text);
+    void setTabListHeader(@NotNull Component text);
 
-    @NotNull Optional<TextComponent> getTabListFooter();
+    @NotNull Optional<Component> getTabListFooter();
 
-    void setTabListFooter(@NotNull TextComponent text);
+    void setTabListFooter(@NotNull Component text);
 
     @NotNull Optional<Location> getBedLocation();
 
