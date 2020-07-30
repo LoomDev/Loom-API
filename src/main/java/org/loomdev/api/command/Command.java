@@ -1,8 +1,7 @@
 package org.loomdev.api.command;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,14 +20,14 @@ public abstract class Command {
         this.aliases = new String[0];
     }
 
-    protected Command(@NonNull String name, @Nullable String... aliases) {
+    protected Command(@NotNull String name, @Nullable String... aliases) {
         this.name = name;
         this.aliases = aliases;
     }
 
-    public abstract void execute(@NonNull CommandSource source, String[] args);
+    public abstract void execute(@NotNull CommandSource source, String alias, String[] args);
 
-    public List<String> tabComplete(@NonNull CommandSource source, @Nullable String[] args) {
+    public List<String> tabComplete(@NotNull CommandSource source, String alias, @Nullable String[] args) {
         return Collections.emptyList();
     }
 

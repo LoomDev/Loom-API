@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
 import org.loomdev.api.sound.Sound;
+import org.loomdev.api.util.GameMode;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.Weather;
 
@@ -104,11 +105,33 @@ public interface Player extends LivingEntity {
 
     void resetWeather();
 
-    void kick(@NotNull String message);
+    default void kick(@NotNull String message) {
+        kick(TextComponent.of(message));
+    }
 
-    void kick(@NotNull TextComponent message);
+    void kick(@NotNull Component message);
+
+    default void ban(@NotNull String message) {
+        ban(TextComponent.of(message));
+    }
+
+    void ban(@NotNull Component message);
 
     boolean isOp();
 
     void playSound(@NotNull Sound sound, @NotNull Location location);
+
+    /**
+     * Get the current {@link GameMode} of the player.
+     *
+     * @return The {@link GameMode} of the player.
+     */
+    @NotNull GameMode getGameMode();
+
+    /**
+     * Change the {@link GameMode} of the player.
+     *
+     * @param gameMode The new {@link GameMode}.
+     */
+    void setGameMode(@NotNull GameMode gameMode);
 }
