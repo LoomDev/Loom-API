@@ -13,13 +13,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.apache.logging.log4j:log4j-core:2.8.1'
-    implementation 'com.google.inject:guice:4.2.3'
-    implementation 'com.google.code.gson:gson:2.2.4'
-    implementation 'net.kyori:adventure-api:4.0.0-SNAPSHOT'
-    implementation 'net.kyori:adventure-text-serializer-gson:4.0.0-SNAPSHOT'
-    implementation 'org.yaml:snakeyaml:1.21'
-    implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+    compile 'org.apache.logging.log4j:log4j-core:2.8.1'
+    compile 'com.google.inject:guice:4.2.3'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'net.kyori:adventure-api:4.0.0-SNAPSHOT'
+    compile 'net.kyori:adventure-text-serializer-gson:4.0.0-SNAPSHOT'
+    compile 'org.yaml:snakeyaml:1.21'
+    compile 'com.moandjiezana.toml:toml4j:0.7.2'
 
     testImplementation 'org.loomdev:minecraft-server:1.16.1-SNAPSHOT'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
