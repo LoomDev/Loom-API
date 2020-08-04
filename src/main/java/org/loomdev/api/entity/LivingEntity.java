@@ -5,6 +5,7 @@ import org.loomdev.api.block.Material;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
 import org.loomdev.api.item.ItemStack;
+import org.loomdev.api.item.ItemTypes;
 import org.loomdev.api.sound.Sound;
 import org.loomdev.api.util.Hand;
 import org.loomdev.api.world.Location;
@@ -54,42 +55,6 @@ public interface LivingEntity extends Damageable {
 
     void setCanPickItems(boolean flag);
 
-    Sound.Type getHurtSound();
-
-    Sound.Type getHurtSound(@NotNull DamageSource source);
-
-    void setHurtSound(@NotNull Sound.Type sound);
-
-    void setHurtSound(@NotNull DamageSource source, @NotNull Sound.Type sound);
-
-    void playHurtSound();
-
-    void playHurtSound(@NotNull DamageSource source);
-
-    Sound.Type getDeathSound();
-
-    void setDeathSound(@NotNull Sound.Type sound);
-
-    Sound.Type getFallSound();
-
-    void setFallSound(@NotNull Sound.Type sound);
-
-    Sound.Type getDrinkSound();
-
-    void setDrinkSound(@NotNull Sound.Type sound);
-
-    Sound.Type getEatSound();
-
-    void setEatSound(@NotNull Sound.Type sound);
-
-    float getSoundVolume();
-
-    void setSoundVolume(float volume);
-
-    float getSoundPitch();
-
-    void setSoundPitch(float pitch);
-
     boolean isAlive();
 
     int getStuckArrowCount();
@@ -100,13 +65,29 @@ public interface LivingEntity extends Damageable {
 
     void setStringerCount(int count);
 
-    boolean isHolding(@NotNull Material material); // TODO use material?
+    boolean isHolding(@NotNull ItemTypes material);
 
-    boolean isHolding(@NotNull Predicate<Material> predicate); // TODO use material?
+    boolean isHolding(@NotNull Predicate<ItemTypes> predicate);
 
-    @NotNull Optional<ItemStack> getStackInHand(@NotNull Hand hand);
+    @NotNull Optional<ItemStack> getItemInHand(@NotNull Hand hand);
 
-    void setStackInHand(@NotNull Hand hand, @NotNull ItemStack itemStack);
+    void setItemInHand(@NotNull Hand hand, @NotNull ItemStack itemStack);
+
+    @NotNull Optional<ItemStack> getBoots();
+
+    void setBoots(@NotNull ItemStack itemStack);
+
+    @NotNull Optional<ItemStack> getLeggings();
+
+    void setLeggings(@NotNull ItemStack itemStack);
+
+    @NotNull Optional<ItemStack> getChestplate();
+
+    void setChestplate(@NotNull ItemStack itemStack);
+
+    @NotNull Optional<ItemStack> getHelmet();
+
+    void  setHelmet(@NotNull ItemStack itemStack);
 
     float getMovementSpeed();
 

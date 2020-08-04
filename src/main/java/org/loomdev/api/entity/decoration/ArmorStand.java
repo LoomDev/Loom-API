@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.decoration;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.LivingEntity;
 import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.math.EulerAngle;
@@ -17,49 +17,29 @@ public interface ArmorStand extends LivingEntity {
     EulerAngle DEFAULT_LEFT_LEG_ROTATION = EulerAngle.of(-1.0F, 0.0F, -1.0F);
     EulerAngle DEFAULT_RIGHT_LEG_ROTATION = EulerAngle.of(1.0F, 0.0F, 1.0F);
 
-    @NonNull Optional<ItemStack> getItemInHand(@NonNull Hand hand);
+    @NotNull EulerAngle getBodyPose();
 
-    void setItemInHand(@NonNull Hand hand, @NonNull ItemStack itemStack);
+    void setBodyPose(@NotNull EulerAngle eulerAngle);
 
-    @NonNull Optional<ItemStack> getBoots();
+    @NotNull EulerAngle getLeftArmPose();
 
-    void setBoots(@NonNull ItemStack itemStack);
+    void setLeftArmPose(@NotNull EulerAngle eulerAngle);
 
-    @NonNull Optional<ItemStack> getLeggings();
+    @NotNull EulerAngle getRightArmPose();
 
-    void setLeggings(@NonNull ItemStack itemStack);
+    void setRightArmPose(@NotNull EulerAngle eulerAngle);
 
-    @NonNull Optional<ItemStack> getChestplate();
+    @NotNull EulerAngle getLeftLegPose();
 
-    void setChestplate(@NonNull ItemStack itemStack);
+    void setLeftLegPose(@NotNull EulerAngle eulerAngle);
 
-    @NonNull Optional<ItemStack> getHelmet();
+    @NotNull EulerAngle getRightLegPose();
 
-    void  setHelmet(@NonNull ItemStack itemStack);
+    void setRightLegPose(@NotNull EulerAngle eulerAngle);
 
-    @NonNull EulerAngle getBodyPose();
+    @NotNull EulerAngle getHeadPose();
 
-    void setBodyPose(@NonNull EulerAngle eulerAngle);
-
-    @NonNull EulerAngle getLeftArmPose();
-
-    void setLeftArmPose(@NonNull EulerAngle eulerAngle);
-
-    @NonNull EulerAngle getRightArmPose();
-
-    void setRightArmPose(@NonNull EulerAngle eulerAngle);
-
-    @NonNull EulerAngle getLeftLegPose();
-
-    void setLeftLegPose(@NonNull EulerAngle eulerAngle);
-
-    @NonNull EulerAngle getRightLegPose();
-
-    void setRightLegPose(@NonNull EulerAngle eulerAngle);
-
-    @NonNull EulerAngle getHeadPose();
-
-    void setHeadPose(@NonNull EulerAngle eulerAngle);
+    void setHeadPose(@NotNull EulerAngle eulerAngle);
 
     boolean isBasePlateHidden();
 
