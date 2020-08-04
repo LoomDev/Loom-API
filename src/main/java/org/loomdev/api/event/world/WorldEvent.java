@@ -13,7 +13,7 @@ public class WorldEvent implements Event {
         this.world = world;
     }
 
-    public World getWorld() {
+    public @NotNull World getWorld() {
         return world;
     }
 }
