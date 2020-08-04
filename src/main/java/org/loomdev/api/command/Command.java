@@ -1,5 +1,6 @@
 package org.loomdev.api.command;
 
+import com.google.common.collect.ImmutableList;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,7 +16,7 @@ public abstract class Command {
 
     private String description, usage, permission;
 
-    protected Command(String name) {
+    protected Command(@NotNull String name) {
         this.name = name;
         this.aliases = new String[0];
     }
@@ -25,21 +26,21 @@ public abstract class Command {
         this.aliases = aliases;
     }
 
-    public abstract void execute(@NotNull CommandSource source, String alias, String[] args);
+    public abstract void execute(@NotNull CommandSource source, String[] args);
 
-    public List<String> tabComplete(@NotNull CommandSource source, String alias, @Nullable String[] args) {
-        return Collections.emptyList();
+    public @NotNull List<String> suggest(@NotNull CommandSource source, @Nullable String[] args) {
+        return ImmutableList.of();
     }
 
-    public String getName() {
+    public @NotNull String getName() {
         return this.name;
     }
 
-    public String[] getAliases() {
+    public @NotNull String[] getAliases() {
         return this.aliases;
     }
 
-    public Optional<String> getDescription() {
+    public @NotNull Optional<String> getDescription() {
         return Optional.ofNullable(this.description);
     }
 
@@ -47,7 +48,7 @@ public abstract class Command {
         this.description = description;
     }
 
-    public Optional<String> getUsage() {
+    public @NotNull Optional<String> getUsage() {
         return Optional.ofNullable(this.usage);
     }
 
@@ -55,7 +56,7 @@ public abstract class Command {
         this.usage = usage;
     }
 
-    public Optional<String> getPermission() {
+    public @NotNull Optional<String> getPermission() {
         return Optional.ofNullable(this.permission);
     }
 

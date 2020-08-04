@@ -1,13 +1,11 @@
 package org.loomdev.api.command;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.plugin.Plugin;
 
 public interface CommandManager {
 
-    void register(@NonNull Plugin plugin, @NonNull Command command);
+    void register(@NotNull Plugin plugin, @NotNull Command command);
 
-    void unregister(@NonNull Plugin plugin);
-
-    int handle(@NonNull CommandSource source, @NonNull String input);
+    void unregister(@NotNull Plugin plugin);
 }
