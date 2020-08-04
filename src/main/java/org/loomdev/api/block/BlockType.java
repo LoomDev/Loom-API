@@ -5,7 +5,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum BlockTypes {
+public enum BlockType {
 
     ACACIA_BUTTON("minecraft:acacia_button"),
     ACACIA_DOOR("minecraft:acacia_door"),
@@ -771,10 +771,10 @@ public enum BlockTypes {
     ZOMBIE_HEAD("minecraft:zombie_head"),
     ZOMBIE_WALL_HEAD("minecraft:zombie_wall_head");
 
-    private static Map<String, BlockTypes> mapById = new HashMap<>();
+    private static Map<String, BlockType> mapById = new HashMap<>();
     private final String id;
 
-    BlockTypes(String id) {
+    BlockType(String id) {
         this.id = id;
     }
 
@@ -782,12 +782,12 @@ public enum BlockTypes {
         return this.id;
     }
 
-    public static @Nullable BlockTypes getById(String id) {
+    public static @Nullable BlockType getById(String id) {
         return mapById.get(id);
     }
 
     static {
-        for (BlockTypes type : values()) {
+        for (BlockType type : values()) {
             mapById.put(type.id, type);
         }
     }

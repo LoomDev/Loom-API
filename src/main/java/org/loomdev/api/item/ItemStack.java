@@ -21,7 +21,7 @@ public interface ItemStack {
     /**
      * An empty ItemStack.
      */
-    ItemStack EMPTY = ItemStack.builder().type(ItemTypes.AIR).build();
+    ItemStack EMPTY = ItemStack.builder().type(ItemType.AIR).build();
 
     static Builder builder() {
         return Loom.getRegistry().createBuilder(ItemStack.class);
@@ -31,17 +31,17 @@ public interface ItemStack {
      * Get the item type of this ItemStack.
      *
      * @return The type of the item.
-     * @see ItemTypes
+     * @see ItemType
      */
-    @NotNull ItemTypes getType();
+    @NotNull ItemType getType();
 
     /**
      * Set the item type of this ItemStack.
      *
      * @param type The item type.
-     * @see ItemTypes
+     * @see ItemType
      */
-    void setType(@NotNull ItemTypes type);
+    void setType(@NotNull ItemType type);
 
     /**
      * Get the amount of items in the ItemStack.
@@ -261,7 +261,7 @@ public interface ItemStack {
      */
     interface Builder extends BuilderBase<ItemStack, Builder> {
 
-        Builder type(@NotNull ItemTypes type);
+        Builder type(@NotNull ItemType type);
 
         Builder amount(int amount);
 

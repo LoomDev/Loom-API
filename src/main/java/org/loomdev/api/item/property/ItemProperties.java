@@ -1,6 +1,7 @@
 package org.loomdev.api.item.property;
 
 import org.loomdev.api.Loom;
+import org.loomdev.api.item.ItemType;
 import org.loomdev.api.item.property.data.DamageData;
 import org.loomdev.api.item.property.data.EnchantmentData;
 import org.loomdev.api.item.property.data.LoreData;
@@ -13,25 +14,25 @@ public class ItemProperties {
 
     /**
      * Change the name of an {@link org.loomdev.api.item.ItemStack}.
-     * <p>Can be applied to all {@link org.loomdev.api.item.ItemTypes}.</p>
+     * <p>Can be applied to all {@link ItemType}.</p>
      */
     public static final ItemProperty<NameData> Name = Loom.getRegistry().getItemProperty(NameData.class);
 
     /**
      * Change the lore of an {@link org.loomdev.api.item.ItemStack}.
-     * <p>Can be applied to all {@link org.loomdev.api.item.ItemTypes}.</p>
+     * <p>Can be applied to all {@link ItemType}.</p>
      */
     public static final ItemProperty<LoreData> Lore = Loom.getRegistry().getItemProperty(LoreData.class);
 
     /**
      * Modify the damage properties of an {@link org.loomdev.api.item.ItemStack}.
-     * <p>Can be applied to all {@link org.loomdev.api.item.ItemTypes}.</p>
+     * <p>Can be applied to all {@link ItemType}.</p>
      */
     public static final ItemProperty<DamageData> Damage = Loom.getRegistry().getItemProperty(DamageData.class);
 
     /**
      * Add, remove, etc. enchantments of an {@link org.loomdev.api.item.ItemStack}.
-     * <p>Can be applied to any {@link org.loomdev.api.item.ItemTypes}.</p>
+     * <p>Can be applied to any {@link ItemType}.</p>
      */
     public static final ItemProperty<EnchantmentData> Enchantments = Loom.getRegistry().getItemProperty(EnchantmentData.class);
 

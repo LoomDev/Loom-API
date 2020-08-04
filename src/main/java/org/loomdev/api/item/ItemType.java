@@ -5,7 +5,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum ItemTypes {
+public enum ItemType {
     ACACIA_BOAT("minecraft:acacia_boat"),
     ACACIA_BUTTON("minecraft:acacia_button"),
     ACACIA_DOOR("minecraft:acacia_door"),
@@ -982,10 +982,10 @@ public enum ItemTypes {
     ZOMBIE_VILLAGER_SPAWN_EGG("minecraft:zombie_villager_spawn_egg"),
     ZOMBIFIED_PIGLIN_SPAWN_EGG("minecraft:zombified_piglin_spawn_egg");
 
-    private static final Map<String, ItemTypes> mapById = new HashMap<>();
+    private static final Map<String, ItemType> mapById = new HashMap<>();
     private final String id;
 
-    ItemTypes(String id) {
+    ItemType(String id) {
         this.id = id;
     }
 
@@ -993,12 +993,12 @@ public enum ItemTypes {
         return this.id;
     }
 
-    public static @Nullable ItemTypes getById(String id) {
+    public static @Nullable ItemType getById(String id) {
         return mapById.get(id);
     }
 
     static {
-        for (ItemTypes type : values()) {
+        for (ItemType type : values()) {
             mapById.put(type.id, type);
         }
     }

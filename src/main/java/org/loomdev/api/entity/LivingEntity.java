@@ -1,11 +1,10 @@
 package org.loomdev.api.entity;
 
 import org.jetbrains.annotations.NotNull;
-import org.loomdev.api.block.Material;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
 import org.loomdev.api.item.ItemStack;
-import org.loomdev.api.item.ItemTypes;
+import org.loomdev.api.item.ItemType;
 import org.loomdev.api.sound.Sound;
 import org.loomdev.api.util.Hand;
 import org.loomdev.api.world.Location;

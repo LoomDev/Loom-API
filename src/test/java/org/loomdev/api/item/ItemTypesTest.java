@@ -12,7 +12,7 @@ public class ItemTypesTest {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, String> current = Arrays.stream(ItemTypes.values()).collect(Collectors.toMap(Enum::name, ItemTypes::getId));
+        Map<String, String> current = Arrays.stream(ItemType.values()).collect(Collectors.toMap(Enum::name, ItemType::getId));
         Map<String, String> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 

@@ -12,7 +12,7 @@ public class BlockTypesTest {
 
     @Test
     void doEnumValuesMatchRegistry() {
-        Map<String, String> current = Arrays.stream(BlockTypes.values()).collect(Collectors.toMap(Enum::name, BlockTypes::getId));
+        Map<String, String> current = Arrays.stream(BlockType.values()).collect(Collectors.toMap(Enum::name, BlockType::getId));
         Map<String, String> missing = new HashMap<>();
         List<String> versionMismatch = new ArrayList<>();
 

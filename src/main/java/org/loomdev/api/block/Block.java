@@ -29,8 +29,7 @@ public interface Block {
 
     @NotNull World getWorld();
 
-    Material getMaterial();
+    @NotNull BlockType getType();
 
-    Material setMaterial();
-
+    void setType(@NotNull BlockType type);
 }

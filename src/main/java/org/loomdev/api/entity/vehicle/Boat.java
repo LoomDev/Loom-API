@@ -1,8 +1,8 @@
 package org.loomdev.api.entity.vehicle;
 
-import org.loomdev.api.block.BlockTypes;
+import org.loomdev.api.block.BlockType;
 import org.loomdev.api.entity.Entity;
-import org.loomdev.api.item.ItemTypes;
+import org.loomdev.api.item.ItemType;
 
 public interface Boat extends Entity {
     
@@ -13,18 +13,18 @@ public interface Boat extends Entity {
     Placement getPlacement();
     
     enum Type {
-        OAK(BlockTypes.OAK_PLANKS, ItemTypes.OAK_BOAT, "oak"),
-        SPRUCE(BlockTypes.SPRUCE_PLANKS, ItemTypes.SPRUCE_BOAT, "spruce"),
-        BIRCH(BlockTypes.BIRCH_PLANKS, ItemTypes.BIRCH_BOAT, "birch"),
-        JUNGLE(BlockTypes.JUNGLE_PLANKS, ItemTypes.JUNGLE_BOAT, "jungle"),
-        ACACIA(BlockTypes.ACACIA_PLANKS, ItemTypes.ACACIA_BOAT, "acacia"),
-        DARK_OAK(BlockTypes.DARK_OAK_PLANKS, ItemTypes.DARK_OAK_BOAT, "dark_oak");
+        OAK(BlockType.OAK_PLANKS, ItemType.OAK_BOAT, "oak"),
+        SPRUCE(BlockType.SPRUCE_PLANKS, ItemType.SPRUCE_BOAT, "spruce"),
+        BIRCH(BlockType.BIRCH_PLANKS, ItemType.BIRCH_BOAT, "birch"),
+        JUNGLE(BlockType.JUNGLE_PLANKS, ItemType.JUNGLE_BOAT, "jungle"),
+        ACACIA(BlockType.ACACIA_PLANKS, ItemType.ACACIA_BOAT, "acacia"),
+        DARK_OAK(BlockType.DARK_OAK_PLANKS, ItemType.DARK_OAK_BOAT, "dark_oak");
 
-        private final BlockTypes plankType;
-        private final ItemTypes itemTypes;
+        private final BlockType plankType;
+        private final ItemType itemTypes;
         private final String name;
 
-        Type(BlockTypes plankType, ItemTypes itemTypes, String name) {
+        Type(BlockType plankType, ItemType itemTypes, String name) {
             this.plankType = plankType;
             this.itemTypes = itemTypes;
             this.name = name;
@@ -34,11 +34,11 @@ public interface Boat extends Entity {
             return this.name;
         }
 
-        public ItemTypes getItemType() {
+        public ItemType getItemType() {
             return itemTypes;
         }
 
-        public BlockTypes getPlankType() {
+        public BlockType getPlankType() {
             return plankType;
         }
     }

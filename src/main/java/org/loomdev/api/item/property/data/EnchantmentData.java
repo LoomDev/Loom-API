@@ -2,6 +2,7 @@ package org.loomdev.api.item.property.data;
 
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.item.Enchantment;
+import org.loomdev.api.item.ItemType;
 
 import java.util.Map;
 
@@ -9,7 +10,7 @@ import java.util.Map;
  * Enchantment data of an {@link org.loomdev.api.item.ItemStack}
  *
  * <p>
- *     Note: When used on an {@link org.loomdev.api.item.ItemTypes#ENCHANTED_BOOK}
+ *     Note: When used on an {@link ItemType#ENCHANTED_BOOK}
  *     the enchantments will be added as a stored enchantment.
  * </p>
  */
