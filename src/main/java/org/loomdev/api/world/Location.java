@@ -9,22 +9,27 @@ import java.util.Optional;
 public class Location {
 
     private World world;
-
-    private double x, y, z;
-
-    private float pitch, yaw;
+    private double x;
+    private double y;
+    private double z;
+    private float yaw;
+    private float pitch;
 
     public Location(@Nullable World world, double x, double y, double z) {
         this(world, x, y, z, 0, 0);
     }
 
-    public Location(@Nullable World world, double x, double y, double z, float pitch, float yaw) {
+    public Location(@Nullable World world, double x, double y, double z, float yaw, float pitch) {
         this.world = world;
         this.x = x;
         this.y = y;
         this.z = z;
-        this.pitch = pitch;
         this.yaw = yaw;
+        this.pitch = pitch;
+    }
+
+    public static Location at(@Nullable World world, double x, double y, double z, float yaw, float pitch) {
+        return new Location(world, x, y, z, yaw, pitch);
     }
 
     public Optional<World> getWorld() {

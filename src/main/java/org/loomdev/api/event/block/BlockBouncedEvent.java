@@ -11,8 +11,8 @@ import org.loomdev.api.event.Cancellable;
  *
  * This event is fired when:
  * <ul>
- * <li>ands and successfully bounces on a slime block</li>
- * <li>Lands and successfully bounces on a bed block</li>
+ * <li>An entity lands and successfully bounces on a slime block</li>
+ * <li>An entity lands and successfully bounces on a bed block</li>
  * </ul>
  */
 public class BlockBouncedEvent extends BlockEvent implements Cancellable {

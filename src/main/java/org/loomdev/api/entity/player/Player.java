@@ -3,8 +3,10 @@ package org.loomdev.api.entity.player;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.entity.LivingEntity;
+import org.loomdev.api.inventory.Inventory;
 import org.loomdev.api.sound.Sound;
 import org.loomdev.api.util.GameMode;
 import org.loomdev.api.world.Location;
@@ -134,4 +136,10 @@ public interface Player extends LivingEntity {
      * @param gameMode The new {@link GameMode}.
      */
     void setGameMode(@NotNull GameMode gameMode);
+    
+    void addBossBar(@NotNull BossBar bar);
+
+    void removeBossBar(@NotNull BossBar bar);
+
+    void openInventory(@NotNull Inventory inventory);
 }

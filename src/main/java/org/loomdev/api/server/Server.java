@@ -148,14 +148,5 @@ public interface Server {
 
     int getViewDistance();
 
-    @NotNull BossBar createBossBar(@NotNull String text);
-
-    @NotNull BossBar createBossBar(@NotNull Component text);
-
-    @NotNull BossBar createBossBar(@NotNull String text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
-
-    @NotNull BossBar createBossBar(@NotNull Component text, @NotNull BossBar.Color color, @NotNull BossBar.Style style);
-
     @NotNull Registry getRegistry();
-
 }

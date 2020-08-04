@@ -7,6 +7,6 @@ public interface IronGolem extends Golem, Angerable {
 
     boolean isPlayerMade();
 
-    void setPayerMade(boolean flag);
+    void setPlayerMade(boolean flag);
 
 }

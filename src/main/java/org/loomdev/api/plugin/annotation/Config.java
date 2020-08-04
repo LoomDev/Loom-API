@@ -27,7 +27,7 @@ public @interface Config {
      *
      * @return True if the default config should be copied.
      */
-    boolean copyDefault() default false;
+    boolean copyDefault() default true;
 
     /**
      * The path of the default configuration file relative to the root of the plugin jar.

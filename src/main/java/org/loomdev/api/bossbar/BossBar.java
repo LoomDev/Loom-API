@@ -2,12 +2,18 @@ package org.loomdev.api.bossbar;
 
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.Loom;
 import org.loomdev.api.entity.player.Player;
+import org.loomdev.api.util.builder.BuilderBase;
 
 import java.util.Collection;
 import java.util.UUID;
 
 public interface BossBar {
+
+    static Builder builder() {
+        return Loom.getRegistry().createBuilder(BossBar.class);
+    }
 
     @NotNull UUID getUUID();
 
@@ -69,5 +75,32 @@ public interface BossBar {
         NOTCHED_10,
         NOTCHED_12,
         NOTCHED_20
+    }
+
+    interface Builder extends BuilderBase<BossBar, Builder> {
+
+        Builder text(@NotNull String text);
+
+        Builder text(@NotNull Component text);
+
+        Builder percent(float percent);
+
+        Builder color(@NotNull Color color);
+
+        Builder style(@NotNull Style style);
+
+        Builder visible(boolean visible);
+
+        Builder darkenSky(boolean darkenSky);
+
+        Builder thickenFog(boolean thickenFog);
+
+        Builder dragonMusic(boolean dragonMusic);
+
+        Builder addPlayer(@NotNull Player... player);
+
+        Builder removePlayer(@NotNull Player... player);
+
+        Builder clearPlayers();
     }
 }
