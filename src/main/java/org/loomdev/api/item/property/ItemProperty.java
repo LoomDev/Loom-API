@@ -2,10 +2,68 @@ package org.loomdev.api.item.property;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.loomdev.api.Loom;
 import org.loomdev.api.item.ItemStack;
-import org.loomdev.api.item.property.data.ItemPropertyData;
+import org.loomdev.api.item.ItemType;
+import org.loomdev.api.item.property.data.*;
 
-public interface ItemProperty<T extends ItemPropertyData> {
+public interface ItemProperty<T extends ItemPropertyData<T>> {
+
+    // region ItemProperties
+
+    /**
+     * Change the name of an {@link org.loomdev.api.item.ItemStack}.
+     * <p>Can be applied to all {@link ItemType}s.</p>
+     */
+    ItemProperty<NameData> Name = Loom.getRegistry().getItemProperty(NameData.class);
+
+    /**
+     * Change the lore of an {@link org.loomdev.api.item.ItemStack}.
+     * <p>Can be applied to all {@link ItemType}s.</p>
+     */
+    ItemProperty<LoreData> Lore = Loom.getRegistry().getItemProperty(LoreData.class);
+
+    /**
+     * Modify the damage properties of an {@link org.loomdev.api.item.ItemStack}.
+     * <p>Can be applied to all {@link ItemType}s.</p>
+     */
+    ItemProperty<DamageData> Damage = Loom.getRegistry().getItemProperty(DamageData.class);
+
+    /**
+     * Add, remove, etc. enchantments of an {@link org.loomdev.api.item.ItemStack}.
+     * <p>Can be applied to all {@link ItemType}s.</p>
+     */
+    ItemProperty<EnchantmentData> Enchantments = Loom.getRegistry().getItemProperty(EnchantmentData.class);
+
+    // banner
+    // block data
+    // block state
+    // book
+    // Compass
+    // Crossbow
+    // FireworkStar
+    // Firework
+    // KnowledgeBook
+    // LeatherArmor
+    // Map
+    // Potion
+    // Repairable
+    // Skull
+    // SpawnEgg
+    // SuspiciousStew
+    // TropicalFishBucket
+
+    // book | BookData = done |
+
+    // map data ??
+    // compass
+    // Item flags (hide stuff, unbreakable?)
+    // Persistence data
+    // attribute modifier
+    // model data?
+    // repair data
+
+    // endregion ItemProperties
 
     /**
      * Get the {@link ItemPropertyData} object linked to the {@link ItemProperty} of this {@link ItemStack}

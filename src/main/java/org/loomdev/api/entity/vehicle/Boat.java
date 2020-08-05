@@ -21,12 +21,12 @@ public interface Boat extends Entity {
         DARK_OAK(BlockType.DARK_OAK_PLANKS, ItemType.DARK_OAK_BOAT, "dark_oak");
 
         private final BlockType plankType;
-        private final ItemType itemTypes;
+        private final ItemType itemType;
         private final String name;
 
-        Type(BlockType plankType, ItemType itemTypes, String name) {
+        Type(BlockType plankType, ItemType itemType, String name) {
             this.plankType = plankType;
-            this.itemTypes = itemTypes;
+            this.itemType = itemType;
             this.name = name;
         }
 
@@ -35,7 +35,7 @@ public interface Boat extends Entity {
         }
 
         public ItemType getItemType() {
-            return itemTypes;
+            return itemType;
         }
 
         public BlockType getPlankType() {

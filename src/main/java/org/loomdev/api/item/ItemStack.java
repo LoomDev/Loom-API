@@ -89,7 +89,7 @@ public interface ItemStack {
      * Split the ItemStack into two stacks.
      *
      * <pre>{@code
-     * ItemStack firstStack = ItemStack.builder().type(ItemTypes.STONE).amount(45).build();
+     * ItemStack firstStack = ItemStack.builder().type(ItemType.STONE).amount(45).build();
      *
      * // Split the original ItemStack in two.
      * ItemStack secondStack = firstStack.split(15);
@@ -103,11 +103,11 @@ public interface ItemStack {
      */
     @NotNull ItemStack split(int splitCount);
 
-    <T extends ItemPropertyData> @NotNull T getProperty(@NotNull ItemProperty<T> property);
+    <T extends ItemPropertyData<T>> @NotNull T getProperty(@NotNull ItemProperty<T> property);
 
-    <T extends ItemPropertyData> void setProperty(@NotNull ItemProperty<T> property, @NotNull T data);
+    <T extends ItemPropertyData<T>> void setProperty(@NotNull ItemProperty<T> property, @NotNull T data);
 
-    <T extends ItemPropertyData> void changeProperty(@NotNull ItemProperty<T> property, @NotNull Consumer<T> data);
+    <T extends ItemPropertyData<T>> void changeProperty(@NotNull ItemProperty<T> property, @NotNull Consumer<T> data);
 
     /**
      * Get whether the itemstack is a food item.
@@ -283,7 +283,7 @@ public interface ItemStack {
 
         Builder enchant(@NotNull Enchantment enchantment, int level);
 
-        <T extends ItemPropertyData> Builder property(@NotNull ItemProperty<T> property, @NotNull Consumer<T> data);
+        <T extends ItemPropertyData<T>> Builder property(@NotNull ItemProperty<T> property, @NotNull Consumer<T> data);
 
     }
 }

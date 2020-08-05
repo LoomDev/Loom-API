@@ -5,7 +5,6 @@ import net.kyori.adventure.text.TextComponent;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.ApiVersion;
-import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.command.CommandManager;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.player.Player;

@@ -1,11 +1,9 @@
 package org.loomdev.api.entity;
 
 import org.jetbrains.annotations.NotNull;
-import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.entity.effect.StatusEffect;
-import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.item.ItemType;
-import org.loomdev.api.sound.Sound;
+import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.util.Hand;
 import org.loomdev.api.world.Location;
 import org.loomdev.api.world.World;
@@ -64,9 +62,9 @@ public interface LivingEntity extends Damageable {
 
     void setStringerCount(int count);
 
-    boolean isHolding(@NotNull ItemTypes material);
+    boolean isHolding(@NotNull ItemType itemType);
 
-    boolean isHolding(@NotNull Predicate<ItemTypes> predicate);
+    boolean isHolding(@NotNull Predicate<ItemType> predicate);
 
     @NotNull Optional<ItemStack> getItemInHand(@NotNull Hand hand);
 

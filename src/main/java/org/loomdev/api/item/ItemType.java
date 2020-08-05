@@ -1,1005 +1,1021 @@
 package org.loomdev.api.item;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import net.kyori.adventure.text.Component;
+import org.jetbrains.annotations.NotNull;
+import org.loomdev.api.Loom;
+import org.loomdev.api.util.registry.Keyed;
 
-import java.util.HashMap;
-import java.util.Map;
+public interface ItemType extends Keyed {
 
-public enum ItemType {
-    ACACIA_BOAT("minecraft:acacia_boat"),
-    ACACIA_BUTTON("minecraft:acacia_button"),
-    ACACIA_DOOR("minecraft:acacia_door"),
-    ACACIA_FENCE("minecraft:acacia_fence"),
-    ACACIA_FENCE_GATE("minecraft:acacia_fence_gate"),
-    ACACIA_LEAVES("minecraft:acacia_leaves"),
-    ACACIA_LOG("minecraft:acacia_log"),
-    ACACIA_PLANKS("minecraft:acacia_planks"),
-    ACACIA_PRESSURE_PLATE("minecraft:acacia_pressure_plate"),
-    ACACIA_SAPLING("minecraft:acacia_sapling"),
-    ACACIA_SIGN("minecraft:acacia_sign"),
-    ACACIA_SLAB("minecraft:acacia_slab"),
-    ACACIA_STAIRS("minecraft:acacia_stairs"),
-    ACACIA_TRAPDOOR("minecraft:acacia_trapdoor"),
-    ACACIA_WOOD("minecraft:acacia_wood"),
-    ACTIVATOR_RAIL("minecraft:activator_rail"),
-    AIR("minecraft:air"),
-    ALLIUM("minecraft:allium"),
-    ANCIENT_DEBRIS("minecraft:ancient_debris"),
-    ANDESITE("minecraft:andesite"),
-    ANDESITE_SLAB("minecraft:andesite_slab"),
-    ANDESITE_STAIRS("minecraft:andesite_stairs"),
-    ANDESITE_WALL("minecraft:andesite_wall"),
-    ANVIL("minecraft:anvil"),
-    APPLE("minecraft:apple"),
-    ARMOR_STAND("minecraft:armor_stand"),
-    ARROW("minecraft:arrow"),
-    AZURE_BLUET("minecraft:azure_bluet"),
-    BAKED_POTATO("minecraft:baked_potato"),
-    BAMBOO("minecraft:bamboo"),
-    BARREL("minecraft:barrel"),
-    BARRIER("minecraft:barrier"),
-    BASALT("minecraft:basalt"),
-    BAT_SPAWN_EGG("minecraft:bat_spawn_egg"),
-    BEACON("minecraft:beacon"),
-    BEDROCK("minecraft:bedrock"),
-    BEE_NEST("minecraft:bee_nest"),
-    BEE_SPAWN_EGG("minecraft:bee_spawn_egg"),
-    BEEF("minecraft:beef"),
-    BEEHIVE("minecraft:beehive"),
-    BEETROOT("minecraft:beetroot"),
-    BEETROOT_SEEDS("minecraft:beetroot_seeds"),
-    BEETROOT_SOUP("minecraft:beetroot_soup"),
-    BELL("minecraft:bell"),
-    BIRCH_BOAT("minecraft:birch_boat"),
-    BIRCH_BUTTON("minecraft:birch_button"),
-    BIRCH_DOOR("minecraft:birch_door"),
-    BIRCH_FENCE("minecraft:birch_fence"),
-    BIRCH_FENCE_GATE("minecraft:birch_fence_gate"),
-    BIRCH_LEAVES("minecraft:birch_leaves"),
-    BIRCH_LOG("minecraft:birch_log"),
-    BIRCH_PLANKS("minecraft:birch_planks"),
-    BIRCH_PRESSURE_PLATE("minecraft:birch_pressure_plate"),
-    BIRCH_SAPLING("minecraft:birch_sapling"),
-    BIRCH_SIGN("minecraft:birch_sign"),
-    BIRCH_SLAB("minecraft:birch_slab"),
-    BIRCH_STAIRS("minecraft:birch_stairs"),
-    BIRCH_TRAPDOOR("minecraft:birch_trapdoor"),
-    BIRCH_WOOD("minecraft:birch_wood"),
-    BLACK_BANNER("minecraft:black_banner"),
-    BLACK_BED("minecraft:black_bed"),
-    BLACK_CARPET("minecraft:black_carpet"),
-    BLACK_CONCRETE("minecraft:black_concrete"),
-    BLACK_CONCRETE_POWDER("minecraft:black_concrete_powder"),
-    BLACK_DYE("minecraft:black_dye"),
-    BLACK_GLAZED_TERRACOTTA("minecraft:black_glazed_terracotta"),
-    BLACK_SHULKER_BOX("minecraft:black_shulker_box"),
-    BLACK_STAINED_GLASS("minecraft:black_stained_glass"),
-    BLACK_STAINED_GLASS_PANE("minecraft:black_stained_glass_pane"),
-    BLACK_TERRACOTTA("minecraft:black_terracotta"),
-    BLACK_WOOL("minecraft:black_wool"),
-    BLACKSTONE("minecraft:blackstone"),
-    BLACKSTONE_SLAB("minecraft:blackstone_slab"),
-    BLACKSTONE_STAIRS("minecraft:blackstone_stairs"),
-    BLACKSTONE_WALL("minecraft:blackstone_wall"),
-    BLAST_FURNACE("minecraft:blast_furnace"),
-    BLAZE_POWDER("minecraft:blaze_powder"),
-    BLAZE_ROD("minecraft:blaze_rod"),
-    BLAZE_SPAWN_EGG("minecraft:blaze_spawn_egg"),
-    BLUE_BANNER("minecraft:blue_banner"),
-    BLUE_BED("minecraft:blue_bed"),
-    BLUE_CARPET("minecraft:blue_carpet"),
-    BLUE_CONCRETE("minecraft:blue_concrete"),
-    BLUE_CONCRETE_POWDER("minecraft:blue_concrete_powder"),
-    BLUE_DYE("minecraft:blue_dye"),
-    BLUE_GLAZED_TERRACOTTA("minecraft:blue_glazed_terracotta"),
-    BLUE_ICE("minecraft:blue_ice"),
-    BLUE_ORCHID("minecraft:blue_orchid"),
-    BLUE_SHULKER_BOX("minecraft:blue_shulker_box"),
-    BLUE_STAINED_GLASS("minecraft:blue_stained_glass"),
-    BLUE_STAINED_GLASS_PANE("minecraft:blue_stained_glass_pane"),
-    BLUE_TERRACOTTA("minecraft:blue_terracotta"),
-    BLUE_WOOL("minecraft:blue_wool"),
-    BONE("minecraft:bone"),
-    BONE_BLOCK("minecraft:bone_block"),
-    BONE_MEAL("minecraft:bone_meal"),
-    BOOK("minecraft:book"),
-    BOOKSHELF("minecraft:bookshelf"),
-    BOW("minecraft:bow"),
-    BOWL("minecraft:bowl"),
-    BRAIN_CORAL("minecraft:brain_coral"),
-    BRAIN_CORAL_BLOCK("minecraft:brain_coral_block"),
-    BRAIN_CORAL_FAN("minecraft:brain_coral_fan"),
-    BREAD("minecraft:bread"),
-    BREWING_STAND("minecraft:brewing_stand"),
-    BRICK("minecraft:brick"),
-    BRICK_SLAB("minecraft:brick_slab"),
-    BRICK_STAIRS("minecraft:brick_stairs"),
-    BRICK_WALL("minecraft:brick_wall"),
-    BRICKS("minecraft:bricks"),
-    BROWN_BANNER("minecraft:brown_banner"),
-    BROWN_BED("minecraft:brown_bed"),
-    BROWN_CARPET("minecraft:brown_carpet"),
-    BROWN_CONCRETE("minecraft:brown_concrete"),
-    BROWN_CONCRETE_POWDER("minecraft:brown_concrete_powder"),
-    BROWN_DYE("minecraft:brown_dye"),
-    BROWN_GLAZED_TERRACOTTA("minecraft:brown_glazed_terracotta"),
-    BROWN_MUSHROOM("minecraft:brown_mushroom"),
-    BROWN_MUSHROOM_BLOCK("minecraft:brown_mushroom_block"),
-    BROWN_SHULKER_BOX("minecraft:brown_shulker_box"),
-    BROWN_STAINED_GLASS("minecraft:brown_stained_glass"),
-    BROWN_STAINED_GLASS_PANE("minecraft:brown_stained_glass_pane"),
-    BROWN_TERRACOTTA("minecraft:brown_terracotta"),
-    BROWN_WOOL("minecraft:brown_wool"),
-    BUBBLE_CORAL("minecraft:bubble_coral"),
-    BUBBLE_CORAL_BLOCK("minecraft:bubble_coral_block"),
-    BUBBLE_CORAL_FAN("minecraft:bubble_coral_fan"),
-    BUCKET("minecraft:bucket"),
-    CACTUS("minecraft:cactus"),
-    CAKE("minecraft:cake"),
-    CAMPFIRE("minecraft:campfire"),
-    CARROT("minecraft:carrot"),
-    CARROT_ON_A_STICK("minecraft:carrot_on_a_stick"),
-    CARTOGRAPHY_TABLE("minecraft:cartography_table"),
-    CARVED_PUMPKIN("minecraft:carved_pumpkin"),
-    CAT_SPAWN_EGG("minecraft:cat_spawn_egg"),
-    CAULDRON("minecraft:cauldron"),
-    CAVE_SPIDER_SPAWN_EGG("minecraft:cave_spider_spawn_egg"),
-    CHAIN("minecraft:chain"),
-    CHAIN_COMMAND_BLOCK("minecraft:chain_command_block"),
-    CHAINMAIL_BOOTS("minecraft:chainmail_boots"),
-    CHAINMAIL_CHESTPLATE("minecraft:chainmail_chestplate"),
-    CHAINMAIL_HELMET("minecraft:chainmail_helmet"),
-    CHAINMAIL_LEGGINGS("minecraft:chainmail_leggings"),
-    CHARCOAL("minecraft:charcoal"),
-    CHEST("minecraft:chest"),
-    CHEST_MINECART("minecraft:chest_minecart"),
-    CHICKEN("minecraft:chicken"),
-    CHICKEN_SPAWN_EGG("minecraft:chicken_spawn_egg"),
-    CHIPPED_ANVIL("minecraft:chipped_anvil"),
-    CHISELED_NETHER_BRICKS("minecraft:chiseled_nether_bricks"),
-    CHISELED_POLISHED_BLACKSTONE("minecraft:chiseled_polished_blackstone"),
-    CHISELED_QUARTZ_BLOCK("minecraft:chiseled_quartz_block"),
-    CHISELED_RED_SANDSTONE("minecraft:chiseled_red_sandstone"),
-    CHISELED_SANDSTONE("minecraft:chiseled_sandstone"),
-    CHISELED_STONE_BRICKS("minecraft:chiseled_stone_bricks"),
-    CHORUS_FLOWER("minecraft:chorus_flower"),
-    CHORUS_FRUIT("minecraft:chorus_fruit"),
-    CHORUS_PLANT("minecraft:chorus_plant"),
-    CLAY("minecraft:clay"),
-    CLAY_BALL("minecraft:clay_ball"),
-    CLOCK("minecraft:clock"),
-    COAL("minecraft:coal"),
-    COAL_BLOCK("minecraft:coal_block"),
-    COAL_ORE("minecraft:coal_ore"),
-    COARSE_DIRT("minecraft:coarse_dirt"),
-    COBBLESTONE("minecraft:cobblestone"),
-    COBBLESTONE_SLAB("minecraft:cobblestone_slab"),
-    COBBLESTONE_STAIRS("minecraft:cobblestone_stairs"),
-    COBBLESTONE_WALL("minecraft:cobblestone_wall"),
-    COBWEB("minecraft:cobweb"),
-    COCOA_BEANS("minecraft:cocoa_beans"),
-    COD("minecraft:cod"),
-    COD_BUCKET("minecraft:cod_bucket"),
-    COD_SPAWN_EGG("minecraft:cod_spawn_egg"),
-    COMMAND_BLOCK("minecraft:command_block"),
-    COMMAND_BLOCK_MINECART("minecraft:command_block_minecart"),
-    COMPARATOR("minecraft:comparator"),
-    COMPASS("minecraft:compass"),
-    COMPOSTER("minecraft:composter"),
-    CONDUIT("minecraft:conduit"),
-    COOKED_BEEF("minecraft:cooked_beef"),
-    COOKED_CHICKEN("minecraft:cooked_chicken"),
-    COOKED_COD("minecraft:cooked_cod"),
-    COOKED_MUTTON("minecraft:cooked_mutton"),
-    COOKED_PORKCHOP("minecraft:cooked_porkchop"),
-    COOKED_RABBIT("minecraft:cooked_rabbit"),
-    COOKED_SALMON("minecraft:cooked_salmon"),
-    COOKIE("minecraft:cookie"),
-    CORNFLOWER("minecraft:cornflower"),
-    COW_SPAWN_EGG("minecraft:cow_spawn_egg"),
-    CRACKED_NETHER_BRICKS("minecraft:cracked_nether_bricks"),
-    CRACKED_POLISHED_BLACKSTONE_BRICKS("minecraft:cracked_polished_blackstone_bricks"),
-    CRACKED_STONE_BRICKS("minecraft:cracked_stone_bricks"),
-    CRAFTING_TABLE("minecraft:crafting_table"),
-    CREEPER_BANNER_PATTERN("minecraft:creeper_banner_pattern"),
-    CREEPER_HEAD("minecraft:creeper_head"),
-    CREEPER_SPAWN_EGG("minecraft:creeper_spawn_egg"),
-    CRIMSON_BUTTON("minecraft:crimson_button"),
-    CRIMSON_DOOR("minecraft:crimson_door"),
-    CRIMSON_FENCE("minecraft:crimson_fence"),
-    CRIMSON_FENCE_GATE("minecraft:crimson_fence_gate"),
-    CRIMSON_FUNGUS("minecraft:crimson_fungus"),
-    CRIMSON_HYPHAE("minecraft:crimson_hyphae"),
-    CRIMSON_NYLIUM("minecraft:crimson_nylium"),
-    CRIMSON_PLANKS("minecraft:crimson_planks"),
-    CRIMSON_PRESSURE_PLATE("minecraft:crimson_pressure_plate"),
-    CRIMSON_ROOTS("minecraft:crimson_roots"),
-    CRIMSON_SIGN("minecraft:crimson_sign"),
-    CRIMSON_SLAB("minecraft:crimson_slab"),
-    CRIMSON_STAIRS("minecraft:crimson_stairs"),
-    CRIMSON_STEM("minecraft:crimson_stem"),
-    CRIMSON_TRAPDOOR("minecraft:crimson_trapdoor"),
-    CROSSBOW("minecraft:crossbow"),
-    CRYING_OBSIDIAN("minecraft:crying_obsidian"),
-    CUT_RED_SANDSTONE("minecraft:cut_red_sandstone"),
-    CUT_RED_SANDSTONE_SLAB("minecraft:cut_red_sandstone_slab"),
-    CUT_SANDSTONE("minecraft:cut_sandstone"),
-    CUT_SANDSTONE_SLAB("minecraft:cut_sandstone_slab"),
-    CYAN_BANNER("minecraft:cyan_banner"),
-    CYAN_BED("minecraft:cyan_bed"),
-    CYAN_CARPET("minecraft:cyan_carpet"),
-    CYAN_CONCRETE("minecraft:cyan_concrete"),
-    CYAN_CONCRETE_POWDER("minecraft:cyan_concrete_powder"),
-    CYAN_DYE("minecraft:cyan_dye"),
-    CYAN_GLAZED_TERRACOTTA("minecraft:cyan_glazed_terracotta"),
-    CYAN_SHULKER_BOX("minecraft:cyan_shulker_box"),
-    CYAN_STAINED_GLASS("minecraft:cyan_stained_glass"),
-    CYAN_STAINED_GLASS_PANE("minecraft:cyan_stained_glass_pane"),
-    CYAN_TERRACOTTA("minecraft:cyan_terracotta"),
-    CYAN_WOOL("minecraft:cyan_wool"),
-    DAMAGED_ANVIL("minecraft:damaged_anvil"),
-    DANDELION("minecraft:dandelion"),
-    DARK_OAK_BOAT("minecraft:dark_oak_boat"),
-    DARK_OAK_BUTTON("minecraft:dark_oak_button"),
-    DARK_OAK_DOOR("minecraft:dark_oak_door"),
-    DARK_OAK_FENCE("minecraft:dark_oak_fence"),
-    DARK_OAK_FENCE_GATE("minecraft:dark_oak_fence_gate"),
-    DARK_OAK_LEAVES("minecraft:dark_oak_leaves"),
-    DARK_OAK_LOG("minecraft:dark_oak_log"),
-    DARK_OAK_PLANKS("minecraft:dark_oak_planks"),
-    DARK_OAK_PRESSURE_PLATE("minecraft:dark_oak_pressure_plate"),
-    DARK_OAK_SAPLING("minecraft:dark_oak_sapling"),
-    DARK_OAK_SIGN("minecraft:dark_oak_sign"),
-    DARK_OAK_SLAB("minecraft:dark_oak_slab"),
-    DARK_OAK_STAIRS("minecraft:dark_oak_stairs"),
-    DARK_OAK_TRAPDOOR("minecraft:dark_oak_trapdoor"),
-    DARK_OAK_WOOD("minecraft:dark_oak_wood"),
-    DARK_PRISMARINE("minecraft:dark_prismarine"),
-    DARK_PRISMARINE_SLAB("minecraft:dark_prismarine_slab"),
-    DARK_PRISMARINE_STAIRS("minecraft:dark_prismarine_stairs"),
-    DAYLIGHT_DETECTOR("minecraft:daylight_detector"),
-    DEAD_BRAIN_CORAL("minecraft:dead_brain_coral"),
-    DEAD_BRAIN_CORAL_BLOCK("minecraft:dead_brain_coral_block"),
-    DEAD_BRAIN_CORAL_FAN("minecraft:dead_brain_coral_fan"),
-    DEAD_BUBBLE_CORAL("minecraft:dead_bubble_coral"),
-    DEAD_BUBBLE_CORAL_BLOCK("minecraft:dead_bubble_coral_block"),
-    DEAD_BUBBLE_CORAL_FAN("minecraft:dead_bubble_coral_fan"),
-    DEAD_BUSH("minecraft:dead_bush"),
-    DEAD_FIRE_CORAL("minecraft:dead_fire_coral"),
-    DEAD_FIRE_CORAL_BLOCK("minecraft:dead_fire_coral_block"),
-    DEAD_FIRE_CORAL_FAN("minecraft:dead_fire_coral_fan"),
-    DEAD_HORN_CORAL("minecraft:dead_horn_coral"),
-    DEAD_HORN_CORAL_BLOCK("minecraft:dead_horn_coral_block"),
-    DEAD_HORN_CORAL_FAN("minecraft:dead_horn_coral_fan"),
-    DEAD_TUBE_CORAL("minecraft:dead_tube_coral"),
-    DEAD_TUBE_CORAL_BLOCK("minecraft:dead_tube_coral_block"),
-    DEAD_TUBE_CORAL_FAN("minecraft:dead_tube_coral_fan"),
-    DEBUG_STICK("minecraft:debug_stick"),
-    DETECTOR_RAIL("minecraft:detector_rail"),
-    DIAMOND("minecraft:diamond"),
-    DIAMOND_AXE("minecraft:diamond_axe"),
-    DIAMOND_BLOCK("minecraft:diamond_block"),
-    DIAMOND_BOOTS("minecraft:diamond_boots"),
-    DIAMOND_CHESTPLATE("minecraft:diamond_chestplate"),
-    DIAMOND_HELMET("minecraft:diamond_helmet"),
-    DIAMOND_HOE("minecraft:diamond_hoe"),
-    DIAMOND_HORSE_ARMOR("minecraft:diamond_horse_armor"),
-    DIAMOND_LEGGINGS("minecraft:diamond_leggings"),
-    DIAMOND_ORE("minecraft:diamond_ore"),
-    DIAMOND_PICKAXE("minecraft:diamond_pickaxe"),
-    DIAMOND_SHOVEL("minecraft:diamond_shovel"),
-    DIAMOND_SWORD("minecraft:diamond_sword"),
-    DIORITE("minecraft:diorite"),
-    DIORITE_SLAB("minecraft:diorite_slab"),
-    DIORITE_STAIRS("minecraft:diorite_stairs"),
-    DIORITE_WALL("minecraft:diorite_wall"),
-    DIRT("minecraft:dirt"),
-    DISPENSER("minecraft:dispenser"),
-    DOLPHIN_SPAWN_EGG("minecraft:dolphin_spawn_egg"),
-    DONKEY_SPAWN_EGG("minecraft:donkey_spawn_egg"),
-    DRAGON_BREATH("minecraft:dragon_breath"),
-    DRAGON_EGG("minecraft:dragon_egg"),
-    DRAGON_HEAD("minecraft:dragon_head"),
-    DRIED_KELP("minecraft:dried_kelp"),
-    DRIED_KELP_BLOCK("minecraft:dried_kelp_block"),
-    DROPPER("minecraft:dropper"),
-    DROWNED_SPAWN_EGG("minecraft:drowned_spawn_egg"),
-    EGG("minecraft:egg"),
-    ELDER_GUARDIAN_SPAWN_EGG("minecraft:elder_guardian_spawn_egg"),
-    ELYTRA("minecraft:elytra"),
-    EMERALD("minecraft:emerald"),
-    EMERALD_BLOCK("minecraft:emerald_block"),
-    EMERALD_ORE("minecraft:emerald_ore"),
-    ENCHANTED_BOOK("minecraft:enchanted_book"),
-    ENCHANTED_GOLDEN_APPLE("minecraft:enchanted_golden_apple"),
-    ENCHANTING_TABLE("minecraft:enchanting_table"),
-    END_CRYSTAL("minecraft:end_crystal"),
-    END_PORTAL_FRAME("minecraft:end_portal_frame"),
-    END_ROD("minecraft:end_rod"),
-    END_STONE("minecraft:end_stone"),
-    END_STONE_BRICK_SLAB("minecraft:end_stone_brick_slab"),
-    END_STONE_BRICK_STAIRS("minecraft:end_stone_brick_stairs"),
-    END_STONE_BRICK_WALL("minecraft:end_stone_brick_wall"),
-    END_STONE_BRICKS("minecraft:end_stone_bricks"),
-    ENDER_CHEST("minecraft:ender_chest"),
-    ENDER_EYE("minecraft:ender_eye"),
-    ENDER_PEARL("minecraft:ender_pearl"),
-    ENDERMAN_SPAWN_EGG("minecraft:enderman_spawn_egg"),
-    ENDERMITE_SPAWN_EGG("minecraft:endermite_spawn_egg"),
-    EVOKER_SPAWN_EGG("minecraft:evoker_spawn_egg"),
-    EXPERIENCE_BOTTLE("minecraft:experience_bottle"),
-    FARMLAND("minecraft:farmland"),
-    FEATHER("minecraft:feather"),
-    FERMENTED_SPIDER_EYE("minecraft:fermented_spider_eye"),
-    FERN("minecraft:fern"),
-    FILLED_MAP("minecraft:filled_map"),
-    FIRE_CHARGE("minecraft:fire_charge"),
-    FIRE_CORAL("minecraft:fire_coral"),
-    FIRE_CORAL_BLOCK("minecraft:fire_coral_block"),
-    FIRE_CORAL_FAN("minecraft:fire_coral_fan"),
-    FIREWORK_ROCKET("minecraft:firework_rocket"),
-    FIREWORK_STAR("minecraft:firework_star"),
-    FISHING_ROD("minecraft:fishing_rod"),
-    FLETCHING_TABLE("minecraft:fletching_table"),
-    FLINT("minecraft:flint"),
-    FLINT_AND_STEEL("minecraft:flint_and_steel"),
-    FLOWER_BANNER_PATTERN("minecraft:flower_banner_pattern"),
-    FLOWER_POT("minecraft:flower_pot"),
-    FOX_SPAWN_EGG("minecraft:fox_spawn_egg"),
-    FURNACE("minecraft:furnace"),
-    FURNACE_MINECART("minecraft:furnace_minecart"),
-    GHAST_SPAWN_EGG("minecraft:ghast_spawn_egg"),
-    GHAST_TEAR("minecraft:ghast_tear"),
-    GILDED_BLACKSTONE("minecraft:gilded_blackstone"),
-    GLASS("minecraft:glass"),
-    GLASS_BOTTLE("minecraft:glass_bottle"),
-    GLASS_PANE("minecraft:glass_pane"),
-    GLISTERING_MELON_SLICE("minecraft:glistering_melon_slice"),
-    GLOBE_BANNER_PATTERN("minecraft:globe_banner_pattern"),
-    GLOWSTONE("minecraft:glowstone"),
-    GLOWSTONE_DUST("minecraft:glowstone_dust"),
-    GOLD_BLOCK("minecraft:gold_block"),
-    GOLD_INGOT("minecraft:gold_ingot"),
-    GOLD_NUGGET("minecraft:gold_nugget"),
-    GOLD_ORE("minecraft:gold_ore"),
-    GOLDEN_APPLE("minecraft:golden_apple"),
-    GOLDEN_AXE("minecraft:golden_axe"),
-    GOLDEN_BOOTS("minecraft:golden_boots"),
-    GOLDEN_CARROT("minecraft:golden_carrot"),
-    GOLDEN_CHESTPLATE("minecraft:golden_chestplate"),
-    GOLDEN_HELMET("minecraft:golden_helmet"),
-    GOLDEN_HOE("minecraft:golden_hoe"),
-    GOLDEN_HORSE_ARMOR("minecraft:golden_horse_armor"),
-    GOLDEN_LEGGINGS("minecraft:golden_leggings"),
-    GOLDEN_PICKAXE("minecraft:golden_pickaxe"),
-    GOLDEN_SHOVEL("minecraft:golden_shovel"),
-    GOLDEN_SWORD("minecraft:golden_sword"),
-    GRANITE("minecraft:granite"),
-    GRANITE_SLAB("minecraft:granite_slab"),
-    GRANITE_STAIRS("minecraft:granite_stairs"),
-    GRANITE_WALL("minecraft:granite_wall"),
-    GRASS("minecraft:grass"),
-    GRASS_BLOCK("minecraft:grass_block"),
-    GRASS_PATH("minecraft:grass_path"),
-    GRAVEL("minecraft:gravel"),
-    GRAY_BANNER("minecraft:gray_banner"),
-    GRAY_BED("minecraft:gray_bed"),
-    GRAY_CARPET("minecraft:gray_carpet"),
-    GRAY_CONCRETE("minecraft:gray_concrete"),
-    GRAY_CONCRETE_POWDER("minecraft:gray_concrete_powder"),
-    GRAY_DYE("minecraft:gray_dye"),
-    GRAY_GLAZED_TERRACOTTA("minecraft:gray_glazed_terracotta"),
-    GRAY_SHULKER_BOX("minecraft:gray_shulker_box"),
-    GRAY_STAINED_GLASS("minecraft:gray_stained_glass"),
-    GRAY_STAINED_GLASS_PANE("minecraft:gray_stained_glass_pane"),
-    GRAY_TERRACOTTA("minecraft:gray_terracotta"),
-    GRAY_WOOL("minecraft:gray_wool"),
-    GREEN_BANNER("minecraft:green_banner"),
-    GREEN_BED("minecraft:green_bed"),
-    GREEN_CARPET("minecraft:green_carpet"),
-    GREEN_CONCRETE("minecraft:green_concrete"),
-    GREEN_CONCRETE_POWDER("minecraft:green_concrete_powder"),
-    GREEN_DYE("minecraft:green_dye"),
-    GREEN_GLAZED_TERRACOTTA("minecraft:green_glazed_terracotta"),
-    GREEN_SHULKER_BOX("minecraft:green_shulker_box"),
-    GREEN_STAINED_GLASS("minecraft:green_stained_glass"),
-    GREEN_STAINED_GLASS_PANE("minecraft:green_stained_glass_pane"),
-    GREEN_TERRACOTTA("minecraft:green_terracotta"),
-    GREEN_WOOL("minecraft:green_wool"),
-    GRINDSTONE("minecraft:grindstone"),
-    GUARDIAN_SPAWN_EGG("minecraft:guardian_spawn_egg"),
-    GUNPOWDER("minecraft:gunpowder"),
-    HAY_BLOCK("minecraft:hay_block"),
-    HEART_OF_THE_SEA("minecraft:heart_of_the_sea"),
-    HEAVY_WEIGHTED_PRESSURE_PLATE("minecraft:heavy_weighted_pressure_plate"),
-    HOGLIN_SPAWN_EGG("minecraft:hoglin_spawn_egg"),
-    HONEY_BLOCK("minecraft:honey_block"),
-    HONEY_BOTTLE("minecraft:honey_bottle"),
-    HONEYCOMB("minecraft:honeycomb"),
-    HONEYCOMB_BLOCK("minecraft:honeycomb_block"),
-    HOPPER("minecraft:hopper"),
-    HOPPER_MINECART("minecraft:hopper_minecart"),
-    HORN_CORAL("minecraft:horn_coral"),
-    HORN_CORAL_BLOCK("minecraft:horn_coral_block"),
-    HORN_CORAL_FAN("minecraft:horn_coral_fan"),
-    HORSE_SPAWN_EGG("minecraft:horse_spawn_egg"),
-    HUSK_SPAWN_EGG("minecraft:husk_spawn_egg"),
-    ICE("minecraft:ice"),
-    INFESTED_CHISELED_STONE_BRICKS("minecraft:infested_chiseled_stone_bricks"),
-    INFESTED_COBBLESTONE("minecraft:infested_cobblestone"),
-    INFESTED_CRACKED_STONE_BRICKS("minecraft:infested_cracked_stone_bricks"),
-    INFESTED_MOSSY_STONE_BRICKS("minecraft:infested_mossy_stone_bricks"),
-    INFESTED_STONE("minecraft:infested_stone"),
-    INFESTED_STONE_BRICKS("minecraft:infested_stone_bricks"),
-    INK_SAC("minecraft:ink_sac"),
-    IRON_AXE("minecraft:iron_axe"),
-    IRON_BARS("minecraft:iron_bars"),
-    IRON_BLOCK("minecraft:iron_block"),
-    IRON_BOOTS("minecraft:iron_boots"),
-    IRON_CHESTPLATE("minecraft:iron_chestplate"),
-    IRON_DOOR("minecraft:iron_door"),
-    IRON_HELMET("minecraft:iron_helmet"),
-    IRON_HOE("minecraft:iron_hoe"),
-    IRON_HORSE_ARMOR("minecraft:iron_horse_armor"),
-    IRON_INGOT("minecraft:iron_ingot"),
-    IRON_LEGGINGS("minecraft:iron_leggings"),
-    IRON_NUGGET("minecraft:iron_nugget"),
-    IRON_ORE("minecraft:iron_ore"),
-    IRON_PICKAXE("minecraft:iron_pickaxe"),
-    IRON_SHOVEL("minecraft:iron_shovel"),
-    IRON_SWORD("minecraft:iron_sword"),
-    IRON_TRAPDOOR("minecraft:iron_trapdoor"),
-    ITEM_FRAME("minecraft:item_frame"),
-    JACK_O_LANTERN("minecraft:jack_o_lantern"),
-    JIGSAW("minecraft:jigsaw"),
-    JUKEBOX("minecraft:jukebox"),
-    JUNGLE_BOAT("minecraft:jungle_boat"),
-    JUNGLE_BUTTON("minecraft:jungle_button"),
-    JUNGLE_DOOR("minecraft:jungle_door"),
-    JUNGLE_FENCE("minecraft:jungle_fence"),
-    JUNGLE_FENCE_GATE("minecraft:jungle_fence_gate"),
-    JUNGLE_LEAVES("minecraft:jungle_leaves"),
-    JUNGLE_LOG("minecraft:jungle_log"),
-    JUNGLE_PLANKS("minecraft:jungle_planks"),
-    JUNGLE_PRESSURE_PLATE("minecraft:jungle_pressure_plate"),
-    JUNGLE_SAPLING("minecraft:jungle_sapling"),
-    JUNGLE_SIGN("minecraft:jungle_sign"),
-    JUNGLE_SLAB("minecraft:jungle_slab"),
-    JUNGLE_STAIRS("minecraft:jungle_stairs"),
-    JUNGLE_TRAPDOOR("minecraft:jungle_trapdoor"),
-    JUNGLE_WOOD("minecraft:jungle_wood"),
-    KELP("minecraft:kelp"),
-    KNOWLEDGE_BOOK("minecraft:knowledge_book"),
-    LADDER("minecraft:ladder"),
-    LANTERN("minecraft:lantern"),
-    LAPIS_BLOCK("minecraft:lapis_block"),
-    LAPIS_LAZULI("minecraft:lapis_lazuli"),
-    LAPIS_ORE("minecraft:lapis_ore"),
-    LARGE_FERN("minecraft:large_fern"),
-    LAVA_BUCKET("minecraft:lava_bucket"),
-    LEAD("minecraft:lead"),
-    LEATHER("minecraft:leather"),
-    LEATHER_BOOTS("minecraft:leather_boots"),
-    LEATHER_CHESTPLATE("minecraft:leather_chestplate"),
-    LEATHER_HELMET("minecraft:leather_helmet"),
-    LEATHER_HORSE_ARMOR("minecraft:leather_horse_armor"),
-    LEATHER_LEGGINGS("minecraft:leather_leggings"),
-    LECTERN("minecraft:lectern"),
-    LEVER("minecraft:lever"),
-    LIGHT_BLUE_BANNER("minecraft:light_blue_banner"),
-    LIGHT_BLUE_BED("minecraft:light_blue_bed"),
-    LIGHT_BLUE_CARPET("minecraft:light_blue_carpet"),
-    LIGHT_BLUE_CONCRETE("minecraft:light_blue_concrete"),
-    LIGHT_BLUE_CONCRETE_POWDER("minecraft:light_blue_concrete_powder"),
-    LIGHT_BLUE_DYE("minecraft:light_blue_dye"),
-    LIGHT_BLUE_GLAZED_TERRACOTTA("minecraft:light_blue_glazed_terracotta"),
-    LIGHT_BLUE_SHULKER_BOX("minecraft:light_blue_shulker_box"),
-    LIGHT_BLUE_STAINED_GLASS("minecraft:light_blue_stained_glass"),
-    LIGHT_BLUE_STAINED_GLASS_PANE("minecraft:light_blue_stained_glass_pane"),
-    LIGHT_BLUE_TERRACOTTA("minecraft:light_blue_terracotta"),
-    LIGHT_BLUE_WOOL("minecraft:light_blue_wool"),
-    LIGHT_GRAY_BANNER("minecraft:light_gray_banner"),
-    LIGHT_GRAY_BED("minecraft:light_gray_bed"),
-    LIGHT_GRAY_CARPET("minecraft:light_gray_carpet"),
-    LIGHT_GRAY_CONCRETE("minecraft:light_gray_concrete"),
-    LIGHT_GRAY_CONCRETE_POWDER("minecraft:light_gray_concrete_powder"),
-    LIGHT_GRAY_DYE("minecraft:light_gray_dye"),
-    LIGHT_GRAY_GLAZED_TERRACOTTA("minecraft:light_gray_glazed_terracotta"),
-    LIGHT_GRAY_SHULKER_BOX("minecraft:light_gray_shulker_box"),
-    LIGHT_GRAY_STAINED_GLASS("minecraft:light_gray_stained_glass"),
-    LIGHT_GRAY_STAINED_GLASS_PANE("minecraft:light_gray_stained_glass_pane"),
-    LIGHT_GRAY_TERRACOTTA("minecraft:light_gray_terracotta"),
-    LIGHT_GRAY_WOOL("minecraft:light_gray_wool"),
-    LIGHT_WEIGHTED_PRESSURE_PLATE("minecraft:light_weighted_pressure_plate"),
-    LILAC("minecraft:lilac"),
-    LILY_OF_THE_VALLEY("minecraft:lily_of_the_valley"),
-    LILY_PAD("minecraft:lily_pad"),
-    LIME_BANNER("minecraft:lime_banner"),
-    LIME_BED("minecraft:lime_bed"),
-    LIME_CARPET("minecraft:lime_carpet"),
-    LIME_CONCRETE("minecraft:lime_concrete"),
-    LIME_CONCRETE_POWDER("minecraft:lime_concrete_powder"),
-    LIME_DYE("minecraft:lime_dye"),
-    LIME_GLAZED_TERRACOTTA("minecraft:lime_glazed_terracotta"),
-    LIME_SHULKER_BOX("minecraft:lime_shulker_box"),
-    LIME_STAINED_GLASS("minecraft:lime_stained_glass"),
-    LIME_STAINED_GLASS_PANE("minecraft:lime_stained_glass_pane"),
-    LIME_TERRACOTTA("minecraft:lime_terracotta"),
-    LIME_WOOL("minecraft:lime_wool"),
-    LINGERING_POTION("minecraft:lingering_potion"),
-    LLAMA_SPAWN_EGG("minecraft:llama_spawn_egg"),
-    LODESTONE("minecraft:lodestone"),
-    LOOM("minecraft:loom"),
-    MAGENTA_BANNER("minecraft:magenta_banner"),
-    MAGENTA_BED("minecraft:magenta_bed"),
-    MAGENTA_CARPET("minecraft:magenta_carpet"),
-    MAGENTA_CONCRETE("minecraft:magenta_concrete"),
-    MAGENTA_CONCRETE_POWDER("minecraft:magenta_concrete_powder"),
-    MAGENTA_DYE("minecraft:magenta_dye"),
-    MAGENTA_GLAZED_TERRACOTTA("minecraft:magenta_glazed_terracotta"),
-    MAGENTA_SHULKER_BOX("minecraft:magenta_shulker_box"),
-    MAGENTA_STAINED_GLASS("minecraft:magenta_stained_glass"),
-    MAGENTA_STAINED_GLASS_PANE("minecraft:magenta_stained_glass_pane"),
-    MAGENTA_TERRACOTTA("minecraft:magenta_terracotta"),
-    MAGENTA_WOOL("minecraft:magenta_wool"),
-    MAGMA_BLOCK("minecraft:magma_block"),
-    MAGMA_CREAM("minecraft:magma_cream"),
-    MAGMA_CUBE_SPAWN_EGG("minecraft:magma_cube_spawn_egg"),
-    MAP("minecraft:map"),
-    MELON("minecraft:melon"),
-    MELON_SEEDS("minecraft:melon_seeds"),
-    MELON_SLICE("minecraft:melon_slice"),
-    MILK_BUCKET("minecraft:milk_bucket"),
-    MINECART("minecraft:minecart"),
-    MOJANG_BANNER_PATTERN("minecraft:mojang_banner_pattern"),
-    MOOSHROOM_SPAWN_EGG("minecraft:mooshroom_spawn_egg"),
-    MOSSY_COBBLESTONE("minecraft:mossy_cobblestone"),
-    MOSSY_COBBLESTONE_SLAB("minecraft:mossy_cobblestone_slab"),
-    MOSSY_COBBLESTONE_STAIRS("minecraft:mossy_cobblestone_stairs"),
-    MOSSY_COBBLESTONE_WALL("minecraft:mossy_cobblestone_wall"),
-    MOSSY_STONE_BRICK_SLAB("minecraft:mossy_stone_brick_slab"),
-    MOSSY_STONE_BRICK_STAIRS("minecraft:mossy_stone_brick_stairs"),
-    MOSSY_STONE_BRICK_WALL("minecraft:mossy_stone_brick_wall"),
-    MOSSY_STONE_BRICKS("minecraft:mossy_stone_bricks"),
-    MULE_SPAWN_EGG("minecraft:mule_spawn_egg"),
-    MUSHROOM_STEM("minecraft:mushroom_stem"),
-    MUSHROOM_STEW("minecraft:mushroom_stew"),
-    MUSIC_DISC_11("minecraft:music_disc_11"),
-    MUSIC_DISC_13("minecraft:music_disc_13"),
-    MUSIC_DISC_BLOCKS("minecraft:music_disc_blocks"),
-    MUSIC_DISC_CAT("minecraft:music_disc_cat"),
-    MUSIC_DISC_CHIRP("minecraft:music_disc_chirp"),
-    MUSIC_DISC_FAR("minecraft:music_disc_far"),
-    MUSIC_DISC_MALL("minecraft:music_disc_mall"),
-    MUSIC_DISC_MELLOHI("minecraft:music_disc_mellohi"),
-    MUSIC_DISC_PIGSTEP("minecraft:music_disc_pigstep"),
-    MUSIC_DISC_STAL("minecraft:music_disc_stal"),
-    MUSIC_DISC_STRAD("minecraft:music_disc_strad"),
-    MUSIC_DISC_WAIT("minecraft:music_disc_wait"),
-    MUSIC_DISC_WARD("minecraft:music_disc_ward"),
-    MUTTON("minecraft:mutton"),
-    MYCELIUM("minecraft:mycelium"),
-    NAME_TAG("minecraft:name_tag"),
-    NAUTILUS_SHELL("minecraft:nautilus_shell"),
-    NETHER_BRICK("minecraft:nether_brick"),
-    NETHER_BRICK_FENCE("minecraft:nether_brick_fence"),
-    NETHER_BRICK_SLAB("minecraft:nether_brick_slab"),
-    NETHER_BRICK_STAIRS("minecraft:nether_brick_stairs"),
-    NETHER_BRICK_WALL("minecraft:nether_brick_wall"),
-    NETHER_BRICKS("minecraft:nether_bricks"),
-    NETHER_GOLD_ORE("minecraft:nether_gold_ore"),
-    NETHER_QUARTZ_ORE("minecraft:nether_quartz_ore"),
-    NETHER_SPROUTS("minecraft:nether_sprouts"),
-    NETHER_STAR("minecraft:nether_star"),
-    NETHER_WART("minecraft:nether_wart"),
-    NETHER_WART_BLOCK("minecraft:nether_wart_block"),
-    NETHERITE_AXE("minecraft:netherite_axe"),
-    NETHERITE_BLOCK("minecraft:netherite_block"),
-    NETHERITE_BOOTS("minecraft:netherite_boots"),
-    NETHERITE_CHESTPLATE("minecraft:netherite_chestplate"),
-    NETHERITE_HELMET("minecraft:netherite_helmet"),
-    NETHERITE_HOE("minecraft:netherite_hoe"),
-    NETHERITE_INGOT("minecraft:netherite_ingot"),
-    NETHERITE_LEGGINGS("minecraft:netherite_leggings"),
-    NETHERITE_PICKAXE("minecraft:netherite_pickaxe"),
-    NETHERITE_SCRAP("minecraft:netherite_scrap"),
-    NETHERITE_SHOVEL("minecraft:netherite_shovel"),
-    NETHERITE_SWORD("minecraft:netherite_sword"),
-    NETHERRACK("minecraft:netherrack"),
-    NOTE_BLOCK("minecraft:note_block"),
-    OAK_BOAT("minecraft:oak_boat"),
-    OAK_BUTTON("minecraft:oak_button"),
-    OAK_DOOR("minecraft:oak_door"),
-    OAK_FENCE("minecraft:oak_fence"),
-    OAK_FENCE_GATE("minecraft:oak_fence_gate"),
-    OAK_LEAVES("minecraft:oak_leaves"),
-    OAK_LOG("minecraft:oak_log"),
-    OAK_PLANKS("minecraft:oak_planks"),
-    OAK_PRESSURE_PLATE("minecraft:oak_pressure_plate"),
-    OAK_SAPLING("minecraft:oak_sapling"),
-    OAK_SIGN("minecraft:oak_sign"),
-    OAK_SLAB("minecraft:oak_slab"),
-    OAK_STAIRS("minecraft:oak_stairs"),
-    OAK_TRAPDOOR("minecraft:oak_trapdoor"),
-    OAK_WOOD("minecraft:oak_wood"),
-    OBSERVER("minecraft:observer"),
-    OBSIDIAN("minecraft:obsidian"),
-    OCELOT_SPAWN_EGG("minecraft:ocelot_spawn_egg"),
-    ORANGE_BANNER("minecraft:orange_banner"),
-    ORANGE_BED("minecraft:orange_bed"),
-    ORANGE_CARPET("minecraft:orange_carpet"),
-    ORANGE_CONCRETE("minecraft:orange_concrete"),
-    ORANGE_CONCRETE_POWDER("minecraft:orange_concrete_powder"),
-    ORANGE_DYE("minecraft:orange_dye"),
-    ORANGE_GLAZED_TERRACOTTA("minecraft:orange_glazed_terracotta"),
-    ORANGE_SHULKER_BOX("minecraft:orange_shulker_box"),
-    ORANGE_STAINED_GLASS("minecraft:orange_stained_glass"),
-    ORANGE_STAINED_GLASS_PANE("minecraft:orange_stained_glass_pane"),
-    ORANGE_TERRACOTTA("minecraft:orange_terracotta"),
-    ORANGE_TULIP("minecraft:orange_tulip"),
-    ORANGE_WOOL("minecraft:orange_wool"),
-    OXEYE_DAISY("minecraft:oxeye_daisy"),
-    PACKED_ICE("minecraft:packed_ice"),
-    PAINTING("minecraft:painting"),
-    PANDA_SPAWN_EGG("minecraft:panda_spawn_egg"),
-    PAPER("minecraft:paper"),
-    PARROT_SPAWN_EGG("minecraft:parrot_spawn_egg"),
-    PEONY("minecraft:peony"),
-    PETRIFIED_OAK_SLAB("minecraft:petrified_oak_slab"),
-    PHANTOM_MEMBRANE("minecraft:phantom_membrane"),
-    PHANTOM_SPAWN_EGG("minecraft:phantom_spawn_egg"),
-    PIG_SPAWN_EGG("minecraft:pig_spawn_egg"),
-    PIGLIN_BANNER_PATTERN("minecraft:piglin_banner_pattern"),
-    PIGLIN_SPAWN_EGG("minecraft:piglin_spawn_egg"),
-    PILLAGER_SPAWN_EGG("minecraft:pillager_spawn_egg"),
-    PINK_BANNER("minecraft:pink_banner"),
-    PINK_BED("minecraft:pink_bed"),
-    PINK_CARPET("minecraft:pink_carpet"),
-    PINK_CONCRETE("minecraft:pink_concrete"),
-    PINK_CONCRETE_POWDER("minecraft:pink_concrete_powder"),
-    PINK_DYE("minecraft:pink_dye"),
-    PINK_GLAZED_TERRACOTTA("minecraft:pink_glazed_terracotta"),
-    PINK_SHULKER_BOX("minecraft:pink_shulker_box"),
-    PINK_STAINED_GLASS("minecraft:pink_stained_glass"),
-    PINK_STAINED_GLASS_PANE("minecraft:pink_stained_glass_pane"),
-    PINK_TERRACOTTA("minecraft:pink_terracotta"),
-    PINK_TULIP("minecraft:pink_tulip"),
-    PINK_WOOL("minecraft:pink_wool"),
-    PISTON("minecraft:piston"),
-    PLAYER_HEAD("minecraft:player_head"),
-    PODZOL("minecraft:podzol"),
-    POISONOUS_POTATO("minecraft:poisonous_potato"),
-    POLAR_BEAR_SPAWN_EGG("minecraft:polar_bear_spawn_egg"),
-    POLISHED_ANDESITE("minecraft:polished_andesite"),
-    POLISHED_ANDESITE_SLAB("minecraft:polished_andesite_slab"),
-    POLISHED_ANDESITE_STAIRS("minecraft:polished_andesite_stairs"),
-    POLISHED_BASALT("minecraft:polished_basalt"),
-    POLISHED_BLACKSTONE("minecraft:polished_blackstone"),
-    POLISHED_BLACKSTONE_BRICK_SLAB("minecraft:polished_blackstone_brick_slab"),
-    POLISHED_BLACKSTONE_BRICK_STAIRS("minecraft:polished_blackstone_brick_stairs"),
-    POLISHED_BLACKSTONE_BRICK_WALL("minecraft:polished_blackstone_brick_wall"),
-    POLISHED_BLACKSTONE_BRICKS("minecraft:polished_blackstone_bricks"),
-    POLISHED_BLACKSTONE_BUTTON("minecraft:polished_blackstone_button"),
-    POLISHED_BLACKSTONE_PRESSURE_PLATE("minecraft:polished_blackstone_pressure_plate"),
-    POLISHED_BLACKSTONE_SLAB("minecraft:polished_blackstone_slab"),
-    POLISHED_BLACKSTONE_STAIRS("minecraft:polished_blackstone_stairs"),
-    POLISHED_BLACKSTONE_WALL("minecraft:polished_blackstone_wall"),
-    POLISHED_DIORITE("minecraft:polished_diorite"),
-    POLISHED_DIORITE_SLAB("minecraft:polished_diorite_slab"),
-    POLISHED_DIORITE_STAIRS("minecraft:polished_diorite_stairs"),
-    POLISHED_GRANITE("minecraft:polished_granite"),
-    POLISHED_GRANITE_SLAB("minecraft:polished_granite_slab"),
-    POLISHED_GRANITE_STAIRS("minecraft:polished_granite_stairs"),
-    POPPED_CHORUS_FRUIT("minecraft:popped_chorus_fruit"),
-    POPPY("minecraft:poppy"),
-    PORKCHOP("minecraft:porkchop"),
-    POTATO("minecraft:potato"),
-    POTION("minecraft:potion"),
-    POWERED_RAIL("minecraft:powered_rail"),
-    PRISMARINE("minecraft:prismarine"),
-    PRISMARINE_BRICK_SLAB("minecraft:prismarine_brick_slab"),
-    PRISMARINE_BRICK_STAIRS("minecraft:prismarine_brick_stairs"),
-    PRISMARINE_BRICKS("minecraft:prismarine_bricks"),
-    PRISMARINE_CRYSTALS("minecraft:prismarine_crystals"),
-    PRISMARINE_SHARD("minecraft:prismarine_shard"),
-    PRISMARINE_SLAB("minecraft:prismarine_slab"),
-    PRISMARINE_STAIRS("minecraft:prismarine_stairs"),
-    PRISMARINE_WALL("minecraft:prismarine_wall"),
-    PUFFERFISH("minecraft:pufferfish"),
-    PUFFERFISH_BUCKET("minecraft:pufferfish_bucket"),
-    PUFFERFISH_SPAWN_EGG("minecraft:pufferfish_spawn_egg"),
-    PUMPKIN("minecraft:pumpkin"),
-    PUMPKIN_PIE("minecraft:pumpkin_pie"),
-    PUMPKIN_SEEDS("minecraft:pumpkin_seeds"),
-    PURPLE_BANNER("minecraft:purple_banner"),
-    PURPLE_BED("minecraft:purple_bed"),
-    PURPLE_CARPET("minecraft:purple_carpet"),
-    PURPLE_CONCRETE("minecraft:purple_concrete"),
-    PURPLE_CONCRETE_POWDER("minecraft:purple_concrete_powder"),
-    PURPLE_DYE("minecraft:purple_dye"),
-    PURPLE_GLAZED_TERRACOTTA("minecraft:purple_glazed_terracotta"),
-    PURPLE_SHULKER_BOX("minecraft:purple_shulker_box"),
-    PURPLE_STAINED_GLASS("minecraft:purple_stained_glass"),
-    PURPLE_STAINED_GLASS_PANE("minecraft:purple_stained_glass_pane"),
-    PURPLE_TERRACOTTA("minecraft:purple_terracotta"),
-    PURPLE_WOOL("minecraft:purple_wool"),
-    PURPUR_BLOCK("minecraft:purpur_block"),
-    PURPUR_PILLAR("minecraft:purpur_pillar"),
-    PURPUR_SLAB("minecraft:purpur_slab"),
-    PURPUR_STAIRS("minecraft:purpur_stairs"),
-    QUARTZ("minecraft:quartz"),
-    QUARTZ_BLOCK("minecraft:quartz_block"),
-    QUARTZ_BRICKS("minecraft:quartz_bricks"),
-    QUARTZ_PILLAR("minecraft:quartz_pillar"),
-    QUARTZ_SLAB("minecraft:quartz_slab"),
-    QUARTZ_STAIRS("minecraft:quartz_stairs"),
-    RABBIT("minecraft:rabbit"),
-    RABBIT_FOOT("minecraft:rabbit_foot"),
-    RABBIT_HIDE("minecraft:rabbit_hide"),
-    RABBIT_SPAWN_EGG("minecraft:rabbit_spawn_egg"),
-    RABBIT_STEW("minecraft:rabbit_stew"),
-    RAIL("minecraft:rail"),
-    RAVAGER_SPAWN_EGG("minecraft:ravager_spawn_egg"),
-    RED_BANNER("minecraft:red_banner"),
-    RED_BED("minecraft:red_bed"),
-    RED_CARPET("minecraft:red_carpet"),
-    RED_CONCRETE("minecraft:red_concrete"),
-    RED_CONCRETE_POWDER("minecraft:red_concrete_powder"),
-    RED_DYE("minecraft:red_dye"),
-    RED_GLAZED_TERRACOTTA("minecraft:red_glazed_terracotta"),
-    RED_MUSHROOM("minecraft:red_mushroom"),
-    RED_MUSHROOM_BLOCK("minecraft:red_mushroom_block"),
-    RED_NETHER_BRICK_SLAB("minecraft:red_nether_brick_slab"),
-    RED_NETHER_BRICK_STAIRS("minecraft:red_nether_brick_stairs"),
-    RED_NETHER_BRICK_WALL("minecraft:red_nether_brick_wall"),
-    RED_NETHER_BRICKS("minecraft:red_nether_bricks"),
-    RED_SAND("minecraft:red_sand"),
-    RED_SANDSTONE("minecraft:red_sandstone"),
-    RED_SANDSTONE_SLAB("minecraft:red_sandstone_slab"),
-    RED_SANDSTONE_STAIRS("minecraft:red_sandstone_stairs"),
-    RED_SANDSTONE_WALL("minecraft:red_sandstone_wall"),
-    RED_SHULKER_BOX("minecraft:red_shulker_box"),
-    RED_STAINED_GLASS("minecraft:red_stained_glass"),
-    RED_STAINED_GLASS_PANE("minecraft:red_stained_glass_pane"),
-    RED_TERRACOTTA("minecraft:red_terracotta"),
-    RED_TULIP("minecraft:red_tulip"),
-    RED_WOOL("minecraft:red_wool"),
-    REDSTONE("minecraft:redstone"),
-    REDSTONE_BLOCK("minecraft:redstone_block"),
-    REDSTONE_LAMP("minecraft:redstone_lamp"),
-    REDSTONE_ORE("minecraft:redstone_ore"),
-    REDSTONE_TORCH("minecraft:redstone_torch"),
-    REPEATER("minecraft:repeater"),
-    REPEATING_COMMAND_BLOCK("minecraft:repeating_command_block"),
-    RESPAWN_ANCHOR("minecraft:respawn_anchor"),
-    ROSE_BUSH("minecraft:rose_bush"),
-    ROTTEN_FLESH("minecraft:rotten_flesh"),
-    SADDLE("minecraft:saddle"),
-    SALMON("minecraft:salmon"),
-    SALMON_BUCKET("minecraft:salmon_bucket"),
-    SALMON_SPAWN_EGG("minecraft:salmon_spawn_egg"),
-    SAND("minecraft:sand"),
-    SANDSTONE("minecraft:sandstone"),
-    SANDSTONE_SLAB("minecraft:sandstone_slab"),
-    SANDSTONE_STAIRS("minecraft:sandstone_stairs"),
-    SANDSTONE_WALL("minecraft:sandstone_wall"),
-    SCAFFOLDING("minecraft:scaffolding"),
-    SCUTE("minecraft:scute"),
-    SEA_LANTERN("minecraft:sea_lantern"),
-    SEA_PICKLE("minecraft:sea_pickle"),
-    SEAGRASS("minecraft:seagrass"),
-    SHEARS("minecraft:shears"),
-    SHEEP_SPAWN_EGG("minecraft:sheep_spawn_egg"),
-    SHIELD("minecraft:shield"),
-    SHROOMLIGHT("minecraft:shroomlight"),
-    SHULKER_BOX("minecraft:shulker_box"),
-    SHULKER_SHELL("minecraft:shulker_shell"),
-    SHULKER_SPAWN_EGG("minecraft:shulker_spawn_egg"),
-    SILVERFISH_SPAWN_EGG("minecraft:silverfish_spawn_egg"),
-    SKELETON_HORSE_SPAWN_EGG("minecraft:skeleton_horse_spawn_egg"),
-    SKELETON_SKULL("minecraft:skeleton_skull"),
-    SKELETON_SPAWN_EGG("minecraft:skeleton_spawn_egg"),
-    SKULL_BANNER_PATTERN("minecraft:skull_banner_pattern"),
-    SLIME_BALL("minecraft:slime_ball"),
-    SLIME_BLOCK("minecraft:slime_block"),
-    SLIME_SPAWN_EGG("minecraft:slime_spawn_egg"),
-    SMITHING_TABLE("minecraft:smithing_table"),
-    SMOKER("minecraft:smoker"),
-    SMOOTH_QUARTZ("minecraft:smooth_quartz"),
-    SMOOTH_QUARTZ_SLAB("minecraft:smooth_quartz_slab"),
-    SMOOTH_QUARTZ_STAIRS("minecraft:smooth_quartz_stairs"),
-    SMOOTH_RED_SANDSTONE("minecraft:smooth_red_sandstone"),
-    SMOOTH_RED_SANDSTONE_SLAB("minecraft:smooth_red_sandstone_slab"),
-    SMOOTH_RED_SANDSTONE_STAIRS("minecraft:smooth_red_sandstone_stairs"),
-    SMOOTH_SANDSTONE("minecraft:smooth_sandstone"),
-    SMOOTH_SANDSTONE_SLAB("minecraft:smooth_sandstone_slab"),
-    SMOOTH_SANDSTONE_STAIRS("minecraft:smooth_sandstone_stairs"),
-    SMOOTH_STONE("minecraft:smooth_stone"),
-    SMOOTH_STONE_SLAB("minecraft:smooth_stone_slab"),
-    SNOW("minecraft:snow"),
-    SNOW_BLOCK("minecraft:snow_block"),
-    SNOWBALL("minecraft:snowball"),
-    SOUL_CAMPFIRE("minecraft:soul_campfire"),
-    SOUL_LANTERN("minecraft:soul_lantern"),
-    SOUL_SAND("minecraft:soul_sand"),
-    SOUL_SOIL("minecraft:soul_soil"),
-    SOUL_TORCH("minecraft:soul_torch"),
-    SPAWNER("minecraft:spawner"),
-    SPECTRAL_ARROW("minecraft:spectral_arrow"),
-    SPIDER_EYE("minecraft:spider_eye"),
-    SPIDER_SPAWN_EGG("minecraft:spider_spawn_egg"),
-    SPLASH_POTION("minecraft:splash_potion"),
-    SPONGE("minecraft:sponge"),
-    SPRUCE_BOAT("minecraft:spruce_boat"),
-    SPRUCE_BUTTON("minecraft:spruce_button"),
-    SPRUCE_DOOR("minecraft:spruce_door"),
-    SPRUCE_FENCE("minecraft:spruce_fence"),
-    SPRUCE_FENCE_GATE("minecraft:spruce_fence_gate"),
-    SPRUCE_LEAVES("minecraft:spruce_leaves"),
-    SPRUCE_LOG("minecraft:spruce_log"),
-    SPRUCE_PLANKS("minecraft:spruce_planks"),
-    SPRUCE_PRESSURE_PLATE("minecraft:spruce_pressure_plate"),
-    SPRUCE_SAPLING("minecraft:spruce_sapling"),
-    SPRUCE_SIGN("minecraft:spruce_sign"),
-    SPRUCE_SLAB("minecraft:spruce_slab"),
-    SPRUCE_STAIRS("minecraft:spruce_stairs"),
-    SPRUCE_TRAPDOOR("minecraft:spruce_trapdoor"),
-    SPRUCE_WOOD("minecraft:spruce_wood"),
-    SQUID_SPAWN_EGG("minecraft:squid_spawn_egg"),
-    STICK("minecraft:stick"),
-    STICKY_PISTON("minecraft:sticky_piston"),
-    STONE("minecraft:stone"),
-    STONE_AXE("minecraft:stone_axe"),
-    STONE_BRICK_SLAB("minecraft:stone_brick_slab"),
-    STONE_BRICK_STAIRS("minecraft:stone_brick_stairs"),
-    STONE_BRICK_WALL("minecraft:stone_brick_wall"),
-    STONE_BRICKS("minecraft:stone_bricks"),
-    STONE_BUTTON("minecraft:stone_button"),
-    STONE_HOE("minecraft:stone_hoe"),
-    STONE_PICKAXE("minecraft:stone_pickaxe"),
-    STONE_PRESSURE_PLATE("minecraft:stone_pressure_plate"),
-    STONE_SHOVEL("minecraft:stone_shovel"),
-    STONE_SLAB("minecraft:stone_slab"),
-    STONE_STAIRS("minecraft:stone_stairs"),
-    STONE_SWORD("minecraft:stone_sword"),
-    STONECUTTER("minecraft:stonecutter"),
-    STRAY_SPAWN_EGG("minecraft:stray_spawn_egg"),
-    STRIDER_SPAWN_EGG("minecraft:strider_spawn_egg"),
-    STRING("minecraft:string"),
-    STRIPPED_ACACIA_LOG("minecraft:stripped_acacia_log"),
-    STRIPPED_ACACIA_WOOD("minecraft:stripped_acacia_wood"),
-    STRIPPED_BIRCH_LOG("minecraft:stripped_birch_log"),
-    STRIPPED_BIRCH_WOOD("minecraft:stripped_birch_wood"),
-    STRIPPED_CRIMSON_HYPHAE("minecraft:stripped_crimson_hyphae"),
-    STRIPPED_CRIMSON_STEM("minecraft:stripped_crimson_stem"),
-    STRIPPED_DARK_OAK_LOG("minecraft:stripped_dark_oak_log"),
-    STRIPPED_DARK_OAK_WOOD("minecraft:stripped_dark_oak_wood"),
-    STRIPPED_JUNGLE_LOG("minecraft:stripped_jungle_log"),
-    STRIPPED_JUNGLE_WOOD("minecraft:stripped_jungle_wood"),
-    STRIPPED_OAK_LOG("minecraft:stripped_oak_log"),
-    STRIPPED_OAK_WOOD("minecraft:stripped_oak_wood"),
-    STRIPPED_SPRUCE_LOG("minecraft:stripped_spruce_log"),
-    STRIPPED_SPRUCE_WOOD("minecraft:stripped_spruce_wood"),
-    STRIPPED_WARPED_HYPHAE("minecraft:stripped_warped_hyphae"),
-    STRIPPED_WARPED_STEM("minecraft:stripped_warped_stem"),
-    STRUCTURE_BLOCK("minecraft:structure_block"),
-    STRUCTURE_VOID("minecraft:structure_void"),
-    SUGAR("minecraft:sugar"),
-    SUGAR_CANE("minecraft:sugar_cane"),
-    SUNFLOWER("minecraft:sunflower"),
-    SUSPICIOUS_STEW("minecraft:suspicious_stew"),
-    SWEET_BERRIES("minecraft:sweet_berries"),
-    TALL_GRASS("minecraft:tall_grass"),
-    TARGET("minecraft:target"),
-    TERRACOTTA("minecraft:terracotta"),
-    TIPPED_ARROW("minecraft:tipped_arrow"),
-    TNT("minecraft:tnt"),
-    TNT_MINECART("minecraft:tnt_minecart"),
-    TORCH("minecraft:torch"),
-    TOTEM_OF_UNDYING("minecraft:totem_of_undying"),
-    TRADER_LLAMA_SPAWN_EGG("minecraft:trader_llama_spawn_egg"),
-    TRAPPED_CHEST("minecraft:trapped_chest"),
-    TRIDENT("minecraft:trident"),
-    TRIPWIRE_HOOK("minecraft:tripwire_hook"),
-    TROPICAL_FISH("minecraft:tropical_fish"),
-    TROPICAL_FISH_BUCKET("minecraft:tropical_fish_bucket"),
-    TROPICAL_FISH_SPAWN_EGG("minecraft:tropical_fish_spawn_egg"),
-    TUBE_CORAL("minecraft:tube_coral"),
-    TUBE_CORAL_BLOCK("minecraft:tube_coral_block"),
-    TUBE_CORAL_FAN("minecraft:tube_coral_fan"),
-    TURTLE_EGG("minecraft:turtle_egg"),
-    TURTLE_HELMET("minecraft:turtle_helmet"),
-    TURTLE_SPAWN_EGG("minecraft:turtle_spawn_egg"),
-    TWISTING_VINES("minecraft:twisting_vines"),
-    VEX_SPAWN_EGG("minecraft:vex_spawn_egg"),
-    VILLAGER_SPAWN_EGG("minecraft:villager_spawn_egg"),
-    VINDICATOR_SPAWN_EGG("minecraft:vindicator_spawn_egg"),
-    VINE("minecraft:vine"),
-    WANDERING_TRADER_SPAWN_EGG("minecraft:wandering_trader_spawn_egg"),
-    WARPED_BUTTON("minecraft:warped_button"),
-    WARPED_DOOR("minecraft:warped_door"),
-    WARPED_FENCE("minecraft:warped_fence"),
-    WARPED_FENCE_GATE("minecraft:warped_fence_gate"),
-    WARPED_FUNGUS("minecraft:warped_fungus"),
-    WARPED_FUNGUS_ON_A_STICK("minecraft:warped_fungus_on_a_stick"),
-    WARPED_HYPHAE("minecraft:warped_hyphae"),
-    WARPED_NYLIUM("minecraft:warped_nylium"),
-    WARPED_PLANKS("minecraft:warped_planks"),
-    WARPED_PRESSURE_PLATE("minecraft:warped_pressure_plate"),
-    WARPED_ROOTS("minecraft:warped_roots"),
-    WARPED_SIGN("minecraft:warped_sign"),
-    WARPED_SLAB("minecraft:warped_slab"),
-    WARPED_STAIRS("minecraft:warped_stairs"),
-    WARPED_STEM("minecraft:warped_stem"),
-    WARPED_TRAPDOOR("minecraft:warped_trapdoor"),
-    WARPED_WART_BLOCK("minecraft:warped_wart_block"),
-    WATER_BUCKET("minecraft:water_bucket"),
-    WEEPING_VINES("minecraft:weeping_vines"),
-    WET_SPONGE("minecraft:wet_sponge"),
-    WHEAT("minecraft:wheat"),
-    WHEAT_SEEDS("minecraft:wheat_seeds"),
-    WHITE_BANNER("minecraft:white_banner"),
-    WHITE_BED("minecraft:white_bed"),
-    WHITE_CARPET("minecraft:white_carpet"),
-    WHITE_CONCRETE("minecraft:white_concrete"),
-    WHITE_CONCRETE_POWDER("minecraft:white_concrete_powder"),
-    WHITE_DYE("minecraft:white_dye"),
-    WHITE_GLAZED_TERRACOTTA("minecraft:white_glazed_terracotta"),
-    WHITE_SHULKER_BOX("minecraft:white_shulker_box"),
-    WHITE_STAINED_GLASS("minecraft:white_stained_glass"),
-    WHITE_STAINED_GLASS_PANE("minecraft:white_stained_glass_pane"),
-    WHITE_TERRACOTTA("minecraft:white_terracotta"),
-    WHITE_TULIP("minecraft:white_tulip"),
-    WHITE_WOOL("minecraft:white_wool"),
-    WITCH_SPAWN_EGG("minecraft:witch_spawn_egg"),
-    WITHER_ROSE("minecraft:wither_rose"),
-    WITHER_SKELETON_SKULL("minecraft:wither_skeleton_skull"),
-    WITHER_SKELETON_SPAWN_EGG("minecraft:wither_skeleton_spawn_egg"),
-    WOLF_SPAWN_EGG("minecraft:wolf_spawn_egg"),
-    WOODEN_AXE("minecraft:wooden_axe"),
-    WOODEN_HOE("minecraft:wooden_hoe"),
-    WOODEN_PICKAXE("minecraft:wooden_pickaxe"),
-    WOODEN_SHOVEL("minecraft:wooden_shovel"),
-    WOODEN_SWORD("minecraft:wooden_sword"),
-    WRITABLE_BOOK("minecraft:writable_book"),
-    WRITTEN_BOOK("minecraft:written_book"),
-    YELLOW_BANNER("minecraft:yellow_banner"),
-    YELLOW_BED("minecraft:yellow_bed"),
-    YELLOW_CARPET("minecraft:yellow_carpet"),
-    YELLOW_CONCRETE("minecraft:yellow_concrete"),
-    YELLOW_CONCRETE_POWDER("minecraft:yellow_concrete_powder"),
-    YELLOW_DYE("minecraft:yellow_dye"),
-    YELLOW_GLAZED_TERRACOTTA("minecraft:yellow_glazed_terracotta"),
-    YELLOW_SHULKER_BOX("minecraft:yellow_shulker_box"),
-    YELLOW_STAINED_GLASS("minecraft:yellow_stained_glass"),
-    YELLOW_STAINED_GLASS_PANE("minecraft:yellow_stained_glass_pane"),
-    YELLOW_TERRACOTTA("minecraft:yellow_terracotta"),
-    YELLOW_WOOL("minecraft:yellow_wool"),
-    ZOGLIN_SPAWN_EGG("minecraft:zoglin_spawn_egg"),
-    ZOMBIE_HEAD("minecraft:zombie_head"),
-    ZOMBIE_HORSE_SPAWN_EGG("minecraft:zombie_horse_spawn_egg"),
-    ZOMBIE_SPAWN_EGG("minecraft:zombie_spawn_egg"),
-    ZOMBIE_VILLAGER_SPAWN_EGG("minecraft:zombie_villager_spawn_egg"),
-    ZOMBIFIED_PIGLIN_SPAWN_EGG("minecraft:zombified_piglin_spawn_egg");
+    // region ItemTypes
 
-    private static final Map<String, ItemType> mapById = new HashMap<>();
-    private final String id;
+    ItemType ACACIA_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_boat");
+    ItemType ACACIA_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_button");
+    ItemType ACACIA_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_door");
+    ItemType ACACIA_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_fence");
+    ItemType ACACIA_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_fence_gate");
+    ItemType ACACIA_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_leaves");
+    ItemType ACACIA_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_log");
+    ItemType ACACIA_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_planks");
+    ItemType ACACIA_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_pressure_plate");
+    ItemType ACACIA_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_sapling");
+    ItemType ACACIA_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_sign");
+    ItemType ACACIA_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_slab");
+    ItemType ACACIA_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_stairs");
+    ItemType ACACIA_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_trapdoor");
+    ItemType ACACIA_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:acacia_wood");
+    ItemType ACTIVATOR_RAIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:activator_rail");
+    ItemType AIR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:air");
+    ItemType ALLIUM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:allium");
+    ItemType ANCIENT_DEBRIS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ancient_debris");
+    ItemType ANDESITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:andesite");
+    ItemType ANDESITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:andesite_slab");
+    ItemType ANDESITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:andesite_stairs");
+    ItemType ANDESITE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:andesite_wall");
+    ItemType ANVIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:anvil");
+    ItemType APPLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:apple");
+    ItemType ARMOR_STAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:armor_stand");
+    ItemType ARROW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:arrow");
+    ItemType AZURE_BLUET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:azure_bluet");
+    ItemType BAKED_POTATO = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:baked_potato");
+    ItemType BAMBOO = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bamboo");
+    ItemType BARREL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:barrel");
+    ItemType BARRIER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:barrier");
+    ItemType BASALT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:basalt");
+    ItemType BAT_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bat_spawn_egg");
+    ItemType BEACON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beacon");
+    ItemType BEDROCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bedrock");
+    ItemType BEE_NEST = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bee_nest");
+    ItemType BEE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bee_spawn_egg");
+    ItemType BEEF = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beef");
+    ItemType BEEHIVE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beehive");
+    ItemType BEETROOT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beetroot");
+    ItemType BEETROOT_SEEDS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beetroot_seeds");
+    ItemType BEETROOT_SOUP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:beetroot_soup");
+    ItemType BELL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bell");
+    ItemType BIRCH_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_boat");
+    ItemType BIRCH_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_button");
+    ItemType BIRCH_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_door");
+    ItemType BIRCH_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_fence");
+    ItemType BIRCH_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_fence_gate");
+    ItemType BIRCH_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_leaves");
+    ItemType BIRCH_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_log");
+    ItemType BIRCH_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_planks");
+    ItemType BIRCH_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_pressure_plate");
+    ItemType BIRCH_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_sapling");
+    ItemType BIRCH_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_sign");
+    ItemType BIRCH_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_slab");
+    ItemType BIRCH_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_stairs");
+    ItemType BIRCH_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_trapdoor");
+    ItemType BIRCH_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:birch_wood");
+    ItemType BLACK_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_banner");
+    ItemType BLACK_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_bed");
+    ItemType BLACK_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_carpet");
+    ItemType BLACK_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_concrete");
+    ItemType BLACK_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_concrete_powder");
+    ItemType BLACK_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_dye");
+    ItemType BLACK_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_glazed_terracotta");
+    ItemType BLACK_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_shulker_box");
+    ItemType BLACK_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_stained_glass");
+    ItemType BLACK_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_stained_glass_pane");
+    ItemType BLACK_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_terracotta");
+    ItemType BLACK_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:black_wool");
+    ItemType BLACKSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blackstone");
+    ItemType BLACKSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blackstone_slab");
+    ItemType BLACKSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blackstone_stairs");
+    ItemType BLACKSTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blackstone_wall");
+    ItemType BLAST_FURNACE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blast_furnace");
+    ItemType BLAZE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blaze_powder");
+    ItemType BLAZE_ROD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blaze_rod");
+    ItemType BLAZE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blaze_spawn_egg");
+    ItemType BLUE_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_banner");
+    ItemType BLUE_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_bed");
+    ItemType BLUE_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_carpet");
+    ItemType BLUE_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_concrete");
+    ItemType BLUE_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_concrete_powder");
+    ItemType BLUE_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_dye");
+    ItemType BLUE_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_glazed_terracotta");
+    ItemType BLUE_ICE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_ice");
+    ItemType BLUE_ORCHID = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_orchid");
+    ItemType BLUE_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_shulker_box");
+    ItemType BLUE_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_stained_glass");
+    ItemType BLUE_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_stained_glass_pane");
+    ItemType BLUE_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_terracotta");
+    ItemType BLUE_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:blue_wool");
+    ItemType BONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bone");
+    ItemType BONE_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bone_block");
+    ItemType BONE_MEAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bone_meal");
+    ItemType BOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:book");
+    ItemType BOOKSHELF = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bookshelf");
+    ItemType BOW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bow");
+    ItemType BOWL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bowl");
+    ItemType BRAIN_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brain_coral");
+    ItemType BRAIN_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brain_coral_block");
+    ItemType BRAIN_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brain_coral_fan");
+    ItemType BREAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bread");
+    ItemType BREWING_STAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brewing_stand");
+    ItemType BRICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brick");
+    ItemType BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brick_slab");
+    ItemType BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brick_stairs");
+    ItemType BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brick_wall");
+    ItemType BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bricks");
+    ItemType BROWN_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_banner");
+    ItemType BROWN_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_bed");
+    ItemType BROWN_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_carpet");
+    ItemType BROWN_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_concrete");
+    ItemType BROWN_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_concrete_powder");
+    ItemType BROWN_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_dye");
+    ItemType BROWN_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_glazed_terracotta");
+    ItemType BROWN_MUSHROOM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_mushroom");
+    ItemType BROWN_MUSHROOM_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_mushroom_block");
+    ItemType BROWN_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_shulker_box");
+    ItemType BROWN_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_stained_glass");
+    ItemType BROWN_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_stained_glass_pane");
+    ItemType BROWN_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_terracotta");
+    ItemType BROWN_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:brown_wool");
+    ItemType BUBBLE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bubble_coral");
+    ItemType BUBBLE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bubble_coral_block");
+    ItemType BUBBLE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bubble_coral_fan");
+    ItemType BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:bucket");
+    ItemType CACTUS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cactus");
+    ItemType CAKE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cake");
+    ItemType CAMPFIRE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:campfire");
+    ItemType CARROT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:carrot");
+    ItemType CARROT_ON_A_STICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:carrot_on_a_stick");
+    ItemType CARTOGRAPHY_TABLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cartography_table");
+    ItemType CARVED_PUMPKIN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:carved_pumpkin");
+    ItemType CAT_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cat_spawn_egg");
+    ItemType CAULDRON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cauldron");
+    ItemType CAVE_SPIDER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cave_spider_spawn_egg");
+    ItemType CHAIN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chain");
+    ItemType CHAIN_COMMAND_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chain_command_block");
+    ItemType CHAINMAIL_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chainmail_boots");
+    ItemType CHAINMAIL_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chainmail_chestplate");
+    ItemType CHAINMAIL_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chainmail_helmet");
+    ItemType CHAINMAIL_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chainmail_leggings");
+    ItemType CHARCOAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:charcoal");
+    ItemType CHEST = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chest");
+    ItemType CHEST_MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chest_minecart");
+    ItemType CHICKEN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chicken");
+    ItemType CHICKEN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chicken_spawn_egg");
+    ItemType CHIPPED_ANVIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chipped_anvil");
+    ItemType CHISELED_NETHER_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_nether_bricks");
+    ItemType CHISELED_POLISHED_BLACKSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_polished_blackstone");
+    ItemType CHISELED_QUARTZ_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_quartz_block");
+    ItemType CHISELED_RED_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_red_sandstone");
+    ItemType CHISELED_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_sandstone");
+    ItemType CHISELED_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chiseled_stone_bricks");
+    ItemType CHORUS_FLOWER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chorus_flower");
+    ItemType CHORUS_FRUIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chorus_fruit");
+    ItemType CHORUS_PLANT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:chorus_plant");
+    ItemType CLAY = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:clay");
+    ItemType CLAY_BALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:clay_ball");
+    ItemType CLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:clock");
+    ItemType COAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:coal");
+    ItemType COAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:coal_block");
+    ItemType COAL_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:coal_ore");
+    ItemType COARSE_DIRT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:coarse_dirt");
+    ItemType COBBLESTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cobblestone");
+    ItemType COBBLESTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cobblestone_slab");
+    ItemType COBBLESTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cobblestone_stairs");
+    ItemType COBBLESTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cobblestone_wall");
+    ItemType COBWEB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cobweb");
+    ItemType COCOA_BEANS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cocoa_beans");
+    ItemType COD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cod");
+    ItemType COD_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cod_bucket");
+    ItemType COD_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cod_spawn_egg");
+    ItemType COMMAND_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:command_block");
+    ItemType COMMAND_BLOCK_MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:command_block_minecart");
+    ItemType COMPARATOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:comparator");
+    ItemType COMPASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:compass");
+    ItemType COMPOSTER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:composter");
+    ItemType CONDUIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:conduit");
+    ItemType COOKED_BEEF = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_beef");
+    ItemType COOKED_CHICKEN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_chicken");
+    ItemType COOKED_COD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_cod");
+    ItemType COOKED_MUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_mutton");
+    ItemType COOKED_PORKCHOP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_porkchop");
+    ItemType COOKED_RABBIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_rabbit");
+    ItemType COOKED_SALMON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cooked_salmon");
+    ItemType COOKIE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cookie");
+    ItemType CORNFLOWER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cornflower");
+    ItemType COW_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cow_spawn_egg");
+    ItemType CRACKED_NETHER_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cracked_nether_bricks");
+    ItemType CRACKED_POLISHED_BLACKSTONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cracked_polished_blackstone_bricks");
+    ItemType CRACKED_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cracked_stone_bricks");
+    ItemType CRAFTING_TABLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crafting_table");
+    ItemType CREEPER_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:creeper_banner_pattern");
+    ItemType CREEPER_HEAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:creeper_head");
+    ItemType CREEPER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:creeper_spawn_egg");
+    ItemType CRIMSON_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_button");
+    ItemType CRIMSON_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_door");
+    ItemType CRIMSON_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_fence");
+    ItemType CRIMSON_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_fence_gate");
+    ItemType CRIMSON_FUNGUS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_fungus");
+    ItemType CRIMSON_HYPHAE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_hyphae");
+    ItemType CRIMSON_NYLIUM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_nylium");
+    ItemType CRIMSON_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_planks");
+    ItemType CRIMSON_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_pressure_plate");
+    ItemType CRIMSON_ROOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_roots");
+    ItemType CRIMSON_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_sign");
+    ItemType CRIMSON_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_slab");
+    ItemType CRIMSON_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_stairs");
+    ItemType CRIMSON_STEM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_stem");
+    ItemType CRIMSON_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crimson_trapdoor");
+    ItemType CROSSBOW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crossbow");
+    ItemType CRYING_OBSIDIAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:crying_obsidian");
+    ItemType CUT_RED_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cut_red_sandstone");
+    ItemType CUT_RED_SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cut_red_sandstone_slab");
+    ItemType CUT_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cut_sandstone");
+    ItemType CUT_SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cut_sandstone_slab");
+    ItemType CYAN_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_banner");
+    ItemType CYAN_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_bed");
+    ItemType CYAN_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_carpet");
+    ItemType CYAN_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_concrete");
+    ItemType CYAN_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_concrete_powder");
+    ItemType CYAN_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_dye");
+    ItemType CYAN_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_glazed_terracotta");
+    ItemType CYAN_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_shulker_box");
+    ItemType CYAN_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_stained_glass");
+    ItemType CYAN_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_stained_glass_pane");
+    ItemType CYAN_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_terracotta");
+    ItemType CYAN_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:cyan_wool");
+    ItemType DAMAGED_ANVIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:damaged_anvil");
+    ItemType DANDELION = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dandelion");
+    ItemType DARK_OAK_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_boat");
+    ItemType DARK_OAK_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_button");
+    ItemType DARK_OAK_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_door");
+    ItemType DARK_OAK_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_fence");
+    ItemType DARK_OAK_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_fence_gate");
+    ItemType DARK_OAK_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_leaves");
+    ItemType DARK_OAK_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_log");
+    ItemType DARK_OAK_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_planks");
+    ItemType DARK_OAK_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_pressure_plate");
+    ItemType DARK_OAK_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_sapling");
+    ItemType DARK_OAK_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_sign");
+    ItemType DARK_OAK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_slab");
+    ItemType DARK_OAK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_stairs");
+    ItemType DARK_OAK_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_trapdoor");
+    ItemType DARK_OAK_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_oak_wood");
+    ItemType DARK_PRISMARINE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_prismarine");
+    ItemType DARK_PRISMARINE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_prismarine_slab");
+    ItemType DARK_PRISMARINE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dark_prismarine_stairs");
+    ItemType DAYLIGHT_DETECTOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:daylight_detector");
+    ItemType DEAD_BRAIN_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_brain_coral");
+    ItemType DEAD_BRAIN_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_brain_coral_block");
+    ItemType DEAD_BRAIN_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_brain_coral_fan");
+    ItemType DEAD_BUBBLE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_bubble_coral");
+    ItemType DEAD_BUBBLE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_bubble_coral_block");
+    ItemType DEAD_BUBBLE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_bubble_coral_fan");
+    ItemType DEAD_BUSH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_bush");
+    ItemType DEAD_FIRE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_fire_coral");
+    ItemType DEAD_FIRE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_fire_coral_block");
+    ItemType DEAD_FIRE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_fire_coral_fan");
+    ItemType DEAD_HORN_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_horn_coral");
+    ItemType DEAD_HORN_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_horn_coral_block");
+    ItemType DEAD_HORN_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_horn_coral_fan");
+    ItemType DEAD_TUBE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_tube_coral");
+    ItemType DEAD_TUBE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_tube_coral_block");
+    ItemType DEAD_TUBE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dead_tube_coral_fan");
+    ItemType DEBUG_STICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:debug_stick");
+    ItemType DETECTOR_RAIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:detector_rail");
+    ItemType DIAMOND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond");
+    ItemType DIAMOND_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_axe");
+    ItemType DIAMOND_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_block");
+    ItemType DIAMOND_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_boots");
+    ItemType DIAMOND_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_chestplate");
+    ItemType DIAMOND_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_helmet");
+    ItemType DIAMOND_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_hoe");
+    ItemType DIAMOND_HORSE_ARMOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_horse_armor");
+    ItemType DIAMOND_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_leggings");
+    ItemType DIAMOND_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_ore");
+    ItemType DIAMOND_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_pickaxe");
+    ItemType DIAMOND_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_shovel");
+    ItemType DIAMOND_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diamond_sword");
+    ItemType DIORITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diorite");
+    ItemType DIORITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diorite_slab");
+    ItemType DIORITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diorite_stairs");
+    ItemType DIORITE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:diorite_wall");
+    ItemType DIRT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dirt");
+    ItemType DISPENSER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dispenser");
+    ItemType DOLPHIN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dolphin_spawn_egg");
+    ItemType DONKEY_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:donkey_spawn_egg");
+    ItemType DRAGON_BREATH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dragon_breath");
+    ItemType DRAGON_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dragon_egg");
+    ItemType DRAGON_HEAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dragon_head");
+    ItemType DRIED_KELP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dried_kelp");
+    ItemType DRIED_KELP_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dried_kelp_block");
+    ItemType DROPPER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:dropper");
+    ItemType DROWNED_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:drowned_spawn_egg");
+    ItemType EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:egg");
+    ItemType ELDER_GUARDIAN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:elder_guardian_spawn_egg");
+    ItemType ELYTRA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:elytra");
+    ItemType EMERALD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:emerald");
+    ItemType EMERALD_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:emerald_block");
+    ItemType EMERALD_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:emerald_ore");
+    ItemType ENCHANTED_BOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:enchanted_book");
+    ItemType ENCHANTED_GOLDEN_APPLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:enchanted_golden_apple");
+    ItemType ENCHANTING_TABLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:enchanting_table");
+    ItemType END_CRYSTAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_crystal");
+    ItemType END_PORTAL_FRAME = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_portal_frame");
+    ItemType END_ROD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_rod");
+    ItemType END_STONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_stone");
+    ItemType END_STONE_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_stone_brick_slab");
+    ItemType END_STONE_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_stone_brick_stairs");
+    ItemType END_STONE_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_stone_brick_wall");
+    ItemType END_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:end_stone_bricks");
+    ItemType ENDER_CHEST = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ender_chest");
+    ItemType ENDER_EYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ender_eye");
+    ItemType ENDER_PEARL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ender_pearl");
+    ItemType ENDERMAN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:enderman_spawn_egg");
+    ItemType ENDERMITE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:endermite_spawn_egg");
+    ItemType EVOKER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:evoker_spawn_egg");
+    ItemType EXPERIENCE_BOTTLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:experience_bottle");
+    ItemType FARMLAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:farmland");
+    ItemType FEATHER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:feather");
+    ItemType FERMENTED_SPIDER_EYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fermented_spider_eye");
+    ItemType FERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fern");
+    ItemType FILLED_MAP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:filled_map");
+    ItemType FIRE_CHARGE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fire_charge");
+    ItemType FIRE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fire_coral");
+    ItemType FIRE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fire_coral_block");
+    ItemType FIRE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fire_coral_fan");
+    ItemType FIREWORK_ROCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:firework_rocket");
+    ItemType FIREWORK_STAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:firework_star");
+    ItemType FISHING_ROD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fishing_rod");
+    ItemType FLETCHING_TABLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fletching_table");
+    ItemType FLINT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:flint");
+    ItemType FLINT_AND_STEEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:flint_and_steel");
+    ItemType FLOWER_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:flower_banner_pattern");
+    ItemType FLOWER_POT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:flower_pot");
+    ItemType FOX_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:fox_spawn_egg");
+    ItemType FURNACE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:furnace");
+    ItemType FURNACE_MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:furnace_minecart");
+    ItemType GHAST_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ghast_spawn_egg");
+    ItemType GHAST_TEAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ghast_tear");
+    ItemType GILDED_BLACKSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gilded_blackstone");
+    ItemType GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glass");
+    ItemType GLASS_BOTTLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glass_bottle");
+    ItemType GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glass_pane");
+    ItemType GLISTERING_MELON_SLICE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glistering_melon_slice");
+    ItemType GLOBE_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:globe_banner_pattern");
+    ItemType GLOWSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glowstone");
+    ItemType GLOWSTONE_DUST = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:glowstone_dust");
+    ItemType GOLD_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gold_block");
+    ItemType GOLD_INGOT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gold_ingot");
+    ItemType GOLD_NUGGET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gold_nugget");
+    ItemType GOLD_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gold_ore");
+    ItemType GOLDEN_APPLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_apple");
+    ItemType GOLDEN_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_axe");
+    ItemType GOLDEN_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_boots");
+    ItemType GOLDEN_CARROT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_carrot");
+    ItemType GOLDEN_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_chestplate");
+    ItemType GOLDEN_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_helmet");
+    ItemType GOLDEN_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_hoe");
+    ItemType GOLDEN_HORSE_ARMOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_horse_armor");
+    ItemType GOLDEN_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_leggings");
+    ItemType GOLDEN_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_pickaxe");
+    ItemType GOLDEN_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_shovel");
+    ItemType GOLDEN_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:golden_sword");
+    ItemType GRANITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:granite");
+    ItemType GRANITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:granite_slab");
+    ItemType GRANITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:granite_stairs");
+    ItemType GRANITE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:granite_wall");
+    ItemType GRASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:grass");
+    ItemType GRASS_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:grass_block");
+    ItemType GRASS_PATH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:grass_path");
+    ItemType GRAVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gravel");
+    ItemType GRAY_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_banner");
+    ItemType GRAY_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_bed");
+    ItemType GRAY_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_carpet");
+    ItemType GRAY_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_concrete");
+    ItemType GRAY_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_concrete_powder");
+    ItemType GRAY_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_dye");
+    ItemType GRAY_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_glazed_terracotta");
+    ItemType GRAY_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_shulker_box");
+    ItemType GRAY_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_stained_glass");
+    ItemType GRAY_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_stained_glass_pane");
+    ItemType GRAY_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_terracotta");
+    ItemType GRAY_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gray_wool");
+    ItemType GREEN_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_banner");
+    ItemType GREEN_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_bed");
+    ItemType GREEN_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_carpet");
+    ItemType GREEN_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_concrete");
+    ItemType GREEN_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_concrete_powder");
+    ItemType GREEN_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_dye");
+    ItemType GREEN_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_glazed_terracotta");
+    ItemType GREEN_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_shulker_box");
+    ItemType GREEN_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_stained_glass");
+    ItemType GREEN_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_stained_glass_pane");
+    ItemType GREEN_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_terracotta");
+    ItemType GREEN_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:green_wool");
+    ItemType GRINDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:grindstone");
+    ItemType GUARDIAN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:guardian_spawn_egg");
+    ItemType GUNPOWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:gunpowder");
+    ItemType HAY_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:hay_block");
+    ItemType HEART_OF_THE_SEA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:heart_of_the_sea");
+    ItemType HEAVY_WEIGHTED_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:heavy_weighted_pressure_plate");
+    ItemType HOGLIN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:hoglin_spawn_egg");
+    ItemType HONEY_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:honey_block");
+    ItemType HONEY_BOTTLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:honey_bottle");
+    ItemType HONEYCOMB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:honeycomb");
+    ItemType HONEYCOMB_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:honeycomb_block");
+    ItemType HOPPER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:hopper");
+    ItemType HOPPER_MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:hopper_minecart");
+    ItemType HORN_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:horn_coral");
+    ItemType HORN_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:horn_coral_block");
+    ItemType HORN_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:horn_coral_fan");
+    ItemType HORSE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:horse_spawn_egg");
+    ItemType HUSK_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:husk_spawn_egg");
+    ItemType ICE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ice");
+    ItemType INFESTED_CHISELED_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_chiseled_stone_bricks");
+    ItemType INFESTED_COBBLESTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_cobblestone");
+    ItemType INFESTED_CRACKED_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_cracked_stone_bricks");
+    ItemType INFESTED_MOSSY_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_mossy_stone_bricks");
+    ItemType INFESTED_STONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_stone");
+    ItemType INFESTED_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:infested_stone_bricks");
+    ItemType INK_SAC = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ink_sac");
+    ItemType IRON_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_axe");
+    ItemType IRON_BARS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_bars");
+    ItemType IRON_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_block");
+    ItemType IRON_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_boots");
+    ItemType IRON_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_chestplate");
+    ItemType IRON_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_door");
+    ItemType IRON_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_helmet");
+    ItemType IRON_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_hoe");
+    ItemType IRON_HORSE_ARMOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_horse_armor");
+    ItemType IRON_INGOT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_ingot");
+    ItemType IRON_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_leggings");
+    ItemType IRON_NUGGET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_nugget");
+    ItemType IRON_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_ore");
+    ItemType IRON_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_pickaxe");
+    ItemType IRON_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_shovel");
+    ItemType IRON_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_sword");
+    ItemType IRON_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:iron_trapdoor");
+    ItemType ITEM_FRAME = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:item_frame");
+    ItemType JACK_O_LANTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jack_o_lantern");
+    ItemType JIGSAW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jigsaw");
+    ItemType JUKEBOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jukebox");
+    ItemType JUNGLE_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_boat");
+    ItemType JUNGLE_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_button");
+    ItemType JUNGLE_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_door");
+    ItemType JUNGLE_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_fence");
+    ItemType JUNGLE_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_fence_gate");
+    ItemType JUNGLE_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_leaves");
+    ItemType JUNGLE_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_log");
+    ItemType JUNGLE_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_planks");
+    ItemType JUNGLE_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_pressure_plate");
+    ItemType JUNGLE_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_sapling");
+    ItemType JUNGLE_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_sign");
+    ItemType JUNGLE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_slab");
+    ItemType JUNGLE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_stairs");
+    ItemType JUNGLE_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_trapdoor");
+    ItemType JUNGLE_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:jungle_wood");
+    ItemType KELP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:kelp");
+    ItemType KNOWLEDGE_BOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:knowledge_book");
+    ItemType LADDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ladder");
+    ItemType LANTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lantern");
+    ItemType LAPIS_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lapis_block");
+    ItemType LAPIS_LAZULI = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lapis_lazuli");
+    ItemType LAPIS_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lapis_ore");
+    ItemType LARGE_FERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:large_fern");
+    ItemType LAVA_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lava_bucket");
+    ItemType LEAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lead");
+    ItemType LEATHER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather");
+    ItemType LEATHER_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather_boots");
+    ItemType LEATHER_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather_chestplate");
+    ItemType LEATHER_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather_helmet");
+    ItemType LEATHER_HORSE_ARMOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather_horse_armor");
+    ItemType LEATHER_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:leather_leggings");
+    ItemType LECTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lectern");
+    ItemType LEVER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lever");
+    ItemType LIGHT_BLUE_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_banner");
+    ItemType LIGHT_BLUE_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_bed");
+    ItemType LIGHT_BLUE_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_carpet");
+    ItemType LIGHT_BLUE_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_concrete");
+    ItemType LIGHT_BLUE_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_concrete_powder");
+    ItemType LIGHT_BLUE_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_dye");
+    ItemType LIGHT_BLUE_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_glazed_terracotta");
+    ItemType LIGHT_BLUE_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_shulker_box");
+    ItemType LIGHT_BLUE_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_stained_glass");
+    ItemType LIGHT_BLUE_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_stained_glass_pane");
+    ItemType LIGHT_BLUE_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_terracotta");
+    ItemType LIGHT_BLUE_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_blue_wool");
+    ItemType LIGHT_GRAY_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_banner");
+    ItemType LIGHT_GRAY_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_bed");
+    ItemType LIGHT_GRAY_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_carpet");
+    ItemType LIGHT_GRAY_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_concrete");
+    ItemType LIGHT_GRAY_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_concrete_powder");
+    ItemType LIGHT_GRAY_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_dye");
+    ItemType LIGHT_GRAY_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_glazed_terracotta");
+    ItemType LIGHT_GRAY_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_shulker_box");
+    ItemType LIGHT_GRAY_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_stained_glass");
+    ItemType LIGHT_GRAY_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_stained_glass_pane");
+    ItemType LIGHT_GRAY_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_terracotta");
+    ItemType LIGHT_GRAY_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_gray_wool");
+    ItemType LIGHT_WEIGHTED_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:light_weighted_pressure_plate");
+    ItemType LILAC = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lilac");
+    ItemType LILY_OF_THE_VALLEY = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lily_of_the_valley");
+    ItemType LILY_PAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lily_pad");
+    ItemType LIME_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_banner");
+    ItemType LIME_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_bed");
+    ItemType LIME_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_carpet");
+    ItemType LIME_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_concrete");
+    ItemType LIME_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_concrete_powder");
+    ItemType LIME_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_dye");
+    ItemType LIME_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_glazed_terracotta");
+    ItemType LIME_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_shulker_box");
+    ItemType LIME_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_stained_glass");
+    ItemType LIME_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_stained_glass_pane");
+    ItemType LIME_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_terracotta");
+    ItemType LIME_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lime_wool");
+    ItemType LINGERING_POTION = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lingering_potion");
+    ItemType LLAMA_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:llama_spawn_egg");
+    ItemType LODESTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:lodestone");
+    ItemType LOOM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:loom");
+    ItemType MAGENTA_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_banner");
+    ItemType MAGENTA_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_bed");
+    ItemType MAGENTA_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_carpet");
+    ItemType MAGENTA_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_concrete");
+    ItemType MAGENTA_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_concrete_powder");
+    ItemType MAGENTA_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_dye");
+    ItemType MAGENTA_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_glazed_terracotta");
+    ItemType MAGENTA_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_shulker_box");
+    ItemType MAGENTA_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_stained_glass");
+    ItemType MAGENTA_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_stained_glass_pane");
+    ItemType MAGENTA_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_terracotta");
+    ItemType MAGENTA_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magenta_wool");
+    ItemType MAGMA_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magma_block");
+    ItemType MAGMA_CREAM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magma_cream");
+    ItemType MAGMA_CUBE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:magma_cube_spawn_egg");
+    ItemType MAP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:map");
+    ItemType MELON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:melon");
+    ItemType MELON_SEEDS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:melon_seeds");
+    ItemType MELON_SLICE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:melon_slice");
+    ItemType MILK_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:milk_bucket");
+    ItemType MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:minecart");
+    ItemType MOJANG_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mojang_banner_pattern");
+    ItemType MOOSHROOM_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mooshroom_spawn_egg");
+    ItemType MOSSY_COBBLESTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_cobblestone");
+    ItemType MOSSY_COBBLESTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_cobblestone_slab");
+    ItemType MOSSY_COBBLESTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_cobblestone_stairs");
+    ItemType MOSSY_COBBLESTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_cobblestone_wall");
+    ItemType MOSSY_STONE_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_stone_brick_slab");
+    ItemType MOSSY_STONE_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_stone_brick_stairs");
+    ItemType MOSSY_STONE_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_stone_brick_wall");
+    ItemType MOSSY_STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mossy_stone_bricks");
+    ItemType MULE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mule_spawn_egg");
+    ItemType MUSHROOM_STEM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mushroom_stem");
+    ItemType MUSHROOM_STEW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mushroom_stew");
+    ItemType MUSIC_DISC_11 = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_11");
+    ItemType MUSIC_DISC_13 = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_13");
+    ItemType MUSIC_DISC_BLOCKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_blocks");
+    ItemType MUSIC_DISC_CAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_cat");
+    ItemType MUSIC_DISC_CHIRP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_chirp");
+    ItemType MUSIC_DISC_FAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_far");
+    ItemType MUSIC_DISC_MALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_mall");
+    ItemType MUSIC_DISC_MELLOHI = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_mellohi");
+    ItemType MUSIC_DISC_PIGSTEP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_pigstep");
+    ItemType MUSIC_DISC_STAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_stal");
+    ItemType MUSIC_DISC_STRAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_strad");
+    ItemType MUSIC_DISC_WAIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_wait");
+    ItemType MUSIC_DISC_WARD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:music_disc_ward");
+    ItemType MUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mutton");
+    ItemType MYCELIUM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:mycelium");
+    ItemType NAME_TAG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:name_tag");
+    ItemType NAUTILUS_SHELL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nautilus_shell");
+    ItemType NETHER_BRICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_brick");
+    ItemType NETHER_BRICK_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_brick_fence");
+    ItemType NETHER_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_brick_slab");
+    ItemType NETHER_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_brick_stairs");
+    ItemType NETHER_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_brick_wall");
+    ItemType NETHER_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_bricks");
+    ItemType NETHER_GOLD_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_gold_ore");
+    ItemType NETHER_QUARTZ_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_quartz_ore");
+    ItemType NETHER_SPROUTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_sprouts");
+    ItemType NETHER_STAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_star");
+    ItemType NETHER_WART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_wart");
+    ItemType NETHER_WART_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:nether_wart_block");
+    ItemType NETHERITE_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_axe");
+    ItemType NETHERITE_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_block");
+    ItemType NETHERITE_BOOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_boots");
+    ItemType NETHERITE_CHESTPLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_chestplate");
+    ItemType NETHERITE_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_helmet");
+    ItemType NETHERITE_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_hoe");
+    ItemType NETHERITE_INGOT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_ingot");
+    ItemType NETHERITE_LEGGINGS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_leggings");
+    ItemType NETHERITE_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_pickaxe");
+    ItemType NETHERITE_SCRAP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_scrap");
+    ItemType NETHERITE_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_shovel");
+    ItemType NETHERITE_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherite_sword");
+    ItemType NETHERRACK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:netherrack");
+    ItemType NOTE_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:note_block");
+    ItemType OAK_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_boat");
+    ItemType OAK_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_button");
+    ItemType OAK_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_door");
+    ItemType OAK_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_fence");
+    ItemType OAK_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_fence_gate");
+    ItemType OAK_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_leaves");
+    ItemType OAK_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_log");
+    ItemType OAK_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_planks");
+    ItemType OAK_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_pressure_plate");
+    ItemType OAK_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_sapling");
+    ItemType OAK_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_sign");
+    ItemType OAK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_slab");
+    ItemType OAK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_stairs");
+    ItemType OAK_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_trapdoor");
+    ItemType OAK_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oak_wood");
+    ItemType OBSERVER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:observer");
+    ItemType OBSIDIAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:obsidian");
+    ItemType OCELOT_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ocelot_spawn_egg");
+    ItemType ORANGE_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_banner");
+    ItemType ORANGE_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_bed");
+    ItemType ORANGE_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_carpet");
+    ItemType ORANGE_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_concrete");
+    ItemType ORANGE_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_concrete_powder");
+    ItemType ORANGE_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_dye");
+    ItemType ORANGE_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_glazed_terracotta");
+    ItemType ORANGE_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_shulker_box");
+    ItemType ORANGE_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_stained_glass");
+    ItemType ORANGE_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_stained_glass_pane");
+    ItemType ORANGE_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_terracotta");
+    ItemType ORANGE_TULIP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_tulip");
+    ItemType ORANGE_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:orange_wool");
+    ItemType OXEYE_DAISY = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:oxeye_daisy");
+    ItemType PACKED_ICE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:packed_ice");
+    ItemType PAINTING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:painting");
+    ItemType PANDA_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:panda_spawn_egg");
+    ItemType PAPER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:paper");
+    ItemType PARROT_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:parrot_spawn_egg");
+    ItemType PEONY = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:peony");
+    ItemType PETRIFIED_OAK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:petrified_oak_slab");
+    ItemType PHANTOM_MEMBRANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:phantom_membrane");
+    ItemType PHANTOM_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:phantom_spawn_egg");
+    ItemType PIG_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pig_spawn_egg");
+    ItemType PIGLIN_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:piglin_banner_pattern");
+    ItemType PIGLIN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:piglin_spawn_egg");
+    ItemType PILLAGER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pillager_spawn_egg");
+    ItemType PINK_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_banner");
+    ItemType PINK_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_bed");
+    ItemType PINK_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_carpet");
+    ItemType PINK_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_concrete");
+    ItemType PINK_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_concrete_powder");
+    ItemType PINK_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_dye");
+    ItemType PINK_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_glazed_terracotta");
+    ItemType PINK_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_shulker_box");
+    ItemType PINK_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_stained_glass");
+    ItemType PINK_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_stained_glass_pane");
+    ItemType PINK_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_terracotta");
+    ItemType PINK_TULIP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_tulip");
+    ItemType PINK_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pink_wool");
+    ItemType PISTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:piston");
+    ItemType PLAYER_HEAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:player_head");
+    ItemType PODZOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:podzol");
+    ItemType POISONOUS_POTATO = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:poisonous_potato");
+    ItemType POLAR_BEAR_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polar_bear_spawn_egg");
+    ItemType POLISHED_ANDESITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_andesite");
+    ItemType POLISHED_ANDESITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_andesite_slab");
+    ItemType POLISHED_ANDESITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_andesite_stairs");
+    ItemType POLISHED_BASALT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_basalt");
+    ItemType POLISHED_BLACKSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone");
+    ItemType POLISHED_BLACKSTONE_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_brick_slab");
+    ItemType POLISHED_BLACKSTONE_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_brick_stairs");
+    ItemType POLISHED_BLACKSTONE_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_brick_wall");
+    ItemType POLISHED_BLACKSTONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_bricks");
+    ItemType POLISHED_BLACKSTONE_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_button");
+    ItemType POLISHED_BLACKSTONE_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_pressure_plate");
+    ItemType POLISHED_BLACKSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_slab");
+    ItemType POLISHED_BLACKSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_stairs");
+    ItemType POLISHED_BLACKSTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_blackstone_wall");
+    ItemType POLISHED_DIORITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_diorite");
+    ItemType POLISHED_DIORITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_diorite_slab");
+    ItemType POLISHED_DIORITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_diorite_stairs");
+    ItemType POLISHED_GRANITE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_granite");
+    ItemType POLISHED_GRANITE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_granite_slab");
+    ItemType POLISHED_GRANITE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:polished_granite_stairs");
+    ItemType POPPED_CHORUS_FRUIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:popped_chorus_fruit");
+    ItemType POPPY = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:poppy");
+    ItemType PORKCHOP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:porkchop");
+    ItemType POTATO = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:potato");
+    ItemType POTION = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:potion");
+    ItemType POWERED_RAIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:powered_rail");
+    ItemType PRISMARINE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine");
+    ItemType PRISMARINE_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_brick_slab");
+    ItemType PRISMARINE_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_brick_stairs");
+    ItemType PRISMARINE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_bricks");
+    ItemType PRISMARINE_CRYSTALS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_crystals");
+    ItemType PRISMARINE_SHARD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_shard");
+    ItemType PRISMARINE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_slab");
+    ItemType PRISMARINE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_stairs");
+    ItemType PRISMARINE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:prismarine_wall");
+    ItemType PUFFERFISH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pufferfish");
+    ItemType PUFFERFISH_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pufferfish_bucket");
+    ItemType PUFFERFISH_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pufferfish_spawn_egg");
+    ItemType PUMPKIN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pumpkin");
+    ItemType PUMPKIN_PIE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pumpkin_pie");
+    ItemType PUMPKIN_SEEDS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:pumpkin_seeds");
+    ItemType PURPLE_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_banner");
+    ItemType PURPLE_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_bed");
+    ItemType PURPLE_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_carpet");
+    ItemType PURPLE_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_concrete");
+    ItemType PURPLE_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_concrete_powder");
+    ItemType PURPLE_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_dye");
+    ItemType PURPLE_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_glazed_terracotta");
+    ItemType PURPLE_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_shulker_box");
+    ItemType PURPLE_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_stained_glass");
+    ItemType PURPLE_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_stained_glass_pane");
+    ItemType PURPLE_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_terracotta");
+    ItemType PURPLE_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purple_wool");
+    ItemType PURPUR_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purpur_block");
+    ItemType PURPUR_PILLAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purpur_pillar");
+    ItemType PURPUR_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purpur_slab");
+    ItemType PURPUR_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:purpur_stairs");
+    ItemType QUARTZ = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz");
+    ItemType QUARTZ_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz_block");
+    ItemType QUARTZ_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz_bricks");
+    ItemType QUARTZ_PILLAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz_pillar");
+    ItemType QUARTZ_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz_slab");
+    ItemType QUARTZ_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:quartz_stairs");
+    ItemType RABBIT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rabbit");
+    ItemType RABBIT_FOOT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rabbit_foot");
+    ItemType RABBIT_HIDE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rabbit_hide");
+    ItemType RABBIT_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rabbit_spawn_egg");
+    ItemType RABBIT_STEW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rabbit_stew");
+    ItemType RAIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rail");
+    ItemType RAVAGER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:ravager_spawn_egg");
+    ItemType RED_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_banner");
+    ItemType RED_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_bed");
+    ItemType RED_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_carpet");
+    ItemType RED_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_concrete");
+    ItemType RED_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_concrete_powder");
+    ItemType RED_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_dye");
+    ItemType RED_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_glazed_terracotta");
+    ItemType RED_MUSHROOM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_mushroom");
+    ItemType RED_MUSHROOM_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_mushroom_block");
+    ItemType RED_NETHER_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_nether_brick_slab");
+    ItemType RED_NETHER_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_nether_brick_stairs");
+    ItemType RED_NETHER_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_nether_brick_wall");
+    ItemType RED_NETHER_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_nether_bricks");
+    ItemType RED_SAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_sand");
+    ItemType RED_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_sandstone");
+    ItemType RED_SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_sandstone_slab");
+    ItemType RED_SANDSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_sandstone_stairs");
+    ItemType RED_SANDSTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_sandstone_wall");
+    ItemType RED_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_shulker_box");
+    ItemType RED_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_stained_glass");
+    ItemType RED_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_stained_glass_pane");
+    ItemType RED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_terracotta");
+    ItemType RED_TULIP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_tulip");
+    ItemType RED_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:red_wool");
+    ItemType REDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:redstone");
+    ItemType REDSTONE_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:redstone_block");
+    ItemType REDSTONE_LAMP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:redstone_lamp");
+    ItemType REDSTONE_ORE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:redstone_ore");
+    ItemType REDSTONE_TORCH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:redstone_torch");
+    ItemType REPEATER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:repeater");
+    ItemType REPEATING_COMMAND_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:repeating_command_block");
+    ItemType RESPAWN_ANCHOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:respawn_anchor");
+    ItemType ROSE_BUSH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rose_bush");
+    ItemType ROTTEN_FLESH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:rotten_flesh");
+    ItemType SADDLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:saddle");
+    ItemType SALMON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:salmon");
+    ItemType SALMON_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:salmon_bucket");
+    ItemType SALMON_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:salmon_spawn_egg");
+    ItemType SAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sand");
+    ItemType SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sandstone");
+    ItemType SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sandstone_slab");
+    ItemType SANDSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sandstone_stairs");
+    ItemType SANDSTONE_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sandstone_wall");
+    ItemType SCAFFOLDING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:scaffolding");
+    ItemType SCUTE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:scute");
+    ItemType SEA_LANTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sea_lantern");
+    ItemType SEA_PICKLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sea_pickle");
+    ItemType SEAGRASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:seagrass");
+    ItemType SHEARS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shears");
+    ItemType SHEEP_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sheep_spawn_egg");
+    ItemType SHIELD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shield");
+    ItemType SHROOMLIGHT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shroomlight");
+    ItemType SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shulker_box");
+    ItemType SHULKER_SHELL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shulker_shell");
+    ItemType SHULKER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:shulker_spawn_egg");
+    ItemType SILVERFISH_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:silverfish_spawn_egg");
+    ItemType SKELETON_HORSE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:skeleton_horse_spawn_egg");
+    ItemType SKELETON_SKULL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:skeleton_skull");
+    ItemType SKELETON_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:skeleton_spawn_egg");
+    ItemType SKULL_BANNER_PATTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:skull_banner_pattern");
+    ItemType SLIME_BALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:slime_ball");
+    ItemType SLIME_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:slime_block");
+    ItemType SLIME_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:slime_spawn_egg");
+    ItemType SMITHING_TABLE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smithing_table");
+    ItemType SMOKER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smoker");
+    ItemType SMOOTH_QUARTZ = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_quartz");
+    ItemType SMOOTH_QUARTZ_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_quartz_slab");
+    ItemType SMOOTH_QUARTZ_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_quartz_stairs");
+    ItemType SMOOTH_RED_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_red_sandstone");
+    ItemType SMOOTH_RED_SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_red_sandstone_slab");
+    ItemType SMOOTH_RED_SANDSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_red_sandstone_stairs");
+    ItemType SMOOTH_SANDSTONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_sandstone");
+    ItemType SMOOTH_SANDSTONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_sandstone_slab");
+    ItemType SMOOTH_SANDSTONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_sandstone_stairs");
+    ItemType SMOOTH_STONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_stone");
+    ItemType SMOOTH_STONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:smooth_stone_slab");
+    ItemType SNOW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:snow");
+    ItemType SNOW_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:snow_block");
+    ItemType SNOWBALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:snowball");
+    ItemType SOUL_CAMPFIRE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:soul_campfire");
+    ItemType SOUL_LANTERN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:soul_lantern");
+    ItemType SOUL_SAND = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:soul_sand");
+    ItemType SOUL_SOIL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:soul_soil");
+    ItemType SOUL_TORCH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:soul_torch");
+    ItemType SPAWNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spawner");
+    ItemType SPECTRAL_ARROW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spectral_arrow");
+    ItemType SPIDER_EYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spider_eye");
+    ItemType SPIDER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spider_spawn_egg");
+    ItemType SPLASH_POTION = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:splash_potion");
+    ItemType SPONGE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sponge");
+    ItemType SPRUCE_BOAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_boat");
+    ItemType SPRUCE_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_button");
+    ItemType SPRUCE_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_door");
+    ItemType SPRUCE_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_fence");
+    ItemType SPRUCE_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_fence_gate");
+    ItemType SPRUCE_LEAVES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_leaves");
+    ItemType SPRUCE_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_log");
+    ItemType SPRUCE_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_planks");
+    ItemType SPRUCE_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_pressure_plate");
+    ItemType SPRUCE_SAPLING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_sapling");
+    ItemType SPRUCE_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_sign");
+    ItemType SPRUCE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_slab");
+    ItemType SPRUCE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_stairs");
+    ItemType SPRUCE_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_trapdoor");
+    ItemType SPRUCE_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:spruce_wood");
+    ItemType SQUID_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:squid_spawn_egg");
+    ItemType STICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stick");
+    ItemType STICKY_PISTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sticky_piston");
+    ItemType STONE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone");
+    ItemType STONE_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_axe");
+    ItemType STONE_BRICK_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_brick_slab");
+    ItemType STONE_BRICK_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_brick_stairs");
+    ItemType STONE_BRICK_WALL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_brick_wall");
+    ItemType STONE_BRICKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_bricks");
+    ItemType STONE_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_button");
+    ItemType STONE_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_hoe");
+    ItemType STONE_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_pickaxe");
+    ItemType STONE_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_pressure_plate");
+    ItemType STONE_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_shovel");
+    ItemType STONE_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_slab");
+    ItemType STONE_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_stairs");
+    ItemType STONE_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stone_sword");
+    ItemType STONECUTTER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stonecutter");
+    ItemType STRAY_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stray_spawn_egg");
+    ItemType STRIDER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:strider_spawn_egg");
+    ItemType STRING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:string");
+    ItemType STRIPPED_ACACIA_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_acacia_log");
+    ItemType STRIPPED_ACACIA_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_acacia_wood");
+    ItemType STRIPPED_BIRCH_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_birch_log");
+    ItemType STRIPPED_BIRCH_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_birch_wood");
+    ItemType STRIPPED_CRIMSON_HYPHAE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_crimson_hyphae");
+    ItemType STRIPPED_CRIMSON_STEM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_crimson_stem");
+    ItemType STRIPPED_DARK_OAK_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_dark_oak_log");
+    ItemType STRIPPED_DARK_OAK_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_dark_oak_wood");
+    ItemType STRIPPED_JUNGLE_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_jungle_log");
+    ItemType STRIPPED_JUNGLE_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_jungle_wood");
+    ItemType STRIPPED_OAK_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_oak_log");
+    ItemType STRIPPED_OAK_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_oak_wood");
+    ItemType STRIPPED_SPRUCE_LOG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_spruce_log");
+    ItemType STRIPPED_SPRUCE_WOOD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_spruce_wood");
+    ItemType STRIPPED_WARPED_HYPHAE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_warped_hyphae");
+    ItemType STRIPPED_WARPED_STEM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:stripped_warped_stem");
+    ItemType STRUCTURE_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:structure_block");
+    ItemType STRUCTURE_VOID = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:structure_void");
+    ItemType SUGAR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sugar");
+    ItemType SUGAR_CANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sugar_cane");
+    ItemType SUNFLOWER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sunflower");
+    ItemType SUSPICIOUS_STEW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:suspicious_stew");
+    ItemType SWEET_BERRIES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:sweet_berries");
+    ItemType TALL_GRASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tall_grass");
+    ItemType TARGET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:target");
+    ItemType TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:terracotta");
+    ItemType TIPPED_ARROW = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tipped_arrow");
+    ItemType TNT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tnt");
+    ItemType TNT_MINECART = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tnt_minecart");
+    ItemType TORCH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:torch");
+    ItemType TOTEM_OF_UNDYING = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:totem_of_undying");
+    ItemType TRADER_LLAMA_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:trader_llama_spawn_egg");
+    ItemType TRAPPED_CHEST = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:trapped_chest");
+    ItemType TRIDENT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:trident");
+    ItemType TRIPWIRE_HOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tripwire_hook");
+    ItemType TROPICAL_FISH = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tropical_fish");
+    ItemType TROPICAL_FISH_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tropical_fish_bucket");
+    ItemType TROPICAL_FISH_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tropical_fish_spawn_egg");
+    ItemType TUBE_CORAL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tube_coral");
+    ItemType TUBE_CORAL_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tube_coral_block");
+    ItemType TUBE_CORAL_FAN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:tube_coral_fan");
+    ItemType TURTLE_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:turtle_egg");
+    ItemType TURTLE_HELMET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:turtle_helmet");
+    ItemType TURTLE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:turtle_spawn_egg");
+    ItemType TWISTING_VINES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:twisting_vines");
+    ItemType VEX_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:vex_spawn_egg");
+    ItemType VILLAGER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:villager_spawn_egg");
+    ItemType VINDICATOR_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:vindicator_spawn_egg");
+    ItemType VINE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:vine");
+    ItemType WANDERING_TRADER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wandering_trader_spawn_egg");
+    ItemType WARPED_BUTTON = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_button");
+    ItemType WARPED_DOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_door");
+    ItemType WARPED_FENCE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_fence");
+    ItemType WARPED_FENCE_GATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_fence_gate");
+    ItemType WARPED_FUNGUS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_fungus");
+    ItemType WARPED_FUNGUS_ON_A_STICK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_fungus_on_a_stick");
+    ItemType WARPED_HYPHAE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_hyphae");
+    ItemType WARPED_NYLIUM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_nylium");
+    ItemType WARPED_PLANKS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_planks");
+    ItemType WARPED_PRESSURE_PLATE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_pressure_plate");
+    ItemType WARPED_ROOTS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_roots");
+    ItemType WARPED_SIGN = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_sign");
+    ItemType WARPED_SLAB = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_slab");
+    ItemType WARPED_STAIRS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_stairs");
+    ItemType WARPED_STEM = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_stem");
+    ItemType WARPED_TRAPDOOR = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_trapdoor");
+    ItemType WARPED_WART_BLOCK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:warped_wart_block");
+    ItemType WATER_BUCKET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:water_bucket");
+    ItemType WEEPING_VINES = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:weeping_vines");
+    ItemType WET_SPONGE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wet_sponge");
+    ItemType WHEAT = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wheat");
+    ItemType WHEAT_SEEDS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wheat_seeds");
+    ItemType WHITE_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_banner");
+    ItemType WHITE_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_bed");
+    ItemType WHITE_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_carpet");
+    ItemType WHITE_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_concrete");
+    ItemType WHITE_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_concrete_powder");
+    ItemType WHITE_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_dye");
+    ItemType WHITE_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_glazed_terracotta");
+    ItemType WHITE_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_shulker_box");
+    ItemType WHITE_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_stained_glass");
+    ItemType WHITE_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_stained_glass_pane");
+    ItemType WHITE_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_terracotta");
+    ItemType WHITE_TULIP = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_tulip");
+    ItemType WHITE_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:white_wool");
+    ItemType WITCH_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:witch_spawn_egg");
+    ItemType WITHER_ROSE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wither_rose");
+    ItemType WITHER_SKELETON_SKULL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wither_skeleton_skull");
+    ItemType WITHER_SKELETON_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wither_skeleton_spawn_egg");
+    ItemType WOLF_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wolf_spawn_egg");
+    ItemType WOODEN_AXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wooden_axe");
+    ItemType WOODEN_HOE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wooden_hoe");
+    ItemType WOODEN_PICKAXE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wooden_pickaxe");
+    ItemType WOODEN_SHOVEL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wooden_shovel");
+    ItemType WOODEN_SWORD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:wooden_sword");
+    ItemType WRITABLE_BOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:writable_book");
+    ItemType WRITTEN_BOOK = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:written_book");
+    ItemType YELLOW_BANNER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_banner");
+    ItemType YELLOW_BED = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_bed");
+    ItemType YELLOW_CARPET = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_carpet");
+    ItemType YELLOW_CONCRETE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_concrete");
+    ItemType YELLOW_CONCRETE_POWDER = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_concrete_powder");
+    ItemType YELLOW_DYE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_dye");
+    ItemType YELLOW_GLAZED_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_glazed_terracotta");
+    ItemType YELLOW_SHULKER_BOX = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_shulker_box");
+    ItemType YELLOW_STAINED_GLASS = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_stained_glass");
+    ItemType YELLOW_STAINED_GLASS_PANE = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_stained_glass_pane");
+    ItemType YELLOW_TERRACOTTA = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_terracotta");
+    ItemType YELLOW_WOOL = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:yellow_wool");
+    ItemType ZOGLIN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zoglin_spawn_egg");
+    ItemType ZOMBIE_HEAD = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zombie_head");
+    ItemType ZOMBIE_HORSE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zombie_horse_spawn_egg");
+    ItemType ZOMBIE_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zombie_spawn_egg");
+    ItemType ZOMBIE_VILLAGER_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zombie_villager_spawn_egg");
+    ItemType ZOMBIFIED_PIGLIN_SPAWN_EGG = Loom.getRegistry().getWrapped(ItemType.class, "minecraft:zombified_piglin_spawn_egg");
 
-    ItemType(String id) {
-        this.id = id;
+    // endregion ItemTypes
+
+    /**
+     * Get an item based on the id.
+     * @param id The if of the item to get.
+     * @return The item if found, otherwise null.
+     */
+    static ItemType getById(String id) {
+        return Loom.getRegistry().getWrapped(ItemType.class, id);
     }
 
-    public String getId() {
-        return this.id;
-    }
+    int getMaxStackSize();
 
-    public static @Nullable ItemType getById(String id) {
-        return mapById.get(id);
-    }
+    int getMaxDamage();
 
-    static {
-        for (ItemType type : values()) {
-            mapById.put(type.id, type);
-        }
-    }
+    boolean isDamageable();
+
+    @NotNull String getTranslationKey();
+
+    @NotNull String getTranslationKey(ItemStack itemStack);
+
+    Component getName(ItemStack itemStack);
+
+    ItemType getRecipeRemainder();
+
+    boolean hasGlint(ItemStack itemStack);
+
+    boolean isEnchantable(ItemStack itemStack);
+
+    boolean isFood();
+
+    boolean isFireproof();
+
 }
