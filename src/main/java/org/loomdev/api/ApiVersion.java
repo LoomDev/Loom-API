@@ -7,7 +7,8 @@ import java.util.stream.Collectors;
 public enum ApiVersion {
 
     UNKNOWN("unknown"),
-    v1_16_1R1("1.16.1-R1");
+    v1_16_1R1("1.16.1-R1"),
+    v1_16_2R1("1.16.2-R1");
 
     public static final ApiVersion LATEST = values()[ApiVersion.values().length - 1];
 

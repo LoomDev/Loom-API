@@ -163,8 +163,6 @@ public interface Entity extends CommandSource {
 
     boolean isInLava();
 
-    void setInLava(boolean flag);
-
     boolean isSubmergedInLava();
 
     float getBrightnessAtEyes();
