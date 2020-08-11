@@ -46,10 +46,6 @@ public enum Direction {
         return ID_DIRECTION_MAP.get(this.opposite);
     }
 
-    public Direction rotateYClockWise() {
-        return null;
-    }
-
     public Vector3i getOffset() {
         return offset;
     }
@@ -154,6 +150,14 @@ public enum Direction {
             default:
                 throw new IllegalStateException("Unable to get counter clockwise Z rotation of " + this);
         }
+    }
+
+    public static Direction getById(int id) {
+        return ID_DIRECTION_MAP.get(id);
+    }
+
+    public static Direction getByName(String name) {
+        return Direction.valueOf(name.toUpperCase());
     }
 
     public enum Type {
