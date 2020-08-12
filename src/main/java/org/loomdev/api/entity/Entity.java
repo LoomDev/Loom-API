@@ -2,7 +2,6 @@ package org.loomdev.api.entity;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.damage.DamageSource;
@@ -19,19 +18,19 @@ import java.util.UUID;
 
 public interface Entity extends CommandSource {
 
-    @NonNull EntityType getType();
+    @NotNull EntityType getType();
 
     int getEntityId();
 
-    @NonNull UUID getUniqueId();
+    @NotNull UUID getUniqueId();
 
-    @NonNull String getName();
+    @NotNull String getName();
 
-    @NonNull Component getDisplayName();
+    @NotNull Component getDisplayName();
 
-    @NonNull Optional<Component> getCustomName();
+    @NotNull Optional<Component> getCustomName();
 
-    void setCustomName(@NonNull Component component);
+    void setCustomName(@NotNull Component component);
 
     boolean hasCustomName();
 
@@ -39,15 +38,15 @@ public interface Entity extends CommandSource {
 
     void setCustomNameVisible(boolean flag);
 
-    @NonNull BoundingBox getBoundingBox();
+    @NotNull BoundingBox getBoundingBox();
 
-    @NonNull Location getLocation();
+    @NotNull Location getLocation();
 
-    @NonNull World getWorld();
+    @NotNull World getWorld();
 
-    boolean teleport(@NonNull Entity entity); // TODO add tp cause
+    boolean teleport(@NotNull Entity entity); // TODO add tp cause
 
-    boolean teleport(@NonNull Location location); // TODO add tp cause
+    boolean teleport(@NotNull Location location); // TODO add tp cause
 
     void remove();
 
@@ -55,31 +54,31 @@ public interface Entity extends CommandSource {
 
     boolean isDead();
 
-    @NonNull Optional<Entity> getVehicle();
+    @NotNull Optional<Entity> getVehicle();
 
     void leaveVehicle();
 
     boolean isOnVehicle(); // TODO find a better name.
 
-    @NonNull List<Entity> getPassengers();
+    @NotNull List<Entity> getPassengers();
 
-    void addPassenger(@NonNull Entity passenger);
+    void addPassenger(@NotNull Entity passenger);
 
-    @NonNull Optional<Entity> getPassenger();
+    @NotNull Optional<Entity> getPassenger();
 
-    void setPassenger(@NonNull Entity passenger);
+    void setPassenger(@NotNull Entity passenger);
 
-    void removePassenger(@NonNull Entity passenger);
+    void removePassenger(@NotNull Entity passenger);
 
     boolean hasPassengers();
 
     void ejectPassengers();
 
-    @NonNull Vector3d getVelocity();
+    @NotNull Vector3d getVelocity();
 
-    void setVelocity(@NonNull Vector3d velocity);
+    void setVelocity(@NotNull Vector3d velocity);
 
-    void addVelocity(@NonNull Vector3d velocity);
+    void addVelocity(@NotNull Vector3d velocity);
 
     boolean isOnGround();
 
@@ -167,15 +166,15 @@ public interface Entity extends CommandSource {
 
     float getBrightnessAtEyes();
 
-    float distanceTo(@NonNull Entity entity);
+    float distanceTo(@NotNull Entity entity);
 
-    double squaredDistanceTo(@NonNull Entity entity);
+    double squaredDistanceTo(@NotNull Entity entity);
 
-    void pushAwayFrom(@NonNull Entity entity);
+    void pushAwayFrom(@NotNull Entity entity);
 
-    void dropStack(@NonNull ItemStack itemStack);
+    void dropStack(@NotNull ItemStack itemStack);
 
-    void dropStack(@NonNull ItemStack itemStack, float yOffset);
+    void dropStack(@NotNull ItemStack itemStack, float yOffset);
 
     boolean isInsideWall();
 
