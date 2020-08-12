@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.projectile;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.sound.Sound;
 
@@ -16,9 +16,9 @@ public interface PersistentProjectile extends Projectile {
 
     void setDragInWater(float drag); // TODO yes?
 
-    @NonNull PickupPermission getPickupPermission();
+    @NotNull PickupPermission getPickupPermission();
 
-    void setPickupPermission(@NonNull PickupPermission pickupPermission);
+    void setPickupPermission(@NotNull PickupPermission pickupPermission);
 
     boolean isShotFromCrossbow();
 

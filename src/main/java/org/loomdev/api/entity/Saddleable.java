@@ -1,6 +1,6 @@
 package org.loomdev.api.entity;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.sound.SoundCategories;
 
 public interface Saddleable {

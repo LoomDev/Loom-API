@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.passive;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 
 public interface Fox extends AnimalEntity {
 
-    @NonNull Type getFoxType();
+    @NotNull Type getFoxType();
 
-    void setFoxType(@NonNull Type type);
+    void setFoxType(@NotNull Type type);
 
     boolean isCrouching();
 

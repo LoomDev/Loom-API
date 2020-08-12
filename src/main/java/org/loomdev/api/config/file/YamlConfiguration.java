@@ -1,6 +1,6 @@
 package org.loomdev.api.config.file;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.config.Configuration;
 import org.yaml.snakeyaml.Yaml;
 
@@ -39,7 +39,7 @@ public class YamlConfiguration extends FileConfiguration {
     }
 
     @Override
-    public void load(@NonNull String string) {
+    public void load(@NotNull String string) {
         Map<String, Object> input = new Yaml().load(string);
 
         if (input != null && !input.isEmpty()) {
@@ -47,7 +47,7 @@ public class YamlConfiguration extends FileConfiguration {
         }
     }
 
-    protected void convertMapToConfiguration(Map<String, Object> input, @NonNull Configuration configuration) {
+    protected void convertMapToConfiguration(Map<String, Object> input, @NotNull Configuration configuration) {
         for (Map.Entry<String, Object> entry : input.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();

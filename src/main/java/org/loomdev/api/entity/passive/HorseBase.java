@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.passive;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.JumpingMount;
 import org.loomdev.api.entity.Saddleable;
 
@@ -38,6 +38,6 @@ public interface HorseBase extends AnimalEntity, JumpingMount, Saddleable {
 
     Optional<UUID> getOwner();
 
-    void setOwner(@NonNull UUID uuid);
+    void setOwner(@NotNull UUID uuid);
 
 }

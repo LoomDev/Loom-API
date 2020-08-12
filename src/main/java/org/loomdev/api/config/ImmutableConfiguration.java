@@ -1,8 +1,7 @@
 package org.loomdev.api.config;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -12,83 +11,83 @@ import java.util.Set;
 
 public interface ImmutableConfiguration {
 
-    @NonNull Set<String> getKeys();
+    @NotNull Set<String> getKeys();
 
-    @NonNull Set<String> getKeys(boolean recursive);
+    @NotNull Set<String> getKeys(boolean recursive);
 
-    boolean hasKey(@NonNull String key);
+    boolean hasKey(@NotNull String key);
 
-    @Nullable Object get(@NonNull String key);
+    @Nullable Object get(@NotNull String key);
 
-    @Nullable Object get(@NonNull String key, @Nullable Object defaultValue);
+    @Nullable Object get(@NotNull String key, @Nullable Object defaultValue);
 
-    @Nullable <T> T get(@NonNull Class<T> cls, @NonNull String key);
+    @Nullable <T> T get(@NotNull Class<T> cls, @NotNull String key);
 
-    @Nullable <T> T get(@NonNull Class<T> cls, @NonNull String key, @Nullable T defaultValue);
+    @Nullable <T> T get(@NotNull Class<T> cls, @NotNull String key, @Nullable T defaultValue);
 
-    default @NotNull String getString(@NonNull String key) {
+    default @NotNull String getString(@NotNull String key) {
         return getString(key, "");
     }
 
-    @NotNull String getString(@NonNull String key, @NotNull String defaultValue);
+    @NotNull String getString(@NotNull String key, @NotNull String defaultValue);
 
-    default int getInt(@NonNull String key) {
+    default int getInt(@NotNull String key) {
         return getInt(key, 0);
     }
 
-    int getInt(@NonNull String key, int defaultValue);
+    int getInt(@NotNull String key, int defaultValue);
 
-    default double getDouble(@NonNull String key) {
+    default double getDouble(@NotNull String key) {
         return getDouble(key, 0);
     }
 
-    double getDouble(@NonNull String key, double defaultValue);
+    double getDouble(@NotNull String key, double defaultValue);
 
-    default float getFloat(@NonNull String key) {
+    default float getFloat(@NotNull String key) {
         return getFloat(key, 0f);
     }
 
-    float getFloat(@NonNull String key, float defaultValue);
+    float getFloat(@NotNull String key, float defaultValue);
 
-    default byte getByte(@NonNull String key) {
+    default byte getByte(@NotNull String key) {
         return getByte(key, (byte) 0);
     }
 
-    byte getByte(@NonNull String key, byte defaultValue);
+    byte getByte(@NotNull String key, byte defaultValue);
 
-    default long getLong(@NonNull String key) {
+    default long getLong(@NotNull String key) {
         return getLong(key, 0L);
     }
 
-    long getLong(@NonNull String key, long defaultValue);
+    long getLong(@NotNull String key, long defaultValue);
 
-    default short getShort(@NonNull String key) {
+    default short getShort(@NotNull String key) {
         return getShort(key, (short)0);
     }
 
-    short getShort(@NonNull String key, short defaultValue);
+    short getShort(@NotNull String key, short defaultValue);
 
-    default boolean getBoolean(@NonNull String key) {
+    default boolean getBoolean(@NotNull String key) {
         return getBoolean(key, false);
     }
 
-    boolean getBoolean(@NonNull String key, boolean defaultValue);
+    boolean getBoolean(@NotNull String key, boolean defaultValue);
 
-    @Nullable <T> Collection<T> getCollection(@NonNull Class<T> cls, @NonNull String key, @NonNull Collection<T> target);
+    @Nullable <T> Collection<T> getCollection(@NotNull Class<T> cls, @NotNull String key, @NotNull Collection<T> target);
 
-    default @Nullable <T> List<T> getList(@NonNull Class<T> cls, @NonNull String key) {
+    default @Nullable <T> List<T> getList(@NotNull Class<T> cls, @NotNull String key) {
         return getList(cls, key, new ArrayList<>());
     }
 
-    @Nullable <T> List<T> getList(@NonNull Class<T> cls, @NonNull String key, @Nullable List<T> defaultValue);
+    @Nullable <T> List<T> getList(@NotNull Class<T> cls, @NotNull String key, @Nullable List<T> defaultValue);
 
-    default @NonNull <T> T[] getArray(@NonNull Class<T> cls, @NonNull String key) {
+    default @NotNull <T> T[] getArray(@NotNull Class<T> cls, @NotNull String key) {
         return getArray(cls, key, (T[]) Array.newInstance(cls, 0));
     }
 
-    @NonNull <T> T[] getArray(@NonNull Class<T> cls, @NonNull String key, @Nullable T[] defaultValue);
+    @NotNull <T> T[] getArray(@NotNull Class<T> cls, @NotNull String key, @Nullable T[] defaultValue);
 
-    default <T extends Enum<T>> T getEnum(Class<T> enumType, @NonNull String key) {
+    default <T extends Enum<T>> T getEnum(Class<T> enumType, @NotNull String key) {
         try {
             return Enum.valueOf(enumType, getString(key));
         } catch (IllegalArgumentException e) {
@@ -96,7 +95,7 @@ public interface ImmutableConfiguration {
         }
     }
 
-    default <T extends Enum<T>> T getEnum(Class<T> enumType, @NonNull String key, T defaultValue) {
+    default <T extends Enum<T>> T getEnum(Class<T> enumType, @NotNull String key, T defaultValue) {
         String stringValue = getString(key);
         if (stringValue == null) {
             return defaultValue;

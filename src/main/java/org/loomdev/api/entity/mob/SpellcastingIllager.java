@@ -1,15 +1,15 @@
 package org.loomdev.api.entity.mob;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public interface SpellcastingIllager extends Illager {
 
-    @NonNull Spell getSpell();
+    @NotNull Spell getSpell();
 
-    void setSpell(@NonNull Spell spell);
+    void setSpell(@NotNull Spell spell);
 
     enum Spell {
         NONE(0),

@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.boss.dragon;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.ComplexEntity;
 import org.loomdev.api.entity.ComplexEntityPart;
 import org.loomdev.api.entity.mob.MobEntity;
@@ -20,18 +20,18 @@ public interface EnderDragon extends MobEntity, Monster, ComplexEntity {
 
     Optional<DragonFight> getFight();
 
-    @NonNull Phase getPhase();
+    @NotNull Phase getPhase();
 
-    void setPhase(@NonNull Phase phase);
+    void setPhase(@NotNull Phase phase);
 
-    default @NonNull Set<EnderDragonPart> getDragonParts() {
+    default @NotNull Set<EnderDragonPart> getDragonParts() {
         return getParts().stream()
                 .map(cep -> (EnderDragonPart)cep)
                 .collect(Collectors.toSet());
     }
 
     @Override
-    @NonNull Set<ComplexEntityPart> getParts();
+    @NotNull Set<ComplexEntityPart> getParts();
 
     enum Phase {
         HOLDING_PATTERN("HoldingPattern"),

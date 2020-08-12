@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.passive;
 
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.mob.Angerable;
 import org.loomdev.api.world.Location;
 

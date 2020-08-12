@@ -1,7 +1,7 @@
 package org.loomdev.api.entity.mob;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.LivingEntity;
 import org.loomdev.api.entity.player.Player;
 
@@ -24,8 +24,8 @@ public interface Angerable {
 
     Optional<LivingEntity> getTarget();
 
-    void setTarget(@NonNull LivingEntity entity);
+    void setTarget(@NotNull LivingEntity entity);
 
-    void forgive(@NonNull Player player); // TODO not server player (npc)
+    void forgive(@NotNull Player player); // TODO not server player (npc)
 
 }

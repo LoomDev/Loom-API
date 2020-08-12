@@ -1,6 +1,6 @@
 package org.loomdev.api.entity.passive;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.item.ItemStack;
 
 import java.util.UUID;
@@ -17,7 +17,7 @@ public interface AnimalEntity extends PassiveEntity {
 
     UUID getBreedCause();
 
-    void setBreedCause(@NonNull UUID uuid);
+    void setBreedCause(@NotNull UUID uuid);
 
-    boolean isBreedingItem(@NonNull ItemStack itemStack);
+    boolean isBreedingItem(@NotNull ItemStack itemStack);
 }

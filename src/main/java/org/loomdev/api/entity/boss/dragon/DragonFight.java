@@ -1,14 +1,14 @@
 package org.loomdev.api.entity.boss.dragon;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.bossbar.BossBar;
 import org.loomdev.api.world.Location;
 
 public interface DragonFight {
 
-    @NonNull BossBar getBossBar();
+    @NotNull BossBar getBossBar();
 
-    @NonNull EnderDragon getDragon();
+    @NotNull EnderDragon getDragon();
 
     Location getEndPortalLocation();
 
@@ -20,9 +20,9 @@ public interface DragonFight {
 
     void generateEndPortal(boolean withPortals);
 
-    @NonNull SpawnState getSpawnState();
+    @NotNull SpawnState getSpawnState();
 
-    void setSpawnState(@NonNull SpawnState spawnState);
+    void setSpawnState(@NotNull SpawnState spawnState);
 
     enum SpawnState {
         NONE,

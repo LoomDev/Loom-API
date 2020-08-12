@@ -1,19 +1,19 @@
 package org.loomdev.api.entity.passive;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 public interface Horse extends HorseBase {
 
-    @NonNull Color getColor();
+    @NotNull Color getColor();
 
-    void setColor(@NonNull Color color);
+    void setColor(@NotNull Color color);
 
-    @NonNull Markings getMarkings();
+    @NotNull Markings getMarkings();
 
-    void setMarkings(@NonNull Markings markings);
+    void setMarkings(@NotNull Markings markings);
 
     // TODO inventory
 

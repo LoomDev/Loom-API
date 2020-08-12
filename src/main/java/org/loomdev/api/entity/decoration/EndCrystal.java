@@ -1,7 +1,7 @@
 package org.loomdev.api.entity.decoration;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.world.Location;
 
@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface EndCrystal extends Entity {
 
-    @NonNull Optional<Location> getBeamTarget();
+    @NotNull Optional<Location> getBeamTarget();
 
     void setBeamTarget(@Nullable Location location);
 

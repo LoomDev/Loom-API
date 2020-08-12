@@ -1,6 +1,6 @@
 package org.loomdev.api.scheduler;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.plugin.Plugin;
 
 import java.util.Optional;
@@ -10,15 +10,15 @@ import static org.loomdev.api.scheduler.Task.Builder;
 
 public interface Scheduler {
 
-    @NonNull Builder createTask();
+    @NotNull Builder createTask();
 
-    @NonNull Optional<Task> getTaskById(int id);
+    @NotNull Optional<Task> getTaskById(int id);
 
-    @NonNull Set<Task> getScheduledTasks();
+    @NotNull Set<Task> getScheduledTasks();
 
-    @NonNull Set<Task> getScheduledTasks(@NonNull Plugin plugin);
+    @NotNull Set<Task> getScheduledTasks(@NotNull Plugin plugin);
 
-    void unregisterSchedulers(@NonNull Plugin plugin);
+    void unregisterSchedulers(@NotNull Plugin plugin);
 
     void disableTask(int id, boolean interruptIfRunning);
 }

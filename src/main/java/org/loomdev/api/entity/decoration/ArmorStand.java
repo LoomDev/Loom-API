@@ -2,11 +2,7 @@ package org.loomdev.api.entity.decoration;
 
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.LivingEntity;
-import org.loomdev.api.item.ItemStack;
 import org.loomdev.api.math.EulerAngle;
-import org.loomdev.api.util.Hand;
-
-import java.util.Optional;
 
 public interface ArmorStand extends LivingEntity {
 

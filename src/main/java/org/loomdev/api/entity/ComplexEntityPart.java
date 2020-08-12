@@ -1,7 +1,7 @@
 package org.loomdev.api.entity;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 
 public interface ComplexEntityPart {
-    @NonNull ComplexEntity getParent();
+    @NotNull ComplexEntity getParent();
 }

@@ -1,6 +1,6 @@
 package org.loomdev.api.config.file;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.config.VolatileConfiguration;
 
 import java.io.*;
@@ -11,7 +11,7 @@ public abstract class FileConfiguration extends VolatileConfiguration {
         super();
     }
 
-    public void save(@NonNull File file) throws IOException {
+    public void save(@NotNull File file) throws IOException {
         FileWriter writer = new FileWriter(file);
         writer.write(saveToString());
         writer.close();
@@ -19,11 +19,11 @@ public abstract class FileConfiguration extends VolatileConfiguration {
 
     public abstract String saveToString();
 
-    public void load(@NonNull File file) throws IOException {
+    public void load(@NotNull File file) throws IOException {
         load(new FileReader(file));
     }
 
-    public void load(@NonNull Reader reader) throws IOException {
+    public void load(@NotNull Reader reader) throws IOException {
         BufferedReader input = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);
         StringBuilder builder = new StringBuilder();
         try {
@@ -40,5 +40,5 @@ public abstract class FileConfiguration extends VolatileConfiguration {
         load(builder.toString());
     }
 
-    public abstract void load(@NonNull String string);
+    public abstract void load(@NotNull String string);
 }

@@ -1,6 +1,6 @@
 package org.loomdev.api.scheduler;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.Loom;
 import org.loomdev.api.plugin.Plugin;
 
@@ -10,30 +10,30 @@ public interface Task {
 
     int getTaskId();
 
-    @NonNull Plugin getPlugin();
+    @NotNull Plugin getPlugin();
 
     void cancel();
 
     void cancelInterrupt();
 
-    static @NonNull  Builder builder() {
+    static @NotNull Builder builder() {
         return Loom.getServer().getScheduler().createTask();
     }
 
     interface Builder {
 
-        @NonNull Builder async();
+        @NotNull Builder async();
 
-        @NonNull Builder execute(@NonNull Runnable runnable);
+        @NotNull Builder execute(@NotNull Runnable runnable);
 
-        @NonNull Builder delay(long delay, TimeUnit timeUnit);
+        @NotNull Builder delay(long delay, TimeUnit timeUnit);
 
-        @NonNull Builder delayTicks(long delay);
+        @NotNull Builder delayTicks(long delay);
 
-        @NonNull Builder interval(long delay, TimeUnit timeUnit);
+        @NotNull Builder interval(long delay, TimeUnit timeUnit);
 
-        @NonNull Builder intervalTicks(long ticks);
+        @NotNull Builder intervalTicks(long ticks);
 
-        @NonNull Task complete(@NonNull Plugin plugin);
+        @NotNull Task complete(@NotNull Plugin plugin);
     }
 }

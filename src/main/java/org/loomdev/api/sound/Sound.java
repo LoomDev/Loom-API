@@ -1,6 +1,5 @@
 package org.loomdev.api.sound;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -1078,7 +1077,7 @@ public class Sound {
             return rawId;
         }
 
-        public static @NonNull Optional<Type> getByRawId(int id) {
+        public static @NotNull Optional<Type> getByRawId(int id) {
             return Optional.ofNullable(lookupByRawId.get(id));
         }
 
