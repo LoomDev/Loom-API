@@ -1,18 +1,19 @@
 package org.loomdev.api.entity.vehicle;
 
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.BlockType;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.item.ItemType;
 
 public interface Boat extends Entity {
     
-    Type getBoatType();
+    @NotNull Variant getVariant();
     
-    void setBoatType(Type type);
+    void setVariant(@NotNull Variant variant);
 
     Placement getPlacement();
     
-    enum Type {
+    enum Variant {
         OAK(BlockType.OAK_PLANKS, ItemType.OAK_BOAT, "oak"),
         SPRUCE(BlockType.SPRUCE_PLANKS, ItemType.SPRUCE_BOAT, "spruce"),
         BIRCH(BlockType.BIRCH_PLANKS, ItemType.BIRCH_BOAT, "birch"),
@@ -24,7 +25,7 @@ public interface Boat extends Entity {
         private final ItemType itemType;
         private final String name;
 
-        Type(BlockType plankType, ItemType itemType, String name) {
+        Variant(BlockType plankType, ItemType itemType, String name) {
             this.plankType = plankType;
             this.itemType = itemType;
             this.name = name;

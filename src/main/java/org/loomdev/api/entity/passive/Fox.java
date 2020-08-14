@@ -2,17 +2,14 @@ package org.loomdev.api.entity.passive;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public interface Fox extends AnimalEntity {
 
-    @NotNull Type getFoxType();
+    @NotNull Variant getVariant();
 
-    void setFoxType(@NotNull Type type);
+    void setVariant(@NotNull Variant variant);
 
     boolean isCrouching();
 
@@ -30,25 +27,8 @@ public interface Fox extends AnimalEntity {
 
     List<UUID> getTrusted();
 
-    enum Type {
-        RED(0),
-        SNOW(1);
-
-        // TODO add biomes
-
-        private static final Map<Integer, Type> ID_TYPE_MAP = Arrays.stream(values()).collect(Collectors.toMap(Type::getId, t -> t));
-        private final int id;
-
-        Type(int id) {
-            this.id = id;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public static Type getById(int id) {
-            return ID_TYPE_MAP.get(id);
-        }
+    enum Variant {
+        RED,
+        SNOW
     }
 }

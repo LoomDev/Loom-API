@@ -7,9 +7,9 @@ import java.util.Map;
 
 public interface Cat extends TameableEntity, Sittable {
 
-    Type getCatType();
+    Variant getVariant();
 
-    void setCatType(Type type);
+    void setVariant(Variant variant);
 
     DyeColor getCollarColor();
 
@@ -17,39 +17,17 @@ public interface Cat extends TameableEntity, Sittable {
 
     void hiss();
 
-    enum Type {
-        TABBY(0),
-        BLACK(1),
-        RED(2),
-        SIAMESE(3),
-        BRITISH_SHORTHAIR(4),
-        CALICO(5),
-        PERSIAN(6),
-        RAGDOLL(7),
-        WHITE(8),
-        JELLIE(9),
-        ALL_BLACK(10);
-
-        private static Map<Integer, Type> mapById = new HashMap<>();
-
-        private final int id;
-
-        Type(int id) {
-            this.id = id;
-        }
-
-        public static Type getById(int id) {
-            return mapById.get(id);
-        }
-
-        public int getId() {
-            return this.id;
-        }
-
-        static {
-            for (Type type : values()) {
-                mapById.put(type.getId(), type);
-            }
-        }
+    enum Variant {
+        TABBY,
+        BLACK,
+        RED,
+        SIAMESE,
+        BRITISH_SHORTHAIR,
+        CALICO,
+        PERSIAN,
+        RAGDOLL,
+        WHITE,
+        JELLIE,
+        ALL_BLACK;
     }
 }
