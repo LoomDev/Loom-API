@@ -1,19 +1,27 @@
 package org.loomdev.api.entity.passive;
 
+import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.util.DyeColor;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public interface Cat extends TameableEntity, Sittable {
 
-    Variant getVariant();
+    /**
+     * Get the {@link Variant} of the Cat.
+     *
+     * @return The {@link Variant} of the Cat.
+     */
+    @NotNull Variant getVariant();
 
-    void setVariant(Variant variant);
+    /**
+     * Set the {@link Variant} of the Cat.
+     *
+     * @param variant The new {@link Variant} of the Cat.
+     */
+    void setVariant(@NotNull Variant variant);
 
-    DyeColor getCollarColor();
+    @NotNull DyeColor getCollarColor();
 
-    void setCollarColor(DyeColor dyeColor);
+    void setCollarColor(@NotNull DyeColor dyeColor);
 
     void hiss();
 

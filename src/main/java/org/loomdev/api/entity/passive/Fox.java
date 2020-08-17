@@ -7,8 +7,18 @@ import java.util.UUID;
 
 public interface Fox extends AnimalEntity {
 
+    /**
+     * Get the {@link Variant} of the Fox.
+     *
+     * @return The {@link Variant} of the Fox.
+     */
     @NotNull Variant getVariant();
 
+    /**
+     * Set the {@link Variant} of the Fox.
+     *
+     * @param variant The new {@link Variant} of the Fox.
+     */
     void setVariant(@NotNull Variant variant);
 
     boolean isCrouching();

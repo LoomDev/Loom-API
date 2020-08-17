@@ -10,8 +10,18 @@ public interface Mooshroom extends Cow {
 
     void setStewEffect(@Nullable StatusEffect effect);
 
+    /**
+     * Get the {@link Variant} of the Mooshroom.
+     *
+     * @return The {@link Variant} of the Mooshroom.
+     */
     @NotNull Variant getVariant();
 
+    /**
+     * Set the {@link Variant} of the Mooshroom.
+     *
+     * @param variant The new {@link Variant} of the Mooshroom.
+     */
     void setVariant(@NotNull Variant variant);
 
     enum Variant {

@@ -3,12 +3,23 @@ package org.loomdev.api.entity.vehicle;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.BlockType;
 import org.loomdev.api.entity.Entity;
+import org.loomdev.api.entity.passive.Cat;
 import org.loomdev.api.item.ItemType;
 
 public interface Boat extends Entity {
-    
+
+    /**
+     * Get the {@link Variant} of the Boat.
+     *
+     * @return The {@link Variant} of the Boat.
+     */
     @NotNull Variant getVariant();
-    
+
+    /**
+     * Set the {@link Variant} of the Boat.
+     *
+     * @param variant The new {@link Variant} of the Boat.
+     */
     void setVariant(@NotNull Variant variant);
 
     Placement getPlacement();
