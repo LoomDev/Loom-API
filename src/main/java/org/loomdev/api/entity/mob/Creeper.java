@@ -1,6 +1,8 @@
 package org.loomdev.api.entity.mob;
 
-public interface Creeper extends HostileEntity {
+import org.loomdev.api.entity.Explosive;
+
+public interface Creeper extends HostileEntity, Explosive {
 
     boolean isCharged();
 
@@ -11,10 +13,6 @@ public interface Creeper extends HostileEntity {
     void setFuseTime(int ticks);
 
     int getCurrentFuseTime();
-
-    int getExplosionRadius();
-
-    void setExplosionRadius(int radius);
 
     boolean isIgnited();
 
