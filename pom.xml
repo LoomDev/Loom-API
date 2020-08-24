@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>Loom API</name>
-    <url>http://loomdev.org</url>
+    <url>https://loomdev.org/</url>
     <description>The plugin API for Loom.</description>
 
     <issueManagement>
@@ -36,8 +36,15 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <minecraft.version>1.16.1</minecraft.version>
+        <minecraft.version>1.16.2</minecraft.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>sonatype-oss</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
