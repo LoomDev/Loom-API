@@ -1,14 +1,12 @@
 package org.loomdev.api.util;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
-
-;
+import java.util.stream.Collectors;
 
 // TODO create test to check these values agains the minecraft DyeColor enum
 public enum DyeColor {
 
-    // TODO add ChatColor
     WHITE(0, "white", 16383998, 15790320, 16777215),
     ORANGE(1, "orange", 16351261, 15435844, 16738335),
     MAGENTA(2, "magenta", 13061821, 12801229, 16711935),
@@ -26,8 +24,10 @@ public enum DyeColor {
     RED(14, "red", 11546150, 11743532, 16711680),
     BLACK(15, "black", 1908001, 1973019, 0);
 
-    private static Map<String, DyeColor> mapByName = new HashMap<>();
-    private static Map<Integer, DyeColor> mapById = new HashMap<>();
+    private static final Map<String, DyeColor> NAME_COLOR_MAP = Arrays.stream(values())
+            .collect(Collectors.toMap(DyeColor::getName, x -> x));
+    private static final Map<Integer, DyeColor> ID_COLOR_MAP = Arrays.stream(values())
+            .collect(Collectors.toMap(DyeColor::getId, x -> x));
 
     private final int id;
     private final String name;
@@ -52,14 +52,6 @@ public enum DyeColor {
         return Color.fromRgb(this.color);
     }
 
-    public static DyeColor getById(int id) {
-        return mapById.get(id);
-    }
-
-    public static DyeColor getByName(String name) {
-        return mapByName.get(name.toLowerCase());
-    }
-
     public int getId() {
         return this.id;
     }
@@ -80,10 +72,11 @@ public enum DyeColor {
         return this.signColor;
     }
 
-    static {
-        for (DyeColor color : values()) {
-            mapById.put(color.getId(), color);
-            mapByName.put(color.getName(), color);
-        }
+    public static DyeColor getById(int id) {
+        return ID_COLOR_MAP.get(id);
+    }
+
+    public static DyeColor getByName(String name) {
+        return NAME_COLOR_MAP.get(name.toLowerCase());
     }
 }

@@ -13,6 +13,9 @@ public class NamespacedKey {
 
     /**
      * This should never be used by plugins and if for internal use only.
+     *
+     * @param key The full key.
+     * @return A namespaced key.
      */
     @Deprecated
     public static NamespacedKey of(String key) {
@@ -22,6 +25,9 @@ public class NamespacedKey {
 
     /**
      * This should never be used by plugins and if for internal use only.
+     *
+     * @param key The key.
+     * @return A minecraft namespaced key.
      */
     @Deprecated
     public static NamespacedKey forMinecraft(String key) {
@@ -30,10 +36,13 @@ public class NamespacedKey {
 
     /**
      * This should never be used by plugins and if for internal use only.
+     *
+     * @param key The key.
+     * @return A loom namespaced key.
      */
     @Deprecated
     public static NamespacedKey forLoom(String key) {
-        return new NamespacedKey("minecraft", key);
+        return new NamespacedKey("loom", key);
     }
 
     private final String namespace;
@@ -41,6 +50,9 @@ public class NamespacedKey {
 
     /**
      * This should never be used by plugins and if for internal use only.
+     *
+     * @param namespace The namespace.
+     * @param key The key.
      */
     @Deprecated
     public NamespacedKey(String namespace, String key) {

@@ -15,7 +15,7 @@ public interface Block {
      * current block and will not reflect any changes made to it
      * after the object has been returned.
      *
-     * @return
+     * @return The current state of the block.
      */
     @NotNull BlockState getBlockState();
 

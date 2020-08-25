@@ -2,9 +2,10 @@ package org.loomdev.api.entity.passive;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.loomdev.api.entity.Shearable;
 import org.loomdev.api.entity.effect.StatusEffect;
 
-public interface Mooshroom extends Cow {
+public interface Mooshroom extends Cow, Shearable {
 
     @Nullable StatusEffect getStewEffect();
 
