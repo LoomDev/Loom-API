@@ -9,7 +9,8 @@ public enum ApiVersion {
     UNKNOWN("unknown", false),
     v1_16_1R1("1.16.1-R1", false),
     v1_16_2R1("1.16.2-R1", false),
-    v1_16_3RC1("1.16.3-RC1", true);
+    v1_16_3RC1("1.16.3-RC1", true),
+    v1_16_3R1("1.16.3-R1", false);
 
     public static final ApiVersion LATEST = values()[ApiVersion.values().length - 1];
     public static final ApiVersion LATEST_RELEASE = Arrays.stream(values())
