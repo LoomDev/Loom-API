@@ -1,9 +1,11 @@
-package org.loomdev.api.event.block;
+package org.loomdev.api.event.entity.movement;
 
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.block.Block;
 import org.loomdev.api.entity.Entity;
 import org.loomdev.api.event.Cancellable;
+import org.loomdev.api.event.block.BlockEvent;
+import org.loomdev.api.event.entity.EntityEvent;
 
 /**
  * Fired when an entity bounces on a bounceable block in the world and gains velocity.
@@ -15,24 +17,25 @@ import org.loomdev.api.event.Cancellable;
  * <li>An entity lands and successfully bounces on a bed block</li>
  * </ul>
  */
-public class BlockBouncedEvent extends BlockEvent implements Cancellable {
+public class EntityBouncedEvent extends EntityEvent implements Cancellable {
 
-    private final Entity entity;
+    private final Block block;
     private double multiplier;
     private boolean cancelled;
 
-    public BlockBouncedEvent(@NotNull Block block, @NotNull Entity entity, double multiplier) {
-        super(block);
-        this.entity = entity;
+    public EntityBouncedEvent(@NotNull Entity entity, @NotNull Block block, double multiplier) {
+        super(entity);
+        this.block = block;
         this.multiplier = multiplier;
     }
 
-    public @NotNull Entity getEntity() {
-        return this.entity;
+    @NotNull
+    public Block getBlock() {
+        return block;
     }
 
     public double getBounceMultiplier() {
-        return this.multiplier;
+        return multiplier;
     }
 
     public void setBounceMultiplier(double multiplier) {
@@ -41,7 +44,7 @@ public class BlockBouncedEvent extends BlockEvent implements Cancellable {
 
     @Override
     public boolean isCancelled() {
-        return this.cancelled;
+        return cancelled;
     }
 
     @Override
