@@ -48,7 +48,7 @@ public class EntityBouncedEvent extends EntityEvent implements Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

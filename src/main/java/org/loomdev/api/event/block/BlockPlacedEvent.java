@@ -29,7 +29,7 @@ public class BlockPlacedEvent extends BlockEvent implements Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

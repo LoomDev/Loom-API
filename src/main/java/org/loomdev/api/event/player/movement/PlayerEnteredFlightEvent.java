@@ -22,7 +22,7 @@ public class PlayerEnteredFlightEvent extends PlayerEvent implements Cancellable
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

@@ -47,7 +47,7 @@ public class EntityEquippedEquipmentEvent extends EntityEvent implements Cancell
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

@@ -37,7 +37,7 @@ public class TimeChangedEvent extends WorldEvent implements Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 

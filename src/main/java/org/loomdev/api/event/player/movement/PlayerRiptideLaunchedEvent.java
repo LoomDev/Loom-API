@@ -33,7 +33,7 @@ public class PlayerRiptideLaunchedEvent extends PlayerEvent implements Cancellab
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

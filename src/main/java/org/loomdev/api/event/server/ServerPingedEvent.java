@@ -85,7 +85,7 @@ public class ServerPingedEvent implements Event, Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

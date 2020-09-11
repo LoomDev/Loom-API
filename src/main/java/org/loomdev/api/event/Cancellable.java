@@ -19,7 +19,7 @@ public interface Cancellable {
      * Sets the cancellation state of this event.
      * If cancelled, server actions will not be executed for this event.
      *
-     * @param cancelled Whether this event should be marked as cancelled.
+     * @param cancel Whether this event should be marked as cancelled.
      */
-    void cancel(boolean cancelled);
+    void setCancelled(boolean cancel);
 }

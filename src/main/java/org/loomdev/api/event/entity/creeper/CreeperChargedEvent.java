@@ -47,7 +47,7 @@ public class CreeperChargedEvent extends EntityEvent implements Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 

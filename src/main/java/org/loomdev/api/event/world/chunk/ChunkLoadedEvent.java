@@ -18,7 +18,7 @@ public class ChunkLoadedEvent extends ChunkEvent implements Cancellable {
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }

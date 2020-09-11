@@ -32,7 +32,7 @@ public class BlockDroppedExperienceEvent extends BlockEvent implements Cancellab
     }
 
     @Override
-    public void cancel(boolean cancelled) {
+    public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
     }
 }
