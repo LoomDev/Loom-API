@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.player.Player;
 import org.loomdev.api.event.Cancellable;
 
+import java.util.Collection;
 import java.util.Optional;
 import java.util.Set;
 
@@ -15,10 +16,10 @@ import java.util.Set;
 public class PlayerMessagedEvent extends PlayerEvent implements Cancellable {
 
     private TextComponent prefix, message, suffix;
-    private Set<Player> recipients;
+    private Collection<? extends Player> recipients;
     private boolean cancelled;
 
-    public PlayerMessagedEvent(@NotNull Player player, @NotNull String message, @NotNull Set<Player> recipients) {
+    public PlayerMessagedEvent(@NotNull Player player, @NotNull String message, @NotNull Collection<? extends Player> recipients) {
         super(player);
         this.prefix = TextComponent.builder()
                 .append("<")
@@ -53,7 +54,7 @@ public class PlayerMessagedEvent extends PlayerEvent implements Cancellable {
         this.suffix = suffix;
     }
 
-    public Set<Player> getRecipients() {
+    public Collection<? extends Player> getRecipients() {
         return this.recipients;
     }
 
