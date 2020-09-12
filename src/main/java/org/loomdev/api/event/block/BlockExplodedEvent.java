@@ -12,21 +12,12 @@ import java.util.Set;
  */
 public class BlockExplodedEvent extends BlockEvent implements Cancellable {
 
-    private float power;
     private final Set<Block> explodedBlocks;
     private boolean cancelled;
 
-    public BlockExplodedEvent(@NotNull Block block, float power, @NotNull Set<Block> explodedBlocks) {
+    public BlockExplodedEvent(@NotNull Block block, @NotNull Set<Block> explodedBlocks) {
         super(block);
         this.explodedBlocks = explodedBlocks;
-    }
-
-    public float getPower() {
-        return power;
-    }
-
-    public void setPower(float power) {
-        this.power = power;
     }
 
     public @NotNull Set<Block> getExplodedBlocks() {
