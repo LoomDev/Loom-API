@@ -52,16 +52,11 @@ public interface ItemProperty<T extends ItemPropertyData<T>> {
     // SpawnEgg
     // SuspiciousStew
     // TropicalFishBucket
-
-    // book | BookData = done |
-
-    // map data ??
-    // compass
-    // Item flags (hide stuff, unbreakable?)
-    // Persistence data
     // attribute modifier
     // model data?
     // repair data
+    // Item flags (hide stuff, unbreakable?)
+    // Persistence data
 
     // endregion ItemProperties
 
