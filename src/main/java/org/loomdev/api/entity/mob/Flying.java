@@ -1,4 +1,4 @@
 package org.loomdev.api.entity.mob;
 
-public interface Flying {
+public interface Flying extends MobEntity {
 }

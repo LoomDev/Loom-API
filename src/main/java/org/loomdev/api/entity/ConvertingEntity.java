@@ -8,6 +8,6 @@ public interface ConvertingEntity {
 
     boolean isConverting();
 
-    void convert(boolean sound);
+    void convert();
 
 }

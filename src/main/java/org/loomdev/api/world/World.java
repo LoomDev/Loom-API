@@ -32,7 +32,7 @@ public interface World {
 
     boolean isChunkLoaded(@NotNull Chunk chunk);
 
-    @NotNull Optional<Entity> spawnEntity(@NotNull EntityType type, @NotNull Location location);
+    @NotNull <T extends Entity> Optional<T> spawnEntity(@NotNull EntityType<T> type, @NotNull Location location);
 
     void spawnParticle(@NotNull Particle particle, @NotNull Location location);
 

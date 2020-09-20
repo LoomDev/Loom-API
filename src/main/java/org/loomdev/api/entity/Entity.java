@@ -3,6 +3,7 @@ package org.loomdev.api.entity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.command.CommandSource;
 import org.loomdev.api.entity.damage.DamageSource;
 import org.loomdev.api.item.ItemStack;
@@ -28,9 +29,9 @@ public interface Entity extends CommandSource {
 
     @NotNull Component getDisplayName();
 
-    @NotNull Optional<Component> getCustomName();
+    @Nullable Component getCustomName();
 
-    void setCustomName(@NotNull Component component);
+    void setCustomName(@Nullable Component component);
 
     boolean hasCustomName();
 

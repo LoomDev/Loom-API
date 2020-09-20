@@ -4,7 +4,6 @@ import org.loomdev.api.entity.Ageable;
 import org.loomdev.api.entity.ConvertingEntity;
 
 public interface Zombie extends HostileEntity, ConvertingEntity, Ageable {
-
     boolean canBreakDoors();
 
     void setCanBreakDoors(boolean flag);

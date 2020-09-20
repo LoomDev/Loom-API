@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class Command {
+public abstract class Command implements CommandExecutor {
 
     private final String name;
 
@@ -24,8 +24,6 @@ public abstract class Command {
         this.name = name;
         this.aliases = aliases;
     }
-
-    public abstract void execute(@NotNull CommandSource source, String[] args);
 
     public @NotNull List<String> suggest(@NotNull CommandSource source, @Nullable String[] args) {
         return ImmutableList.of();

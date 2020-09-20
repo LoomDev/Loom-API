@@ -3,6 +3,7 @@ package org.loomdev.api.entity.boss.dragon;
 import org.jetbrains.annotations.NotNull;
 import org.loomdev.api.entity.ComplexEntity;
 import org.loomdev.api.entity.ComplexEntityPart;
+import org.loomdev.api.entity.boss.Boss;
 import org.loomdev.api.entity.mob.MobEntity;
 import org.loomdev.api.entity.mob.Monster;
 
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public interface EnderDragon extends MobEntity, Monster, ComplexEntity {
+public interface EnderDragon extends MobEntity, Monster, ComplexEntity, Boss {
 
     int getTicksSinceDeath();
 

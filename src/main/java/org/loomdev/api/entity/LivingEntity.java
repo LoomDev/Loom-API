@@ -120,12 +120,14 @@ public interface LivingEntity extends Damageable {
 
     void clearSleepingPosition();
 
+    void wakeUp();
+
     ItemStack eatFood(World world, ItemStack itemStack);
 
-    // attributes
+    // TODO attributes
 
-    // colidable enable/disable
+    // TODO colidable enable/disable
 
-    // equipment
+    // TODO equipment
 
 }
