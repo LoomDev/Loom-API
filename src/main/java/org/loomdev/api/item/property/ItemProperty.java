@@ -35,6 +35,12 @@ public interface ItemProperty<T extends ItemPropertyData<T>> {
      */
     ItemProperty<EnchantmentData> Enchantments = Loom.getRegistry().getItemProperty(EnchantmentData.class);
 
+    /**
+     *  Get or modify the repair cost of an {@link org.loomdev.api.item.ItemStack}.
+     *  <p>Can be applied to all repairable Items</p>
+     */
+    ItemProperty<RepairableData> Repairable = Loom.getRegistry().getItemProperty(RepairableData.class);
+
     // banner
     // block data
     // block state
@@ -54,7 +60,6 @@ public interface ItemProperty<T extends ItemPropertyData<T>> {
     // TropicalFishBucket
     // attribute modifier
     // model data?
-    // repair data
     // Item flags (hide stuff, unbreakable?)
     // Persistence data
 

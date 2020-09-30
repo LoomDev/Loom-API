@@ -1,7 +1,5 @@
 package org.loomdev.api.entity.vehicle;
 
-import net.kyori.adventure.text.Component;
-
 /**
  * Represents a minecart with a command block inside.
  */

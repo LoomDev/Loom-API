@@ -3,7 +3,6 @@ package org.loomdev.api.entity.mob;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.loomdev.api.entity.ConvertingEntity;
-import org.loomdev.api.entity.EntityType;
 import org.loomdev.api.village.VillagerProfession;
 import org.loomdev.api.village.VillagerVariant;
 
